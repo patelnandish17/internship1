@@ -4,6 +4,7 @@ pipeline {
     environment {
         // Load the env file credential with ID 'ENV'
         ENV_FILE = credentials('ENV')
+        DOCKER = 'C:\\Program Files\\Docker\\Docker\\resources\\bin\\docker.exe'
     }
 
     stages {
@@ -26,7 +27,7 @@ pipeline {
                 // Build application
                 powershell 'npm run build'
                 // Docker image creation
-                powershell 'docker compose build frontend'
+                powershell '& "$env:DOCKER" compose build frontend'
             }
         }
 
@@ -43,7 +44,7 @@ pipeline {
                     & "Lang graph\\venv\\Scripts\\pytest" "Lang graph\\tests\\test_api.py" -v
                 '''
                 // Docker image creation
-                powershell 'docker compose build backend'
+                powershell '& "$env:DOCKER" compose build backend'
             }
         }
 
@@ -51,7 +52,7 @@ pipeline {
             steps {
                 echo 'Starting multi-agent orchestration service...'
                 // Service initialization
-                powershell 'docker compose up -d'
+                powershell '& "$env:DOCKER" compose up -d'
                 // Verification check: poll the health endpoint
                 powershell '''
                     Start-Sleep -Seconds 15
@@ -68,7 +69,7 @@ pipeline {
     post {
         always {
             echo 'Pipeline completed. Verifying running containers...'
-            powershell 'docker ps'
+            powershell '& "$env:DOCKER" ps'
         }
     }
 }
