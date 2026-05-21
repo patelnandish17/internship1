@@ -45,7 +45,7 @@ export function CompanyCard({ company }: { company: Company }) {
           )}
         </div>
         {company.category && (
-          <Badge variant="secondary" className="bg-brand-soft text-brand border-0 text-[10px]">
+          <Badge variant="secondary" className="bg-brand-soft text-brand border-0 text-[10px] shrink truncate max-w-[120px]">
             {company.category}
           </Badge>
         )}
@@ -53,7 +53,7 @@ export function CompanyCard({ company }: { company: Company }) {
 
       <div className="flex flex-wrap gap-1.5 mb-4 min-h-[24px]">
         {sectors.map(s => (
-          <span key={s} className="text-[11px] px-2 py-0.5 rounded-full bg-surface-muted text-muted-foreground">
+          <span key={s} className="text-[11px] px-2 py-0.5 rounded-full bg-surface-muted text-muted-foreground truncate max-w-full inline-block" title={s}>
             {s}
           </span>
         ))}

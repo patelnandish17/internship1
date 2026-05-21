@@ -26,9 +26,45 @@ const nav = [
   { to: "/innovox", label: "Innovox", icon: Sparkles },
 ];
 
+import { useEffect } from "react";
+import { supabase } from "@/lib/supabase";
+
 export default function AppLayout() {
   const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (!session) {
+        navigate("/login");
+      } else {
+        setLoading(false);
+      }
+    });
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (!session) {
+        navigate("/login");
+      } else {
+        setLoading(false);
+      }
+    });
+
+    return () => subscription.unsubscribe();
+  }, [navigate]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen grid place-items-center bg-surface">
+        <div className="flex flex-col items-center gap-3">
+          <div className="h-8 w-8 animate-spin rounded-full border-4 border-brand border-t-transparent" />
+          <p className="text-sm text-muted-foreground font-medium animate-pulse">Verifying session...</p>
+        </div>
+      </div>
+    );
+  }
+
 
   return (
     <div className="min-h-screen bg-surface-muted">

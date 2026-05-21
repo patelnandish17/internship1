@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
+import { supabase } from "@/lib/supabase";
 
 type Mode = "student" | "college";
 
@@ -17,7 +18,7 @@ export default function Login() {
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
 
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     setError(null);
     if (!identifier.trim() || !password) {
@@ -25,11 +26,23 @@ export default function Login() {
       return;
     }
     setLoading(true);
-    setTimeout(() => {
+    try {
+      const { data, error: err } = await supabase.auth.signInWithPassword({
+        email: identifier,
+        password: password,
+      });
+      if (err) {
+        setError(err.message);
+      } else {
+        navigate(mode === "student" ? "/home" : "/analytics");
+      }
+    } catch (err: any) {
+      setError(err?.message || "An unexpected error occurred.");
+    } finally {
       setLoading(false);
-      navigate(mode === "student" ? "/home" : "/analytics");
-    }, 700);
+    }
   }
+
 
   return (
     <div className="min-h-screen grid lg:grid-cols-2 bg-surface">
