@@ -1,0 +1,42 @@
+# Git ignore file for Python project
+
+# Byte-compiled / optimized / DLL files
+**/__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.env
+.env.local
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Dependency directories
+**/node_modules/
+dist/
+dist-ssr/
+
+# pytest
+.pytest_cache/
+.pytest/
+
+# Logs and debug files
+*.log
+output.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# LangGraph API and local runs
+.langgraph_api/
+
+# CSVs/txts and local golden records/data which are dynamic outputs
+*_golden_record.json
+*_golden_record.md
+Internship(Supabase data).csv
+updated s50.txt

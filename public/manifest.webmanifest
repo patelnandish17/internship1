@@ -1,0 +1,13 @@
+{
+  "name": "PESCE Mandya Placement Intelligence",
+  "short_name": "PESCE PI",
+  "description": "Decision-grade campus hiring analytics for PESCE Mandya.",
+  "start_url": "/login",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f7f9fc",
+  "theme_color": "#1d63d8",
+  "icons": [
+    { "src": "/favicon.ico", "sizes": "any", "type": "image/x-icon" }
+  ]
+}

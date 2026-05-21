@@ -1,0 +1,11 @@
+node_modules
+dist
+.git
+.env
+.env.local
+Dockerfile
+docker-compose.yml
+jenkinsfile
+Jenkinsfile
+venv
+Lang graph

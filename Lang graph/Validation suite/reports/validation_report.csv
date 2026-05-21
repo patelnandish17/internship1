@@ -1,0 +1,1256 @@
+Company Name,Sheet,Column,Value,Validation Type,Status,Expected
+1.1 _Nandan Manjunath Naik,1.1 _Nandan Manjunath Naik,Company Name,"Microsoft Corporation, AT&T Inc., L'Oréal S.A.",structural,PASS,"Pass: Data matches ^[\w\s&.,\-\(\)'\u00C0-\u017F]+$. Status: Validated."
+1.1 _Nandan Manjunath Naik,1.1 _Nandan Manjunath Naik,Short Name,"AWS, J&J, OpenAI",structural,PASS,Pass: Accepted and stored as Title Case. Length $\le$ 100.
+1.1 _Nandan Manjunath Naik,1.1 _Nandan Manjunath Naik,CEO Name,"Satya Nadella, Jean-Pascal Tricoire",structural,PASS,Pass: Regex validation success; No digits present.
+1.1 _Nandan Manjunath Naik,1.1 _Nandan Manjunath Naik,Primary Contact Person's Name,Nandan M. Naik,structural,PASS,Pass: Meets PII audit rules; format compliant.
+1.1 _Nandan Manjunath Naik,1.1 _Nandan Manjunath Naik,GLOBAL RECORD,"Revenue: null, Remote Policy: null",structural,PASS,Fail/Pass: Revenue must throw error (Not Null). Remote Policy defaults to 'Unknown'.
+1.3_Srusti S S,1.3_Srusti S S,Company Name,Café Résumé Pvt Ltd,structural,PASS,Accepted (UTF-8 supported as per regex)
+1.3_Srusti S S,1.3_Srusti S S,Company Name,TechCorp,structural,PASS,Rejected (No emojis allowed per data_rules)
+1.3_Srusti S S,1.3_Srusti S S,Short Name,A&B Co.,structural,PASS,Accepted
+1.3_Srusti S S,1.3_Srusti S S,Short Name,ABC@123,structural,PASS,Rejected (invalid char '@')
+1.3_Srusti S S,1.3_Srusti S S,Logo,https://example.com/logo.png?ver=1,structural,PASS,Accepted (matches regex)
+1.3_Srusti S S,1.3_Srusti S S,Logo,https://example.com/logo.txt,structural,PASS,Rejected
+1.3_Srusti S S,1.3_Srusti S S,Category,Startup@,structural,PASS,Rejected (must match enum list)
+1.3_Srusti S S,1.3_Srusti S S,Year of Incorporation,202A,temporal,PASS,Rejected (must be numeric YYYY)
+1.3_Srusti S S,1.3_Srusti S S,Overview of the Company,AI-based platform for food delivery & logistics.,structural,PASS,Accepted
+1.3_Srusti S S,1.3_Srusti S S,Employee Size,50+,positive,PASS,Rejected (regex only allows number or range)
+1.3_Srusti S S,1.3_Srusti S S,Employee Turnover,15%%,percentage,PASS,Rejected
+1.3_Srusti S S,1.3_Srusti S S,Average Retention Tenure,2.5 Years,structural,PASS,Accepted
+1.3_Srusti S S,1.3_Srusti S S,Company Headquarters,Bangalore@India,structural,PASS,Rejected
+1.3_Srusti S S,1.3_Srusti S S,Countries Operating In,India;USA,structural,PASS,Rejected (must be comma-separated)
+1.3_Srusti S S,1.3_Srusti S S,Website URL,https://example.com,structural,PASS,Accepted
+1.3_Srusti S S,1.3_Srusti S S,Website URL,htp://example,structural,PASS,Rejected
+1.3_Srusti S S,1.3_Srusti S S,LinkedIn Profile URL,https://linkedin.com/company/openai,structural,PASS,Accepted
+1.3_Srusti S S,1.3_Srusti S S,Twitter (X) Handle,@user!name,structural,PASS,Rejected
+1.3_Srusti S S,1.3_Srusti S S,Company Contact Email,contact@company@com,structural,PASS,Rejected
+1.3_Srusti S S,1.3_Srusti S S,Company Phone Number,#ERROR!,structural,PASS,Rejected
+1.4_Srusti S S,1.4_Srusti S S,Company Name,App,structural,PASS,Rejected (length < meaningful legal name; violates business_rules)
+1.4_Srusti S S,1.4_Srusti S S,Company Name,Microsft Pvt Ltd,structural,PASS,Rejected (should match official registry)
+1.4_Srusti S S,1.4_Srusti S S,Short Name,Goog,structural,PASS,Rejected (must be distinguishable and meaningful)
+1.4_Srusti S S,1.4_Srusti S S,Short Name,Google,structural,PASS,Accepted
+1.4_Srusti S S,1.4_Srusti S S,Logo,https://logo,structural,PASS,Rejected (invalid URL format)
+1.4_Srusti S S,1.4_Srusti S S,Logo,www.logo.png,structural,PASS,Rejected
+1.4_Srusti S S,1.4_Srusti S S,Company Headquarters,India,structural,PASS,Rejected (must include city + country)
+1.4_Srusti S S,1.4_Srusti S S,Company Headquarters,"Bangalore, India",structural,PASS,Accepted
+1.4_Srusti S S,1.4_Srusti S S,Countries Operating In,India USA,structural,PASS,Rejected (missing comma separation)
+1.4_Srusti S S,1.4_Srusti S S,Countries Operating In,"India, USA",structural,PASS,Accepted
+1.4_Srusti S S,1.4_Srusti S S,Employee Size,50-,positive,PASS,Rejected
+1.4_Srusti S S,1.4_Srusti S S,Employee Size,100-50,positive,PASS,Rejected (Min < Max rule violated)
+1.4_Srusti S S,1.4_Srusti S S,Employee Turnover,15,percentage,PASS,Rejected
+1.4_Srusti S S,1.4_Srusti S S,Employee Turnover,1.5,percentage,PASS,Rejected (>100%)
+1.4_Srusti S S,1.4_Srusti S S,Average Retention Tenure,2.5,structural,PASS,Rejected (missing Years/Months)
+1.4_Srusti S S,1.4_Srusti S S,Website URL,https://.com,structural,PASS,Rejected
+1.4_Srusti S S,1.4_Srusti S S,Website URL,example.com,structural,PASS,Rejected
+1.4_Srusti S S,1.4_Srusti S S,LinkedIn Profile URL,https://linkedin.com/user/openai,structural,PASS,Rejected
+1.4_Srusti S S,1.4_Srusti S S,Twitter (X) Handle,@,structural,PASS,Rejected
+1.4_Srusti S S,1.4_Srusti S S,Company Contact Email,contactcompany.com,structural,PASS,Rejected
+1.4_Srusti S S,1.4_Srusti S S,Company Phone Number,91,structural,PASS,Rejected
+1.4_Srusti S S,1.4_Srusti S S,CEO Name,John123,structural,PASS,Rejected
+1.4_Srusti S S,1.4_Srusti S S,Key Business Leaders,{name: CEO},structural,PASS,Rejected (must be valid JSON)
+1.4_Srusti S S,1.4_Srusti S S,Revenue Mix,80-20,ratio_100,PASS,Rejected (must be 80/20)
+1.4_Srusti S S,1.4_Srusti S S,CAC:LTV Ratio,3::1,ratio_format,PASS,Rejected
+1.4_Srusti S S,1.4_Srusti S S,Churn Rate,10,percentage,PASS,Rejected
+1.4_Srusti S S,1.4_Srusti S S,Net Promoter Score (NPS),150,range,PASS,Rejected (>100 limit)
+1.2_Nandan Manjunath Naik,1.2_Nandan Manjunath Naik,Company Name,"NULL, """", "" """,structural,PASS,"Fail: Validation must trigger. Business Rule: ""Must match official government registration exactly."""
+1.2_Nandan Manjunath Naik,1.2_Nandan Manjunath Naik,Category,"""""",structural,PASS,"Fail: Enum match fails. Business Rule: ""Must map to internal standardized business taxonomy."""
+1.2_Nandan Manjunath Naik,1.2_Nandan Manjunath Naik,Year of Incorporation,,temporal,PASS,"Fail: Field is ""Not Null"". Expected 4-digit integer (YYYY)."
+1.2_Nandan Manjunath Naik,1.2_Nandan Manjunath Naik,Overview of the Company,"""Short text""",structural,PASS,"Fail: Data Rule: ""Min length 50 chars."""
+1.2_Nandan Manjunath Naik,1.2_Nandan Manjunath Naik,Website URL,"""""",structural,PASS,"Fail: Field is ""Not Null"". Regex validation for HTTPS URL will fail."
+1.2_Nandan Manjunath Naik,1.2_Nandan Manjunath Naik,CEO Name,""" """,structural,PASS,Fail: Regex ^[A-Za-z...]+$ requires at least one character.
+1.2_Nandan Manjunath Naik,1.2_Nandan Manjunath Naik,Sales Motion,,structural,PASS,"Fail: Field is ""Not Null"". Must match predefined Enums."
+1.2_Nandan Manjunath Naik,1.2_Nandan Manjunath Naik,Remote Work Policy,"""""",structural,PASS,"Fail: Field is ""Not Null"". Must match policy Enums."
+1.5_Hemanth gowda,1.5_Hemanth gowda,Company Name,"""Delta""",structural,PASS,System should flag for disambiguation. Must match official registration per business rules; validation requires domain/location context.
+1.5_Hemanth gowda,1.5_Hemanth gowda,Short Name,"""Mercury""",structural,PASS,System must verify distinction from Legal Name and check for restricted/generic words as per data rules.
+1.5_Hemanth gowda,1.5_Hemanth gowda,Category,"""Investor""",structural,PASS,Must map to standardized business taxonomy (VC vs. PE vs. Angel) rather than a generic term.
+1.5_Hemanth gowda,1.5_Hemanth gowda,CEO Name,"""John Smith""",structural,PASS,System should trigger a lookup for the linked CEO LinkedIn URL to confirm unique identity (Business Rule: Highest authority).
+1.5_Hemanth gowda,1.5_Hemanth gowda,Key Competitors,"""Apple""",structural,PASS,"Entity recognition must perform a DB lookup to ensure the entity is the ""Technology Company"" and not an unrelated entity."
+1.5_Hemanth gowda,1.5_Hemanth gowda,Key Investors / Backers,"""Sequoia""",structural,PASS,"Validation should check if it refers to Sequoia Capital US, Sequoia China, or Sequoia India using Investor DB mapping."
+1.5_Hemanth gowda,1.5_Hemanth gowda,Industry Associations / Memberships,"""IEEE""",structural,PASS,Verify against known Industry Bodies; ensure the membership level/role is specific to the entity.
+2.1_Harsha,2.1_Harsha,ALL_FIELDS,"Fully populated dataset (e.g., valid name, URL, revenue, leadership, culture, financials etc.)",structural,PASS,Record accepted. All validations pass. No schema or business rule violations.
+2.1_Harsha,2.1_Harsha,ALL_FIELDS,"Dataset with all fields adhering to regex (valid URLs, emails, enums, percentages)",structural,PASS,Record accepted. Regex + format constraints satisfied.
+2.1_Harsha,2.1_Harsha,ALL_FIELDS,"Example: Revenue > 0, Churn 100%, Year current year",structural,PASS,Record accepted. All business rules satisfied.
+2.1_Harsha,2.1_Harsha,ALL_FIELDS,"Example: CAC, CLV, CAC:LTV aligned",structural,PASS,Record accepted. Derived relationships hold true.
+2.1_Harsha,2.1_Harsha,ALL_FIELDS,All 150+ fields populated,structural,PASS,Data quality score = High. Suitable for analytics/ML pipelines.
+2.1_Harsha,2.1_Harsha,ALL_FIELDS,Fields populated from mixed sources,structural,PASS,No conflicts. Confidence levels respected.
+1.6_Hemanth Gowda,1.6_Hemanth Gowda,Company Name,"""apple inc.""",structural,PASS,"Accepted. Normalized to ""Apple Inc."" to match official government registration documents exactly."
+1.6_Hemanth Gowda,1.6_Hemanth Gowda,Short Name,"""MiCrOsOfT""",structural,PASS,"Accepted. System identifies as ""Microsoft"". Distinction from Legal Name must be verified."
+1.6_Hemanth Gowda,1.6_Hemanth Gowda,Category,"""startup""",structural,PASS,"Successful match. Data rule: ""Case insensitive match against Enum list"" (matches ""Startup"")."
+1.6_Hemanth Gowda,1.6_Hemanth Gowda,Nature of Company,"""PRIVATE""",structural,PASS,"Successful match. Maps to ""Private"" per allowed Legal Structure Types."
+1.6_Hemanth Gowda,1.6_Hemanth Gowda,Website URL,"""HTTPS://WWW.GOOGLE.COM""",structural,PASS,"Accepted. Strip ""HTTPS://"", trailing slashes, and convert domain to lowercase for deduplication."
+1.6_Hemanth Gowda,1.6_Hemanth Gowda,Twitter (X) Handle,"""@TestUser""",structural,PASS,"Accepted. Regex match ^@?[A-Za-z0-9_]{1,15}$. Social handles are case-insensitive for triggers."
+1.6_Hemanth Gowda,1.6_Hemanth Gowda,CEO Name,"""SATYA NADELLA""",structural,PASS,"Accepted. Regex check passed (no digits). System should store or display as ""Satya Nadella""."
+1.6_Hemanth Gowda,1.6_Hemanth Gowda,Primary Contact Person's Email,"""SALES@Company.com""",structural,PASS,Accepted. Standardize to lowercase before MX record lookup and PII auditing.
+1.6_Hemanth Gowda,1.6_Hemanth Gowda,Regulatory & Compliance Status,"""gdpr""",structural,PASS,"Successful match. Pattern matching should identify ""GDPR"" from the industry standard framework list."
+1.6_Hemanth Gowda,1.6_Hemanth Gowda,Profitability Status,"""PROFITABLE""",structural,PASS,"Successful match. Must match enum ""Profitable"" as a high-level filter."
+2.2_Harsha,2.2_Harsha,ALL_FIELDS,Only required fields filled; others NULL,structural,PASS,Record accepted. No failure for nullable fields.
+2.2_Harsha,2.2_Harsha,ALL_FIELDS,"Optional fields absent (e.g., revenue, leadership)",structural,PASS,No validation errors. Graceful degradation.
+2.2_Harsha,2.2_Harsha,ALL_FIELDS,"Nullable = NULL, Non-nullable = populated",structural,PASS,Record accepted. No constraint violation.
+2.2_Harsha,2.2_Harsha,ALL_FIELDS,Partial dataset used for scoring/search,structural,PASS,System handles missing values safely (no crash).
+2.2_Harsha,2.2_Harsha,ALL_FIELDS,Missing revenue NOT defaulted to 0,structural,PASS,System preserves NULL. No misleading defaults.
+2.2_Harsha,2.2_Harsha,ALL_FIELDS,Only core fields provided,structural,PASS,Record usable for basic workflows (search/display).
+2.3 test- The Nexus,2.3 test- The Nexus,Company Name,"NonExistentCompanyXYZ123 """"",structural,PASS,"FAIL violates Not Null + business rule ""Must match official registration""; validation_mode: Automated & Manual"
+2.3 test- The Nexus,2.3 test- The Nexus,Short Name,FakeCorpABC NULL,structural,PASS,"PASS field is Nullable, allowed to be NULL"
+2.3 test- The Nexus,2.3 test- The Nexus,Logo,"NonExistentCompanyXYZ123 """"",structural,PASS,FAIL Not Null + must resolve to valid image URL
+2.3 test- The Nexus,2.3 test- The Nexus,Category,"FakeCorpABC """"",structural,PASS,FAIL Not Null + must match enum
+2.3 test- The Nexus,2.3 test- The Nexus,Year of Incorporation,NonExistentCompanyXYZ123 NULL,temporal,PASS,FAIL Not Null + violates range rule
+2.3 test- The Nexus,2.3 test- The Nexus,Overview of the Company,"FakeCorpABC """"",structural,PASS,FAIL Not Null + min length 50 chars
+2.3 test- The Nexus,2.3 test- The Nexus,Nature of Company,NonExistentCompanyXYZ123 NULL,structural,PASS,FAIL Not Null
+2.3 test- The Nexus,2.3 test- The Nexus,Countries Operating In,FakeCorpABC NULL,structural,PASS,"PASS Nullable, acceptable"
+2.3 test- The Nexus,2.3 test- The Nexus,Number of Offices (beyond HQ),"NonExistentCompanyXYZ123 """"",positive,PASS,PASS Nullable; system should return NULL
+2.3 test- The Nexus,2.3 test- The Nexus,Employee Size,"FakeCorpABC """"",positive,PASS,FAIL Not Null + regex constraint
+2.3 test- The Nexus,2.3 test- The Nexus,Employee Turnover,NonExistentCompanyXYZ123 NULL,percentage,PASS,PASS Nullable
+2.3 test- The Nexus,2.3 test- The Nexus,Website URL,"FakeCorpABC """"",structural,PASS,FAIL Not Null + HTTP validation
+2.3 test- The Nexus,2.3 test- The Nexus,Website Rating,NonExistentCompanyXYZ123 NULL,rating_10,FAIL,PASS Nullable
+2.3 test- The Nexus,2.3 test- The Nexus,Social Media Followers Combined,"FakeCorpABC """"",positive,PASS,FAIL Not Null + must be 0
+2.3 test- The Nexus,2.3 test- The Nexus,CEO Name,NonExistentCompanyXYZ123 NULL,structural,PASS,FAIL Not Null
+2.3 test- The Nexus,2.3 test- The Nexus,CEO LinkedIn URL,FakeCorpABC NULL,structural,PASS,PASS Nullable
+2.3 test- The Nexus,2.3 test- The Nexus,Company Contact Email,"NonExistentCompanyXYZ123 """"",structural,PASS,PASS Nullable
+2.3 test- The Nexus,2.3 test- The Nexus,Company Phone Number,FakeCorpABC NULL,structural,PASS,PASS Nullable
+2.3 test- The Nexus,2.3 test- The Nexus,Profitability Status,"NonExistentCompanyXYZ123 """"",structural,PASS,FAIL Not Null
+2.3 test- The Nexus,2.3 test- The Nexus,Annual Revenues,FakeCorpABC NULL,positive,PASS,PASS Nullable
+2.3 test- The Nexus,2.3 test- The Nexus,Customer Acquisition Cost (CAC),"NonExistentCompanyXYZ123 """"",positive,PASS,PASS Nullable
+2.3 test- The Nexus,2.3 test- The Nexus,Net Promoter Score (NPS),FakeCorpABC NULL,range,PASS,PASS Nullable
+2.3 test- The Nexus,2.3 test- The Nexus,Sales Motion,"NonExistentCompanyXYZ123 """"",structural,PASS,FAIL Not Null
+2.3 test- The Nexus,2.3 test- The Nexus,Remote Work Policy,FakeCorpABC NULL,structural,PASS,FAIL Not Null
+2.3 test- The Nexus,2.3 test- The Nexus,Company maturity,"NonExistentCompanyXYZ123 """"",structural,PASS,FAIL Not Null + derived rule
+2.4 test-The Nexus,2.4 test-The Nexus,Company Name,Company@123,structural,PASS,"Rejected as per regex ^[\w\s&.,\-\(\)'\u00C0-\u017F]+$; emojis not allowed"
+2.4 test-The Nexus,2.4 test-The Nexus,Short Name,My#Company!,structural,PASS,Rejected; violates regex ^[\w\s&.\-]+$
+2.4 test-The Nexus,2.4 test-The Nexus,Logo,https://example.com/logo.txt,structural,PASS,Rejected; must match image extensions per regex
+2.4 test-The Nexus,2.4 test-The Nexus,Category,StartupX,structural,PASS,Rejected; must match enum `(Startup
+2.4 test-The Nexus,2.4 test-The Nexus,Year of Incorporation,20A5,temporal,PASS,Rejected; must be numeric and match `^(19
+2.4 test-The Nexus,2.4 test-The Nexus,Company Headquarters,Bangalore@India,structural,PASS,"Rejected; violates ^[\w\s,.\-]+$"
+2.4 test-The Nexus,2.4 test-The Nexus,Countries Operating In,India;USA,structural,PASS,Rejected; must be comma-separated per regex
+2.4 test-The Nexus,2.4 test-The Nexus,Number of Offices (beyond HQ),ten,positive,PASS,Rejected; must match ^\d+$
+2.4 test-The Nexus,2.4 test-The Nexus,Employee Size,50 to 100,positive,PASS,Rejected; must match `^(\d+
+2.4 test-The Nexus,2.4 test-The Nexus,Employee Turnover,15 percent,percentage,PASS,"Rejected; must match ^\d{1,3}(\.\d{1,2})?%$"
+2.4 test-The Nexus,2.4 test-The Nexus,Average Retention Tenure,2 yrs,structural,PASS,Rejected; must match `^\d+(.\d+)?\s?(Years?
+2.4 test-The Nexus,2.4 test-The Nexus,Focus Sectors / Industries,FinTech@AI,structural,PASS,Rejected; violates regex
+2.4 test-The Nexus,2.4 test-The Nexus,Key Competitors,Google; Amazon,structural,PASS,Rejected; must be comma-separated
+2.4 test-The Nexus,2.4 test-The Nexus,Website URL,htp:/invalid-url,structural,PASS,Rejected; violates HTTPS URL regex
+2.4 test-The Nexus,2.4 test-The Nexus,Website Rating,10.55,rating_10,PASS,Rejected; violates `^(10(.0)?
+2.4 test-The Nexus,2.4 test-The Nexus,Website Traffic Rank,-5,positive,PASS,Rejected; violates ^\d+$ and business rule (non-negative)
+2.4 test-The Nexus,2.4 test-The Nexus,Social Media Followers Combined,10K,positive,PASS,Rejected; must be integer per regex
+2.4 test-The Nexus,2.4 test-The Nexus,Glassdoor Rating,5.5,rating_5,PASS,Rejected; violates ^[1-5](\.\d)?$
+2.4 test-The Nexus,2.4 test-The Nexus,LinkedIn Profile URL,https://linkedin.com/user/abc,structural,PASS,Rejected; must contain /company/
+2.4 test-The Nexus,2.4 test-The Nexus,Twitter (X) Handle,@thisisaverylonghandle123,structural,PASS,Rejected; exceeds 15 char limit
+2.4 test-The Nexus,2.4 test-The Nexus,Company Contact Email,contact@company,structural,PASS,Rejected; violates email regex
+2.4 test-The Nexus,2.4 test-The Nexus,Company Phone Number,123-456-789,structural,PASS,Rejected; must follow E.164
+2.4 test-The Nexus,2.4 test-The Nexus,CEO Name,John123,structural,PASS,Rejected; violates regex (no digits allowed)
+2.4 test-The Nexus,2.4 test-The Nexus,CEO LinkedIn URL,https://linkedin.com/company/john,structural,PASS,Rejected; must match /in/ pattern
+2.4 test-The Nexus,2.4 test-The Nexus,Profitability Status,Profiting,structural,PASS,Rejected; must match `(Profitable
+2.4 test-The Nexus,2.4 test-The Nexus,Market Share (%),120,percentage,PASS,Rejected; must include % and be within 0100
+2.4 test-The Nexus,2.4 test-The Nexus,CAC:LTV Ratio,2026-03-01 00:00:00,ratio_format,PASS,Rejected; must match ^\d+(\.\d+)?(:\d+)?$
+2.4 test-The Nexus,2.4 test-The Nexus,Net Promoter Score (NPS),50.5,range,PASS,Rejected; must be integer per regex
+2.4 test-The Nexus,2.4 test-The Nexus,Churn Rate,5,percentage,PASS,Rejected; must include %
+2.4 test-The Nexus,2.4 test-The Nexus,Company Valuation,100 million dollars,positive,PASS,Rejected; violates currency regex
+2.5 test-The Nexus,2.5 test-The Nexus,Short Name,,structural,FAIL,"Business Rule: Must be distinct from Company Name. If Short Name != NULL, Company Name must be != NULL."
+2.5 test-The Nexus,2.5 test-The Nexus,CEO LinkedIn URL,,structural,FAIL,Dependency Rule: CEO Name must not be null when CEO LinkedIn URL is provided.
+2.5 test-The Nexus,2.5 test-The Nexus,Profitability Status,,structural,FAIL,"Data Rule: If Profitability Status is set, Annual Profits must be populated (and in this case, a negative value)."
+2.5 test-The Nexus,2.5 test-The Nexus,Runway,,positive,PASS,Business Rule: Calculated from Total Capital Raised / Burn Rate. Both source fields must be non-null.
+2.5 test-The Nexus,2.5 test-The Nexus,Serviceable Obtainable Market (SOM),,positive,PASS,Logic Rule: SOM <= SAM. Serviceable Addressable Market (SAM) must not be null.
+2.5 test-The Nexus,2.5 test-The Nexus,Company maturity,,structural,FAIL,"Business Rule: Requires Year of Incorporation, Employee Size, and Annual Revenues to be non-null for calculation."
+2.5 test-The Nexus,2.5 test-The Nexus,Global exposure,,structural,FAIL,"Data Rule: If Global exposure is ""Yes"", Countries Operating In count must be > 1."
+2.5 test-The Nexus,2.5 test-The Nexus,Crisis behavior,,structural,FAIL,Dependency: Recent News or Legal Issues / Controversies must contain relevant event data.
+3.1 test-The Nexus,3.1 test-The Nexus,All Parameters (Full Entity),,structural,FAIL,"Success Criteria: 100% match on static legal fields (Name, Year of Inc); >95% match on dynamic metrics (Revenue, Count) against SEC/LinkedIn."
+3.1 test-The Nexus,3.1 test-The Nexus,Financial/Legal Cluster,,structural,FAIL,Values must align with the most recent 10-K or 10-Q filings within the currency format specified in metadata.
+3.1 test-The Nexus,3.1 test-The Nexus,Talent/Leadership Cluster,,structural,FAIL,CEO Name must match exactly; Employee Size must fall within the range defined by LinkedIn's employee insights.
+3.1 test-The Nexus,3.1 test-The Nexus,Digital Presence Cluster,,structural,FAIL,All URLs must return HTTP 200 and handles must resolve to the verified organization account.
+3.2 test - The Nexus,3.2 test - The Nexus,CEO Name,"""Sundar Pichai (Former CEO)""",structural,PASS,Fail Violates business rule: Must represent current executive. Requires validation via LinkedIn/API
+3.2 test - The Nexus,3.2 test - The Nexus,CEO Name,"""Satya Nadella""",structural,PASS,Pass Matches current executive (Automated & Manual validation_mode)
+3.2 test - The Nexus,3.2 test - The Nexus,Recent Funding Rounds,"""2010-05-01 - $5M""",structural,PASS,Fail Violates temporal accuracy (outdated vs expected recent rounds)
+3.2 test - The Nexus,3.2 test - The Nexus,Recent Funding Rounds,"""2024-06-15 - $50M""",structural,PASS,Pass Valid format and recent date
+3.2 test - The Nexus,3.2 test - The Nexus,Recent News,"""2018-01-01 - Acquired X - https://news.com""",structural,PASS,Fail Violates business rule: must be within last 1224 months
+3.2 test - The Nexus,3.2 test - The Nexus,Recent News,"""2025-02-10 - Launched AI Product - https://news.com""",structural,PASS,Pass Meets recency and format expectations
+3.2 test - The Nexus,3.2 test - The Nexus,Year of Incorporation,2030,temporal,FAIL,Fail Violates business rule: cannot be future year
+3.2 test - The Nexus,3.2 test - The Nexus,Year of Incorporation,2005,temporal,PASS,Pass Within valid range (>=1800 and <= current year)
+3.2 test - The Nexus,3.2 test - The Nexus,Innovation Roadmap,"""2022 - Launch AI Tool""",structural,PASS,Fail Violates rule: must contain future dates
+3.2 test - The Nexus,3.2 test - The Nexus,Innovation Roadmap,"""2027 - Launch AI Tool""",structural,PASS,Pass Future date valid
+3.2 test - The Nexus,3.2 test - The Nexus,Future Projections,"""2022 - Revenue Growth 20%""",structural,PASS,Fail Not future timeline
+3.2 test - The Nexus,3.2 test - The Nexus,Future Projections,"""2027 - Revenue Growth 30%""",structural,PASS,Pass Matches regex and future logic
+3.2 test - The Nexus,3.2 test - The Nexus,Runway,"""-5""",positive,PASS,Fail Violates business rule: must be greater than 0
+3.2 test - The Nexus,3.2 test - The Nexus,Runway,"""4""",positive,PASS,Warning Valid but triggers rule: less than 6 months is critical
+3.2 test - The Nexus,3.2 test - The Nexus,Hiring Velocity,"""0 roles (but company scaling rapidly)""",structural,PASS,Fail Logical inconsistency (temporal mismatch)
+3.2 test - The Nexus,3.2 test - The Nexus,Hiring Velocity,"""25 open roles across engineering""",structural,PASS,Pass Reflects current hiring state
+3.3 Test - The Nexus,3.3 Test - The Nexus,Year of Incorporation,"Valid: 2001 | Invalid-fuzzy: ~2001, 2001s | Invalid-float: 2001.0 | Invalid-future: 2099",temporal,PASS,"PASS only 4-digit integer in [1800, CurrentYear]. business_rule: Cannot be in the future; Cannot be before 1800. Automated."
+3.3 Test - The Nexus,3.3 Test - The Nexus,Number of Offices (beyond HQ),"Valid: 0, 5, 100 | Invalid: 4.5, -1, ~5, about 10",positive,PASS,PASS only >= 0 integers. data_rules: Must be >= 0. Automated.
+3.3 Test - The Nexus,3.3 Test - The Nexus,Website Rating,"Valid: 7.5, 10.0, 1.0 | Invalid-precision: 7, 7.55 | Invalid-range: 0.5, 10.5",rating_10,PASS,"PASS only [1.0, 10.0] with exactly 1 decimal. business_rule: Range 0.010.0. Automated."
+3.3 Test - The Nexus,3.3 Test - The Nexus,Website Traffic Rank,"Valid: 1, 250000 | Invalid: 250,000, 250K, 0, -500",positive,PASS,PASS only int > 0. No formatted/suffixed strings. Automated.
+3.3 Test - The Nexus,3.3 Test - The Nexus,Social Media Followers Combined,"Valid: 48500 (if sub-sums = 48500) | Invalid: 50000 (mismatch), 48,500, 48.5K",positive,PASS,PASS only int >= 0 matching exact sum. business_rule: Sum check = LI+TW+FB+IG. Automated.
+3.3 Test - The Nexus,3.3 Test - The Nexus,Glassdoor Rating,"Valid: 4.2, 1.0, 5.0 | Invalid: 4, 4.20, 4.25, 5.1",rating_5,PASS,"PASS DECIMAL(2,1) in [1.0, 5.0]. Extra decimal places or integer representation FAIL. Automated."
+3.3 Test - The Nexus,3.3 Test - The Nexus,Indeed Rating,"Valid: 3.8 | Invalid: 3, 3.80, 5.5",rating_5,PASS,"PASS DECIMAL(2,1) in [1.0, 5.0]. Automated."
+3.3 Test - The Nexus,3.3 Test - The Nexus,Google Reviews Rating,"Valid: 4.2 | Invalid: 4, 4.23, 0.0, 5.9",rating_5,PASS,"PASS DECIMAL(2,1) in [1.0, 5.0]. Automated."
+3.3 Test - The Nexus,3.3 Test - The Nexus,Annual Revenues,"Valid: $50.3B, $50,300,000,000 | Invalid: 50300000000 (no $), ~$50B",positive,PASS,Standardize to USD. Flag precision loss from truncated suffix. business_rule: Must include currency code. Automated.
+3.3 Test - The Nexus,3.3 Test - The Nexus,Annual Profits,"Valid: -$5M, ($5M) | Invalid: loss of 5M",positive,PASS,Parse () as negative. Text-based loss expression FAIL. business_rule: Negative values allowed (Loss). Automated.
+3.3 Test - The Nexus,3.3 Test - The Nexus,Revenue Mix,"Valid: 80/20, 70%/30% | Invalid: 80/25, 60/30, 80:20",ratio_100,PASS,PASS only /-delimited ratio summing to 100. business_rule: Sum of parts = 100%. Automated.
+3.3 Test - The Nexus,3.3 Test - The Nexus,Company Valuation,"Valid: $1.2B, $1,200M | Invalid: $0, -$500M, unicorn",positive,PASS,Value > 0. Suffix numeric. Text approximations FAIL. business_rule: Must be > 0. Automated.
+3.3 Test - The Nexus,3.3 Test - The Nexus,Year-over-Year Growth Rate,"Valid: +25%, -5%, 0% | Invalid: 25, grew 25%, 25.123%",structural,PASS,"PASS regex ^[+-]?\d{1,3}(\.\d{1,2})?%$. Missing % or excess decimal FAIL. Automated."
+3.3 Test - The Nexus,3.3 Test - The Nexus,Market Share (%),"Valid: 15%, 15.5%, 0.5% | Invalid: 15, 0.15, 101%, 15.123%",percentage,PASS,PASS regex + range check. Missing % symbol FAIL. Automated.
+3.3 Test - The Nexus,3.3 Test - The Nexus,Total Capital Raised,"Valid: $150M (if max round = $100M) | Invalid: $80M (< max round), ~$150M",positive,PASS,PASS if >= max(single round) and format-valid. business_rule: Must be >= Max(Single Round). Automated.
+3.3 Test - The Nexus,3.3 Test - The Nexus,Customer Acquisition Cost (CAC),"Valid: $1,500, $1.5K | Invalid: $0, -$500, low CAC",positive,PASS,Must be > 0. business_rule: Calculated: Sales+Marketing / New Logos. Automated.
+3.3 Test - The Nexus,3.3 Test - The Nexus,Customer Lifetime Value (CLV),"Valid: $5,000 (if CAC=$1,500) | Invalid: $1,200 (< CAC)",positive,PASS,CLV must be > CAC. business_rule: Must be > CAC (usually). Automated.
+3.3 Test - The Nexus,3.3 Test - The Nexus,CAC:LTV Ratio,"Valid: 3:1, 3.0, 5:1 | Invalid: 3/1, healthy | Warn: 0.9",ratio_format,PASS,PASS regex ^\d+(\.\d+)?(:\d+)?$. Quotient < 1 WARNING. business_rule: Ideal > 3:1; Alert if < 1. Automated.
+3.3 Test - The Nexus,3.3 Test - The Nexus,Churn Rate,"Valid: 15%, 0%, 100% | Invalid: 101%, -1%, 15, 15.555%",percentage,PASS,"PASS regex ^(100(\.0{1,2})?|(\d{1,2})(\.\d{1,2})?)%$. Automated."
+3.3 Test - The Nexus,3.3 Test - The Nexus,Net Promoter Score (NPS),"Valid: 72, -30, 0, 100, -100 | Invalid: 72.5, 101, -101, ""72""",range,PASS,"PASS only int in [-100, 100]. Floats and strings FAIL. business_rule: Min -100; Max 100. Automated."
+3.3 Test - The Nexus,3.3 Test - The Nexus,Burn Rate,"Valid: $500K, $0.5M | Invalid: $0, -$200K, $6M/year",positive,PASS,Must be > 0 monthly. Annual labels FAIL. business_rule: Net Burn; Must be > 0. Automated.
+3.3 Test - The Nexus,3.3 Test - The Nexus,Runway,"Valid: 18.0, 6.5 | Warn: 5.9, 3.0 | Invalid: 0, -2, ""18 months""",positive,PASS,PASS numeric > 0. < 6 months WARNING. business_rule: Critical if < 6 months. Automated.
+3.3 Test - The Nexus,3.3 Test - The Nexus,Burn Multiplier,"Valid: 0.8, 1.5 | Invalid: -0.5, ""efficient"", ""1.5x""",positive,PASS,PASS float >= 0. business_rule: Lower is better (<1 is efficient). Automated.
+3.3 Test - The Nexus,3.3 Test - The Nexus,R&D Investment,"Valid: $5M, 10%, $2.5B | Invalid: -$1M, 5, ~$5M",positive,PASS,PASS currency or percent regex. Unitless or negative FAIL. Automated.
+3.3 Test - The Nexus,3.3 Test - The Nexus,Total Addressable Market (TAM),"Valid: $50B (SAM=$10B) | Invalid: $500K, ~$50B, $40B (if SAM=$45B)",positive,PASS,PASS > $1M and TAM >= SAM. business_rule: Must be >= SAM; > $1M. Automated.
+3.3 Test - The Nexus,3.3 Test - The Nexus,Serviceable Addressable Market (SAM),"Valid: $10B (TAM=$50B, SOM=$2B) | Invalid: $60B (>TAM), $1B (<SOM)",positive,PASS,PASS only if hierarchy holds. business_rule: TAM > SAM >= SOM. Automated.
+3.3 Test - The Nexus,3.3 Test - The Nexus,Serviceable Obtainable Market (SOM),"Valid: $2B (SAM=$10B) | Invalid: $15B (>SAM), $0",positive,PASS,PASS if SOM <= SAM. business_rule: SAM > SOM; Must be <= SAM. Automated.
+3.3 Test - The Nexus,3.3 Test - The Nexus,Commute time from airport,"Valid: 45, 120 | Invalid: 0, -10, 45.5, ""45 minutes"", ""0.75 hours""",positive,PASS,PASS only int > 0. business_rule: Value > 0 minutes. Automated.
+3.4 Test - The Nexus,3.4 Test - The Nexus,Short Name,"Company Name = ""Tata Consultancy Services Limited""; Short Name = ""Tata Consultancy Services Limited""",structural,PASS,FAIL Uniqueness violated (data_rules: Verify distinction from Legal Name)
+3.4 Test - The Nexus,3.4 Test - The Nexus,Short Name,"Company Name = ""Wipro Limited""; Short Name = ""Wipro""",structural,PASS,"PASS Valid alias, len < parent, regex ^[\w\s&.\-]+$ matches"
+3.4 Test - The Nexus,3.4 Test - The Nexus,Logo,"Company Name = ""Infosys Limited""; Logo = ""https://upload.wikimedia.org/infosys_logo.png""",structural,PASS,"PASS HTTP 200, valid PNG, company identifiable in path"
+3.4 Test - The Nexus,3.4 Test - The Nexus,Logo,"Company Name = ""Zomato Limited""; Logo = ""https://cdn.swiggy.com/logo.png""",structural,PASS,FAIL Cross-entity contamination; swiggy.com Zomato
+3.4 Test - The Nexus,3.4 Test - The Nexus,Category,"Category = ""Startup""; Nature of Company = ""Public""",structural,PASS,WARN Startups typically Private; flag for manual review
+3.4 Test - The Nexus,3.4 Test - The Nexus,Category,"Category = ""VC""; Focus Sectors = ""Retail, FMCG, Manufacturing""",structural,PASS,WARN Sector mismatch; VC expects investment-domain sectors
+3.4 Test - The Nexus,3.4 Test - The Nexus,Focus Sectors / Industries,"Category = ""Enterprise""; Focus Sectors = ""B2C Gaming, Social Media""",structural,PASS,WARN Enterprise + B2C-only sectors inconsistent
+3.4 Test - The Nexus,3.4 Test - The Nexus,Focus Sectors / Industries,"Nature of Company = ""Non-Profit""; Focus Sectors = ""Defence, Arms Manufacturing""",structural,PASS,WARN Semantic mismatch; compliance review required
+3.4 Test - The Nexus,3.4 Test - The Nexus,Number of Offices (beyond HQ),"Number of Offices = 5; Office Locations = ""Bengaluru, Mumbai""",positive,PASS,FAIL Count (5) > location entries (2); must reconcile
+3.4 Test - The Nexus,3.4 Test - The Nexus,Number of Offices (beyond HQ),"Number of Offices = 0; Office Locations = ""New York; London; Singapore""",positive,PASS,FAIL Count 0 but 3 locations exist
+3.4 Test - The Nexus,3.4 Test - The Nexus,Office Locations,"Office Locations = ""Tokyo, Japan; São Paulo, Brazil""; Countries Operating In = ""India, USA""",structural,PASS,FAIL Japan and Brazil not in operating countries list
+3.4 Test - The Nexus,3.4 Test - The Nexus,Office Locations,"Office Locations = ""Bengaluru, India; San Jose, USA""; Countries Operating In = ""India, USA, Germany""",structural,PASS,PASS All countries verified as valid subset
+3.4 Test - The Nexus,3.4 Test - The Nexus,Hiring Velocity,"Employee Size = ""50""; Hiring Velocity = ""600 open roles""",structural,PASS,WARN 600 roles for 50 employees atypical; validate
+3.4 Test - The Nexus,3.4 Test - The Nexus,Hiring Velocity,"Employee Size = ""1001-5000""; Hiring Velocity = ""0""",structural,PASS,WARN Zero open roles for large company is unusual
+3.4 Test - The Nexus,3.4 Test - The Nexus,Employee Turnover,"Employee Size = ""200""; Employee Turnover = ""120%""",percentage,PASS,"FAIL Exceeds max 100%; regex ^\d{1,3}(\.\d{1,2})?%$ fails"
+3.4 Test - The Nexus,3.4 Test - The Nexus,Employee Turnover,"Employee Size = ""50""; Employee Turnover = ""45%""",percentage,PASS,WARN Exceeds 20% threshold; business_rule: High turnover flags risk
+3.4 Test - The Nexus,3.4 Test - The Nexus,Average Retention Tenure,"Employee Turnover = ""60%""; Average Retention Tenure = ""8 Years""",structural,PASS,FAIL 60% turnover logically incompatible with 8-year tenure
+3.4 Test - The Nexus,3.4 Test - The Nexus,Average Retention Tenure,"Employee Turnover = ""5%""; Average Retention Tenure = ""6.5 Years""",structural,PASS,PASS Cross-field consistency confirmed
+3.4 Test - The Nexus,3.4 Test - The Nexus,Pain Points Being Addressed,"Focus Sectors = ""Healthcare, Pharma""; Pain Points = ""High logistics costs for e-commerce""",structural,PASS,FAIL Semantic domain mismatch
+3.4 Test - The Nexus,3.4 Test - The Nexus,Services / Offerings / Products,"Focus Sectors = ""FinTech, Banking""; Services = ""AR/VR Gaming Engine, Metaverse Avatars""",structural,PASS,FAIL No sector-service taxonomy overlap
+3.4 Test - The Nexus,3.4 Test - The Nexus,Top Customers by Client Segments,"Category = ""MSME""; Services = ""Cloud ERP""; Top Customers = ""Fortune 500 enterprises""",structural,PASS,WARN Segment misaligned with company Category
+3.4 Test - The Nexus,3.4 Test - The Nexus,Core Value Proposition,"Pain Points = ""High churn, Low NPS""; Core VP = ""We provide fast global shipping""",structural,PASS,FAIL Zero semantic overlap with Pain Points
+3.4 Test - The Nexus,3.4 Test - The Nexus,Core Value Proposition,"Services = ""AI credit scoring, Fraud API""; Core VP = ""Help retail investors pick stocks""",structural,PASS,FAIL Topic absent from Services list
+3.4 Test - The Nexus,3.4 Test - The Nexus,Vision,"Core VP = ""Democratizing AI for Indian SMEs""; Vision = ""World leader in traditional banking by 2040""",structural,PASS,WARN Domain divergence detected
+3.4 Test - The Nexus,3.4 Test - The Nexus,Mission,"Vision = ""Eliminate food waste globally""; Mission = ""Maximize fast food franchise revenues""",structural,PASS,FAIL Narrative contradiction
+3.4 Test - The Nexus,3.4 Test - The Nexus,Values,"Vision = ""Sustainable clean energy""; Values = ""Growth at all costs, Ignore externalities""",structural,PASS,FAIL Negative keywords conflict with sustainability posture
+3.4 Test - The Nexus,3.4 Test - The Nexus,Quality of Website,"Website URL = ""freshworks.com""; Quality = ""The site at zoho.com has excellent UX""",structural,PASS,FAIL Domain in assessment Website URL
+3.4 Test - The Nexus,3.4 Test - The Nexus,Website Rating,Website URL = HTTP 404; Website Rating = 9.5,rating_10,FAIL,FAIL Rating 9.5 inconsistent with non-resolving URL
+3.4 Test - The Nexus,3.4 Test - The Nexus,Website Traffic Rank,Website URL = NULL; Traffic Rank = 85000,positive,PASS,FAIL Orphaned derived metric; URL is Not Null per schema
+3.4 Test - The Nexus,3.4 Test - The Nexus,Social Media Followers Combined,LI=50K + FB=30K + IG=20K + X=10K = 110K; Combined = 200K,positive,PASS,FAIL Sum check = LI+TW+FB+IG; 200K 110K
+3.4 Test - The Nexus,3.4 Test - The Nexus,Social Media Followers Combined,"All platform URLs = NULL; Combined = 50,000",positive,PASS,FAIL Cannot aggregate without source fields
+3.4 Test - The Nexus,3.4 Test - The Nexus,Profitability Status,"Annual Profits = -$5M; Profitability Status = ""Profitable""",structural,PASS,FAIL Enum contradicts profit sign
+3.4 Test - The Nexus,3.4 Test - The Nexus,Profitability Status,"Annual Profits = -$2.4M; Profitability Status = ""Loss-making""",structural,PASS,PASS Cross-field consistent
+3.4 Test - The Nexus,3.4 Test - The Nexus,Market Share (%),"TAM = $5B; Revenues = $8B; Market Share = ""160%""",percentage,PASS,FAIL Revenues > TAM; mathematically impossible
+3.4 Test - The Nexus,3.4 Test - The Nexus,Market Share (%),"TAM = $100B; Revenues = $30B; Market Share = ""2%""",percentage,PASS,FAIL Implied 30% vs reported 2%
+3.4 Test - The Nexus,3.4 Test - The Nexus,Total Capital Raised,Rounds: Series C $50M + Series B $20M; Total = $30M,positive,PASS,FAIL Must be >= Max(Single Round); $30M < $50M
+3.4 Test - The Nexus,3.4 Test - The Nexus,Total Capital Raised,Rounds: $50M + $20M + $5M; Total = $75M,positive,PASS,PASS Summation validated
+3.4 Test - The Nexus,3.4 Test - The Nexus,CAC:LTV Ratio,"CAC = $500; CLV = $1,500; Ratio = ""5:1""",ratio_format,PASS,FAIL Calculated LTV/CAC = 3:1 reported 5:1
+3.4 Test - The Nexus,3.4 Test - The Nexus,CAC:LTV Ratio,"CAC = $2,000; CLV = $800; Ratio = ""0.4:1""",ratio_format,PASS,FAIL CAC > CLV; threshold alert <1
+3.4 Test - The Nexus,3.4 Test - The Nexus,Customer Concentration Risk,"Revenue Mix = ""95%/5%""; Single client; Risk = ""No""",structural,PASS,FAIL Must flag if >20% from 1 client
+3.4 Test - The Nexus,3.4 Test - The Nexus,Customer Concentration Risk,"Revenue Mix = ""70%/30%""; Risk = ""No""",structural,PASS,"PASS Sum = 100%, no >20% concentration"
+3.4 Test - The Nexus,3.4 Test - The Nexus,Runway,"Capital = $12M; Burn = $1M/month; Runway = ""24 months""",positive,PASS,FAIL Calculated 12 months reported 24
+3.4 Test - The Nexus,3.4 Test - The Nexus,Runway,"Capital = $3M; Burn = $1M/month; Runway = ""3 months""",positive,PASS,PASS (format) + CRITICAL ALERT < 6-month threshold
+3.4 Test - The Nexus,3.4 Test - The Nexus,Burn Multiplier,Burn = $6M/yr; New ARR = $2M; Multiplier = 0.5,positive,PASS,FAIL Calculated 3.0 reported 0.5
+3.4 Test - The Nexus,3.4 Test - The Nexus,Burn Multiplier,Burn = $2M/month; ARR = $500K; Multiplier = 4.0,positive,PASS,WARN $4 burned per $1 new revenue; lower is better (<1)
+3.4 Test - The Nexus,3.4 Test - The Nexus,Serviceable Addressable Market (SAM),TAM = $10B; SAM = $15B,positive,PASS,FAIL data_rules: SAM <= TAM violated
+3.4 Test - The Nexus,3.4 Test - The Nexus,Serviceable Addressable Market (SAM),TAM = $5B; SAM = $5B,positive,PASS,WARN 100% serviceability claim; flag for analyst review
+3.4 Test - The Nexus,3.4 Test - The Nexus,Serviceable Obtainable Market (SOM),SAM = $3B; SOM = $4B,positive,PASS,FAIL data_rules: SOM <= SAM violated
+3.4 Test - The Nexus,3.4 Test - The Nexus,Serviceable Obtainable Market (SOM),TAM = $100B; SAM = $20B; SOM = $500M,positive,PASS,PASS All hierarchy checks pass
+3.4 Test - The Nexus,3.4 Test - The Nexus,Serviceable Obtainable Market (SOM),"SAM = $10B; SOM = ""$0""",positive,PASS,WARN Zero market capture for active company; justify
+3.4 Test - The Nexus,3.4 Test - The Nexus,Go-to-Market Strategy,"Sales Motion = ""PLG""; GTM = ""full outbound field sales team calling Fortune 500""",structural,PASS,FAIL GTM describes Field Sales but Motion is PLG
+3.4 Test - The Nexus,3.4 Test - The Nexus,Go-to-Market Strategy,"Sales Motion = ""Hybrid""; GTM = ""self-serve trials + enterprise AEs for upsell""",structural,PASS,PASS Both PLG and Sales-Led elements present
+3.5 test-The Nexus,3.5 test-The Nexus,ALL_COLUMNS,"Sample record where some fields (e.g., ""CEO Name"", ""Annual Revenues"") have data_source = NULL",structural,PASS,Validation FAIL As per metadata: every field must have a defined data_source; missing source violates data traceability requirement
+3.5 test-The Nexus,3.5 test-The Nexus,ALL_COLUMNS,"""CEO Name"": ""Random Blog""",structural,PASS,FAIL Violates business_rules: source must be authoritative (LinkedIn / Company Website / SEC / APIs)
+3.5 test-The Nexus,3.5 test-The Nexus,ALL_COLUMNS,"""Annual Revenues"": ""Twitter Post""",structural,PASS,FAIL Financial data must come from SEC / Pitchbook / Financial Reports
+3.5 test-The Nexus,3.5 test-The Nexus,ALL_COLUMNS,"""Recent News"": source dated 2018",structural,PASS,FAIL Violates business_rules: last 1224 months validity
+3.5 test-The Nexus,3.5 test-The Nexus,ALL_COLUMNS,"""Legal Issues"": validation_mode = Automated only",structural,PASS,FAIL Must include Manual validation due to high-risk legal content
+3.5 test-The Nexus,3.5 test-The Nexus,ALL_COLUMNS,"""Company Name"": source = AI Inference",structural,PASS,FAIL Must come from Official Registry / SEC Filings
+3.5 test-The Nexus,3.5 test-The Nexus,ALL_COLUMNS,"""CAC:LTV Ratio"" without CAC or CLV source linkage",structural,PASS,FAIL Violates data lineage traceability rule
+3.5 test-The Nexus,3.5 test-The Nexus,ALL_COLUMNS,"""Website URL"": source = ""https://fake-site.invalid""",structural,PASS,FAIL Violates data_rules: HTTP 200 check required
+3.5 test-The Nexus,3.5 test-The Nexus,ALL_COLUMNS,"""Employee Size"": source = ""Internet""",structural,PASS,FAIL Source must be specific (LinkedIn / HR tools)
+3.5 test-The Nexus,3.5 test-The Nexus,ALL_COLUMNS,"""Employee Size"": LinkedIn, ""Hiring Velocity"": Random Blog",structural,PASS,FAIL Related fields must have consistent authoritative sourcing
+4.1 test - Silent Tech,4.1 test - Silent Tech,ALL FIELDS,,structural,FAIL,"System flags entities not found in authoritative sources (LinkedIn, Crunchbase, official registries). Validation Mode: Automated + Manual"
+4.1 test - Silent Tech,4.1 test - Silent Tech,ALL FIELDS,,structural,FAIL,Reject or flag mismatch between name and LinkedIn profile. Must match identity per business_rules
+4.1 test - Silent Tech,4.1 test - Silent Tech,ALL FIELDS,,structural,FAIL,"Flag if funding stage or amount not present in Crunchbase/Pitchbook. Invalid stage (e.g., Series Z) triggers failure"
+4.1 test - Silent Tech,4.1 test - Silent Tech,ALL FIELDS,,structural,FAIL,Reject if award not found in known award databases or credible sources
+4.1 test - Silent Tech,4.1 test - Silent Tech,ALL FIELDS,,structural,FAIL,Flag entities not resolvable via DB lookup or known company datasets
+4.1 test - Silent Tech,4.1 test - Silent Tech,ALL FIELDS,,structural,FAIL,Reject invalid date format and unverifiable event. Must pass date parser + source validation
+4.1 test - Silent Tech,4.1 test - Silent Tech,ALL FIELDS,,structural,FAIL,Flag logical inconsistency (self-listed competitor)
+4.1 test - Silent Tech,4.1 test - Silent Tech,ALL FIELDS,,structural,FAIL,Flag unrealistic values violating business_rules or industry benchmarks
+4.1 test - Silent Tech,4.1 test - Silent Tech,ALL FIELDS,,structural,FAIL,Reject placeholder/dummy text via NLP pattern detection
+4.1 test - Silent Tech,4.1 test - Silent Tech,ALL FIELDS,,structural,FAIL,Reject non-existent certifications; must match allowed patterns
+6.1_Nandish,6.1_Nandish,Year of Incorporation,2026,temporal,PASS,Pass if CurrentYear >= Value >= 1800 (Valid edge case of new company)
+6.1_Nandish,6.1_Nandish,Year of Incorporation,2027,temporal,PASS,Fail Violates rule: Cannot be in the future
+6.1_Nandish,6.1_Nandish,Overview of the Company,AI startup (length < 50 chars),structural,PASS,"Fail Violates: Min length 50 chars; must include industry, product, audience"
+6.1_Nandish,6.1_Nandish,Overview of the Company,Coming soon,structural,PASS,Fail Does not meet keyword + length requirements
+6.1_Nandish,6.1_Nandish,Website URL,,structural,PASS,Fail Field is Not Null
+6.1_Nandish,6.1_Nandish,Website URL,http://stealth-startup,structural,PASS,Fail Violates regex and must return HTTP 200
+6.1_Nandish,6.1_Nandish,Recent News,2026-03-01 - Company launched - https://news.com,structural,PASS,Pass Within last 2 years
+6.1_Nandish,6.1_Nandish,Recent News,,structural,PASS,"Acceptable (Nullable), but flagged for data completeness gap"
+6.1_Nandish,6.1_Nandish,Company Name,Stealth AI Project X,structural,PASS,Conditional Pass Must match official registry; likely fails manual validation
+6.1_Nandish,6.1_Nandish,Category,Enterprise,structural,PASS,Fail Should map to Startup enum
+6.1_Nandish,6.1_Nandish,Employee Size,2026-01-05 00:00:00,positive,PASS,Pass Valid range format
+6.1_Nandish,6.1_Nandish,Employee Size,Few,positive,PASS,Fail Violates regex ^(\d+|\d+-\d+)$
+6.1_Nandish,6.1_Nandish,Social Media Followers Combined,0,positive,PASS,Pass Allowed (>= 0)
+6.1_Nandish,6.1_Nandish,Social Media Followers Combined,-10,positive,PASS,Fail Violates non-negative rule
+6.1_Nandish,6.1_Nandish,Hiring Velocity,"0 or ""No open roles""",structural,PASS,Pass Nullable and valid interpretation
+6.1_Nandish,6.1_Nandish,Hiring Velocity,Hiring aggressively,structural,PASS,Partial Pass Should parse integer if scalar expected
+6.2_Nandish,6.2_Nandish,Company Name,Berkshire Hathaway Inc.,structural,PASS,Pass Matches regex and official registry validation
+6.2_Nandish,6.2_Nandish,Short Name,Alphabet,structural,PASS,Pass Length <=100 and distinct from legal name
+6.2_Nandish,6.2_Nandish,Category,Conglomerate,structural,PASS,Pass Matches enum list
+6.2_Nandish,6.2_Nandish,Category,Startup,structural,PASS,Fail Violates business taxonomy mapping
+6.2_Nandish,6.2_Nandish,Nature of Company,Public,structural,PASS,Pass Matches allowed enum
+6.2_Nandish,6.2_Nandish,Year of Incorporation,1895,temporal,PASS,Pass >=1800 and <=CurrentYear
+6.2_Nandish,6.2_Nandish,Company Headquarters,"New York, USA",structural,PASS,Pass Valid city + country format
+6.2_Nandish,6.2_Nandish,Countries Operating In,"USA, India, UK, Germany",structural,PASS,Pass Valid comma-separated countries
+6.2_Nandish,6.2_Nandish,Countries Operating In,USA | India,structural,PASS,Fail Violates regex for comma-separated values
+6.2_Nandish,6.2_Nandish,Number of Offices (beyond HQ),250,positive,PASS,Pass >=0 numeric
+6.2_Nandish,6.2_Nandish,Office Locations,"[{City:NY,Country:USA},{City:London,Country:UK}]",structural,PASS,Pass Must include city + country per entry
+6.2_Nandish,6.2_Nandish,Employee Size,10000-50000,positive,PASS,Pass Valid range format
+6.2_Nandish,6.2_Nandish,Employee Size,50000-10000,positive,PASS,Fail Violates Min < Max rule
+6.2_Nandish,6.2_Nandish,Hiring Velocity,500 open roles,structural,PASS,Pass Parsed integer
+6.2_Nandish,6.2_Nandish,Employee Turnover,0.25,percentage,PASS,Pass but flagged >20% risk
+6.2_Nandish,6.2_Nandish,Average Retention Tenure,10 Years,structural,PASS,Pass Valid duration format
+6.2_Nandish,6.2_Nandish,Key Competitors,"Microsoft, Amazon, Apple",structural,PASS,Pass Valid comma-separated entities
+6.2_Nandish,6.2_Nandish,Technology Partners,"AWS, Oracle, SAP",structural,PASS,Pass Valid entity list
+6.2_Nandish,6.2_Nandish,Annual Revenues,500000000000,positive,PASS,Pass Must include currency and numeric format
+6.2_Nandish,6.2_Nandish,Annual Revenues,500000000000,positive,PASS,Fail Must include currency code
+6.2_Nandish,6.2_Nandish,Annual Profits,50000000000,positive,PASS,Pass Numeric + currency format
+6.2_Nandish,6.2_Nandish,Revenue Mix,80/20,ratio_100,PASS,Pass Sum must equal 100
+6.2_Nandish,6.2_Nandish,Company Valuation,$1.5T,positive,PASS,Pass Valid suffix and numeric
+6.2_Nandish,6.2_Nandish,Market Share (%),0.45,percentage,PASS,Pass Within 0-100 range
+6.2_Nandish,6.2_Nandish,Key Investors / Backers,"BlackRock, Vanguard",structural,PASS,Pass Valid entity recognition
+6.2_Nandish,6.2_Nandish,Recent Funding Rounds,2023-01-01 - $5B,structural,PASS,Pass Matches regex format
+6.2_Nandish,6.2_Nandish,Total Capital Raised,$50B,positive,PASS,Pass >= max individual round
+6.2_Nandish,6.2_Nandish,Sales Motion,Hybrid Enterprise Sales,structural,PASS,Pass Matches allowed patterns
+6.2_Nandish,6.2_Nandish,Customer Acquisition Cost (CAC),5000,positive,PASS,Pass Must be >0
+6.2_Nandish,6.2_Nandish,Customer Lifetime Value (CLV),20000,positive,PASS,Pass CLV > CAC
+6.2_Nandish,6.2_Nandish,CAC:LTV Ratio,4:1,ratio_format,PASS,Pass >3 ideal
+6.2_Nandish,6.2_Nandish,Churn Rate,0.05,percentage,PASS,Pass Within 0-100
+6.2_Nandish,6.2_Nandish,Net Promoter Score (NPS),75,range,PASS,Pass Within -100 to 100
+6.2_Nandish,6.2_Nandish,Burn Rate,$10M,positive,PASS,Pass >0
+6.2_Nandish,6.2_Nandish,Runway,36,positive,PASS,Pass >6 months safe
+6.2_Nandish,6.2_Nandish,Tech Stack/Tools Used,"AWS, Kubernetes, SAP",structural,PASS,Pass Valid recognized tools
+6.2_Nandish,6.2_Nandish,Cybersecurity Posture,"ISO27001, SOC2",structural,PASS,Pass Matches keywords
+6.2_Nandish,6.2_Nandish,Regulatory & Compliance Status,"SOC2, GDPR, HIPAA",structural,PASS,Pass Matches regex
+6.2_Nandish,6.2_Nandish,Board of Directors / Advisors,John Doe - Director - Ex-Google,structural,PASS,Pass Valid structured text
+6.2_Nandish,6.2_Nandish,Strategic Priorities,"Expand AI, Global Expansion, Cost Optimization",structural,PASS,Pass 3-5 items rule
+6.2_Nandish,6.2_Nandish,Go-to-Market Strategy,Direct + Channel + PLG,structural,PASS,Pass Matches keywords
+6.2_Nandish,6.2_Nandish,Innovation Roadmap,2027 - AI Platform Launch,structural,PASS,Pass Future date required
+6.2_Nandish,6.2_Nandish,Product Pipeline,"AI Suite, Cloud Infra, Analytics",structural,PASS,Pass Valid list
+6.2_Nandish,6.2_Nandish,Global exposure,Yes,structural,PASS,Pass Derived from countries >1
+6.2_Nandish,6.2_Nandish,Company maturity,Enterprise,structural,PASS,Pass Matches enum
+6.2_Nandish,6.2_Nandish,Brand value,Tier 1,structural,PASS,Pass Valid enum
+6.2_Nandish,6.2_Nandish,Client quality,Fortune 500,structural,PASS,Pass Valid enum
+6.2_Nandish,6.2_Nandish,Layoff history,2023 - 10%,structural,PASS,Pass Valid structured text
+6.3_Sheethal gowda,6.3_Sheethal gowda,Company Name,"""Stealth AI Labs Pvt Ltd""",structural,PASS,Fail cannot validate against official registry API as per validation_mode
+6.3_Sheethal gowda,6.3_Sheethal gowda,Company Name,"""ABC Pvt Ltd""",structural,PASS,Pass meets regex and length rules even if registry validation is unavailable
+6.3_Sheethal gowda,6.3_Sheethal gowda,Logo,,structural,PASS,Fail Not Null constraint violated despite limited public data
+6.3_Sheethal gowda,6.3_Sheethal gowda,Logo,"""https://internal.company/logo.png""",structural,PASS,"Fail violates business rule (must be publicly accessible, HTTP 200 required)"
+6.3_Sheethal gowda,6.3_Sheethal gowda,Website URL,,structural,PASS,Fail Not Null constraint violated
+6.3_Sheethal gowda,6.3_Sheethal gowda,Website URL,"""https://stealth-startup.ai""",structural,PASS,Fail HTTP check fails (no public access)
+6.3_Sheethal gowda,6.3_Sheethal gowda,Category,"""Private""",structural,PASS,Fail not part of allowed enum (Startup/MSME/etc.)
+6.3_Sheethal gowda,6.3_Sheethal gowda,Category,"""Startup""",structural,PASS,Pass valid enum even if company is unlisted
+6.3_Sheethal gowda,6.3_Sheethal gowda,Year of Incorporation,,temporal,PASS,Fail Not Null constraint violated
+6.3_Sheethal gowda,6.3_Sheethal gowda,Year of Incorporation,"""20XX""",temporal,PASS,Fail violates numeric + format constraints
+6.3_Sheethal gowda,6.3_Sheethal gowda,Company Headquarters,"""Bangalore""",structural,PASS,Fail violates business rule (must include City + Country)
+6.3_Sheethal gowda,6.3_Sheethal gowda,Company Headquarters,"""Unknown City, Mars""",structural,PASS,Fail fails geo-validation API
+6.3_Sheethal gowda,6.3_Sheethal gowda,Key Competitors,,structural,PASS,Fail Not Null constraint violated
+6.3_Sheethal gowda,6.3_Sheethal gowda,Key Competitors,"""Various startups""",structural,PASS,Fail violates entity recognition / DB lookup rule
+6.3_Sheethal gowda,6.3_Sheethal gowda,Social Media Followers Combined,,positive,PASS,Fail Not Null constraint violated
+6.3_Sheethal gowda,6.3_Sheethal gowda,Social Media Followers Combined,0,positive,PASS,Pass valid numeric and satisfies >=0 rule
+6.3_Sheethal gowda,6.3_Sheethal gowda,Glassdoor Rating,,rating_5,PASS,"Pass Nullable field, acceptable for private companies"
+6.3_Sheethal gowda,6.3_Sheethal gowda,Glassdoor Rating,"""6.5""",rating_5,PASS,Fail exceeds allowed range (1.05.0)
+6.3_Sheethal gowda,6.3_Sheethal gowda,LinkedIn Profile URL,,structural,PASS,Pass Nullable field
+6.3_Sheethal gowda,6.3_Sheethal gowda,LinkedIn Profile URL,"""https://linkedin.com/stealth-company""",structural,PASS,Fail must follow /company/ pattern
+6.3_Sheethal gowda,6.3_Sheethal gowda,Company Contact Email,"""info@stealth""",structural,PASS,Fail invalid email format
+6.3_Sheethal gowda,6.3_Sheethal gowda,Company Contact Email,,structural,PASS,Pass Nullable field
+7.1 test- Yashaswini,7.1 test- Yashaswini,Year of Incorporation,2099,temporal,FAIL,FAIL violates business rule (cannot be future; Automated validation)
+7.1 test- Yashaswini,7.1 test- Yashaswini,Employee Size,100000000,positive,PASS,PASS matches regex and numeric format
+7.1 test- Yashaswini,7.1 test- Yashaswini,Number of Offices (beyond HQ),999999,positive,PASS,PASS numeric 0
+7.1 test- Yashaswini,7.1 test- Yashaswini,Employee Turnover,1.5,percentage,PASS,FAIL exceeds allowed range (0100%)
+7.1 test- Yashaswini,7.1 test- Yashaswini,Average Retention Tenure,150 Years,structural,PASS,PASS regex valid; Manual review required
+7.1 test- Yashaswini,7.1 test- Yashaswini,Website Rating,15,rating_10,PASS,FAIL must be between 010
+7.1 test- Yashaswini,7.1 test- Yashaswini,Website Traffic Rank,999999999,positive,PASS,PASS valid integer > 0
+7.1 test- Yashaswini,7.1 test- Yashaswini,Social Media Followers Combined,5000000000,positive,PASS,PASS must be 0
+7.1 test- Yashaswini,7.1 test- Yashaswini,Glassdoor Rating,6,rating_5,PASS,FAIL exceeds 5.0
+7.1 test- Yashaswini,7.1 test- Yashaswini,Indeed Rating,7,rating_5,PASS,FAIL exceeds 5.0
+7.1 test- Yashaswini,7.1 test- Yashaswini,Google Reviews Rating,5.5,rating_5,PASS,FAIL exceeds 5.0
+7.1 test- Yashaswini,7.1 test- Yashaswini,Annual Revenues,999999999999,positive,PASS,PASS valid format; standardized
+7.1 test- Yashaswini,7.1 test- Yashaswini,Annual Profits,500000000000,positive,PASS,PASS numeric parsing valid
+7.1 test- Yashaswini,7.1 test- Yashaswini,Revenue Mix,120/30,ratio_100,FAIL,FAIL must total 100%
+7.1 test- Yashaswini,7.1 test- Yashaswini,Company Valuation,10000000000000,positive,PASS,PASS must be > 0
+7.1 test- Yashaswini,7.1 test- Yashaswini,Year-over-Year Growth Rate,5,structural,PASS,PASS format valid; flagged anomaly
+7.1 test- Yashaswini,7.1 test- Yashaswini,Market Share (%),1.5,percentage,PASS,FAIL exceeds 100%
+7.1 test- Yashaswini,7.1 test- Yashaswini,Total Capital Raised,5000000000000,positive,PASS,PASS numeric valid
+7.1 test- Yashaswini,7.1 test- Yashaswini,Customer Acquisition Cost (CAC),1000000,positive,PASS,PASS must be > 0
+7.1 test- Yashaswini,7.1 test- Yashaswini,Customer Lifetime Value (CLV),10000000,positive,PASS,PASS must exceed CAC
+7.1 test- Yashaswini,7.1 test- Yashaswini,CAC:LTV Ratio,10:1,ratio_format,PASS,PASS format valid; flagged
+7.1 test- Yashaswini,7.1 test- Yashaswini,Churn Rate,1.2,percentage,PASS,FAIL exceeds allowed range
+7.1 test- Yashaswini,7.1 test- Yashaswini,Net Promoter Score (NPS),100,range,PASS,PASS within -100 to 100
+7.1 test- Yashaswini,7.1 test- Yashaswini,Burn Rate,999000000,positive,PASS,PASS numeric > 0
+7.1 test- Yashaswini,7.1 test- Yashaswini,Runway,1200,positive,PASS,PASS numeric valid; flagged
+7.1 test- Yashaswini,7.1 test- Yashaswini,Burn Multiplier,50,positive,PASS,PASS numeric valid; flagged
+7.1 test- Yashaswini,7.1 test- Yashaswini,R&D Investment,999000000,positive,PASS,PASS format valid
+7.1 test- Yashaswini,7.1 test- Yashaswini,Total Addressable Market (TAM),100000000000000,positive,PASS,PASS must be SAM
+7.1 test- Yashaswini,7.1 test- Yashaswini,Serviceable Addressable Market (SAM),200000000000000,positive,PASS,FAIL violates TAM SAM
+7.1 test- Yashaswini,7.1 test- Yashaswini,Serviceable Obtainable Market (SOM),150000000000000,positive,PASS,FAIL violates SAM SOM
+7.1 test- Yashaswini,7.1 test- Yashaswini,Training/Development Spend,"$50,000 per employee",positive,PASS,PASS non-negative
+7.1 test- Yashaswini,7.1 test- Yashaswini,Commute time from airport,10000,positive,PASS,PASS numeric valid; flagged
+7.1 test- Yashaswini,7.1 test- Yashaswini,Industry Benchmark Technology Adoption Rating,15,rating_10,PASS,FAIL exceeds 110
+7.2 test-Yashaswini,7.2 test-Yashaswini,Number of Offices (beyond HQ),0,positive,PASS,PASS allowed as per business rule ( 0; Automated validation)
+7.2 test-Yashaswini,7.2 test-Yashaswini,Employee Size,0,positive,PASS,FAIL violates business rule (must represent valid workforce; Not Null field)
+7.2 test-Yashaswini,7.2 test-Yashaswini,Employee Turnover,0,percentage,PASS,PASS valid range (0100%)
+7.2 test-Yashaswini,7.2 test-Yashaswini,Website Traffic Rank,0,positive,PASS,FAIL rank must be > 0
+7.2 test-Yashaswini,7.2 test-Yashaswini,Social Media Followers Combined,0,positive,PASS,PASS allowed ( 0)
+7.2 test-Yashaswini,7.2 test-Yashaswini,Website Rating,0,rating_10,PASS,PASS within allowed range (010)
+7.2 test-Yashaswini,7.2 test-Yashaswini,Glassdoor Rating,0,rating_5,PASS,FAIL must be between 1.05.0
+7.2 test-Yashaswini,7.2 test-Yashaswini,Indeed Rating,0,rating_5,PASS,FAIL must be between 1.05.0
+7.2 test-Yashaswini,7.2 test-Yashaswini,Google Reviews Rating,0,rating_5,PASS,FAIL must be between 1.05.0
+7.2 test-Yashaswini,7.2 test-Yashaswini,Annual Revenues,0,positive,PASS,PASS valid for early-stage/pre-revenue companies
+7.2 test-Yashaswini,7.2 test-Yashaswini,Annual Profits,0,positive,PASS,PASS valid (break-even scenario)
+7.2 test-Yashaswini,7.2 test-Yashaswini,Company Valuation,0,positive,PASS,FAIL must be > 0
+7.2 test-Yashaswini,7.2 test-Yashaswini,Year-over-Year Growth Rate,0,structural,PASS,PASS indicates no growth
+7.2 test-Yashaswini,7.2 test-Yashaswini,Market Share (%),0,percentage,PASS,PASS valid lower bound
+7.2 test-Yashaswini,7.2 test-Yashaswini,Total Capital Raised,0,positive,PASS,PASS valid for bootstrapped companies
+7.2 test-Yashaswini,7.2 test-Yashaswini,Customer Acquisition Cost (CAC),0,positive,PASS,FAIL violates business rule (must be > 0)
+7.2 test-Yashaswini,7.2 test-Yashaswini,Customer Lifetime Value (CLV),0,positive,PASS,FAIL violates business logic (must be > CAC ideally)
+7.2 test-Yashaswini,7.2 test-Yashaswini,CAC:LTV Ratio,0:1,ratio_format,PASS,FAIL invalid ratio; division logic violation
+7.2 test-Yashaswini,7.2 test-Yashaswini,Churn Rate,0,percentage,PASS,PASS ideal retention scenario
+7.2 test-Yashaswini,7.2 test-Yashaswini,Net Promoter Score (NPS),0,range,PASS,PASS valid range (-100 to 100)
+7.2 test-Yashaswini,7.2 test-Yashaswini,Burn Rate,0,positive,PASS,FAIL violates rule (must be > 0)
+7.2 test-Yashaswini,7.2 test-Yashaswini,Runway,0,positive,PASS,FAIL company cannot operate with 0 months runway
+7.2 test-Yashaswini,7.2 test-Yashaswini,Burn Multiplier,0,positive,PASS,PASS indicates highly efficient growth
+7.2 test-Yashaswini,7.2 test-Yashaswini,R&D Investment,0,positive,PASS,PASS possible for non-tech firms
+7.2 test-Yashaswini,7.2 test-Yashaswini,Commute time from airport,0,positive,PASS,FAIL unrealistic (must be > 0)
+7.2 test-Yashaswini,7.2 test-Yashaswini,Industry Benchmark Technology Adoption Rating,0,rating_10,PASS,FAIL valid range is 110
+7.3 test-Ananya,7.3 test-Ananya,Company Name,"NULL / ""Unknown""",structural,PASS,Fail Must match official legal name; cannot be defaulted
+7.3 test-Ananya,7.3 test-Ananya,Short Name,,structural,PASS,Pass System can fallback to Company Name
+7.3 test-Ananya,7.3 test-Ananya,Category,"NULL ""Startup""",structural,PASS,Fail Must match actual classification
+7.3 test-Ananya,7.3 test-Ananya,Category,,structural,PASS,Fail Cannot remain NULL (Not Null field)
+7.3 test-Ananya,7.3 test-Ananya,Nature of Company,"NULL ""Private""",structural,PASS,Fail Must match legal filings
+7.3 test-Ananya,7.3 test-Ananya,Year of Incorporation,NULL 2000,temporal,PASS,Fail Cannot assume year
+7.3 test-Ananya,7.3 test-Ananya,Company Headquarters,"NULL ""USA""",structural,PASS,Fail Must include city + country
+7.3 test-Ananya,7.3 test-Ananya,Countries Operating In,"NULL ""USA""",structural,PASS,Fail Cannot assume operations
+7.3 test-Ananya,7.3 test-Ananya,Countries Operating In,,structural,PASS,Pass Nullable field
+7.3 test-Ananya,7.3 test-Ananya,Number of Offices (beyond HQ),NULL 0,positive,PASS,Fail Should remain NULL if unknown
+7.3 test-Ananya,7.3 test-Ananya,Office Locations,NULL [{}],structural,PASS,Fail Invalid structure
+7.3 test-Ananya,7.3 test-Ananya,Employee Size,,positive,PASS,Fail Required field
+7.3 test-Ananya,7.3 test-Ananya,Employee Size,"NULL ""0-0""",positive,PASS,Fail Invalid range
+7.3 test-Ananya,7.3 test-Ananya,Hiring Velocity,,structural,PASS,Pass Nullable
+7.3 test-Ananya,7.3 test-Ananya,Employee Turnover,"NULL ""0%""",percentage,PASS,Fail Cannot assume
+7.3 test-Ananya,7.3 test-Ananya,Average Retention Tenure,,structural,PASS,Pass
+7.3 test-Ananya,7.3 test-Ananya,Key Competitors,,structural,PASS,Fail Must have competitors
+7.3 test-Ananya,7.3 test-Ananya,Technology Partners,,structural,PASS,Pass
+7.3 test-Ananya,7.3 test-Ananya,Annual Revenues,"NULL ""$0""",positive,PASS,Fail Must be NULL if unknown
+7.3 test-Ananya,7.3 test-Ananya,Annual Revenues,,positive,PASS,Pass (nullable)
+7.3 test-Ananya,7.3 test-Ananya,Annual Profits,,positive,PASS,Pass
+7.3 test-Ananya,7.3 test-Ananya,Revenue Mix,"NULL ""50/50""",ratio_100,PASS,Fail Must reflect actual data
+7.3 test-Ananya,7.3 test-Ananya,Company Valuation,,positive,PASS,Pass
+7.3 test-Ananya,7.3 test-Ananya,Market Share (%),"NULL ""0%""",percentage,PASS,Fail Misleading
+7.3 test-Ananya,7.3 test-Ananya,Key Investors / Backers,,structural,PASS,Pass
+7.3 test-Ananya,7.3 test-Ananya,Recent Funding Rounds,,structural,PASS,Pass
+7.3 test-Ananya,7.3 test-Ananya,Total Capital Raised,"NULL ""$0""",positive,PASS,Fail
+7.3 test-Ananya,7.3 test-Ananya,Sales Motion,,structural,PASS,Fail
+7.3 test-Ananya,7.3 test-Ananya,Customer Acquisition Cost (CAC),"NULL ""$0""",positive,PASS,Fail
+7.3 test-Ananya,7.3 test-Ananya,Customer Lifetime Value (CLV),"NULL ""$0""",positive,PASS,Fail
+7.3 test-Ananya,7.3 test-Ananya,CAC:LTV Ratio,"NULL ""3:1""",ratio_format,PASS,Fail Needs CAC & CLV
+7.3 test-Ananya,7.3 test-Ananya,Churn Rate,"NULL ""0%""",percentage,PASS,Fail
+7.3 test-Ananya,7.3 test-Ananya,Net Promoter Score (NPS),NULL 0,range,PASS,Fail
+7.3 test-Ananya,7.3 test-Ananya,Burn Rate,"NULL ""$0""",positive,PASS,Fail
+7.3 test-Ananya,7.3 test-Ananya,Runway,NULL 12,positive,PASS,Fail
+7.3 test-Ananya,7.3 test-Ananya,Tech Stack/Tools Used,,structural,PASS,Pass
+7.3 test-Ananya,7.3 test-Ananya,Cybersecurity Posture,"NULL ""ISO27001""",structural,PASS,Fail
+7.3 test-Ananya,7.3 test-Ananya,Regulatory & Compliance Status,"NULL ""GDPR""",structural,PASS,Fail
+7.3 test-Ananya,7.3 test-Ananya,Board of Directors / Advisors,,structural,PASS,Fail
+7.3 test-Ananya,7.3 test-Ananya,Strategic Priorities,,structural,PASS,Fail
+7.3 test-Ananya,7.3 test-Ananya,Go-to-Market Strategy,,structural,PASS,Fail
+7.3 test-Ananya,7.3 test-Ananya,Innovation Roadmap,,structural,PASS,Pass
+7.3 test-Ananya,7.3 test-Ananya,Product Pipeline,,structural,PASS,Pass
+7.3 test-Ananya,7.3 test-Ananya,Global exposure,"NULL ""Yes""",structural,PASS,Fail
+7.3 test-Ananya,7.3 test-Ananya,Company maturity,,structural,PASS,Fail
+7.3 test-Ananya,7.3 test-Ananya,Brand value,,structural,PASS,Pass
+7.3 test-Ananya,7.3 test-Ananya,Client quality,,structural,PASS,Pass
+7.3 test-Ananya,7.3 test-Ananya,Layoff history,,structural,PASS,Pass
+7.4 test-Ananya,7.4 test-Ananya,Year of Incorporation,NULL 2000,temporal,PASS,Fail Cannot assume year (must be actual registry value)
+7.4 test-Ananya,7.4 test-Ananya,Year of Incorporation,,temporal,PASS,Fail Violates Not Null constraint
+7.4 test-Ananya,7.4 test-Ananya,Overview of the Company,"NULL ""N/A""",structural,PASS,Fail Must meet min length (50 chars)
+7.4 test-Ananya,7.4 test-Ananya,Overview of the Company,"""Company does business""",structural,PASS,Fail Fails business rule (no meaningful description)
+7.4 test-Ananya,7.4 test-Ananya,Website URL,"NULL ""https://example.com""",structural,PASS,Fail Must be official domain
+7.4 test-Ananya,7.4 test-Ananya,Website URL,,structural,PASS,Fail Not Null field
+7.4 test-Ananya,7.4 test-Ananya,Recent News,,structural,PASS,Pass Nullable field
+7.4 test-Ananya,7.4 test-Ananya,Recent News,"NULL ""2024 - No updates""",structural,PASS,Fail Must reflect real events
+7.4 test-Ananya,7.4 test-Ananya,Company Name,"NULL ""Unknown Company""",structural,PASS,Fail Must match legal registry
+7.4 test-Ananya,7.4 test-Ananya,Category,"NULL ""Startup""",structural,PASS,Fail Must match classification
+7.4 test-Ananya,7.4 test-Ananya,Employee Size,"NULL ""0-0""",positive,PASS,Fail Invalid range (Min < Max rule)
+7.4 test-Ananya,7.4 test-Ananya,Employee Size,,positive,PASS,Fail
+7.4 test-Ananya,7.4 test-Ananya,Social Media Followers Combined,NULL 0,positive,PASS,Fail Must be actual aggregated count
+7.4 test-Ananya,7.4 test-Ananya,Social Media Followers Combined,,positive,PASS,Fail
+7.4 test-Ananya,7.4 test-Ananya,Hiring Velocity,,structural,PASS,Pass
+7.4 test-Ananya,7.4 test-Ananya,Hiring Velocity,"NULL ""0 roles""",structural,PASS,Fail Misleading; must reflect actual hiring data
+7.5_Sheethal gowda,7.5_Sheethal gowda,Year of Incorporation,2035,temporal,FAIL,Fail violates business rule (Cannot be in future; CurrentYear Value)
+7.5_Sheethal gowda,7.5_Sheethal gowda,Year of Incorporation,1750,temporal,PASS,Fail violates lower boundary (1800)
+7.5_Sheethal gowda,7.5_Sheethal gowda,Year of Incorporation,1800,temporal,PASS,Pass meets minimum boundary
+7.5_Sheethal gowda,7.5_Sheethal gowda,Year of Incorporation,2000,temporal,PASS,Pass valid YYYY format and within range
+7.5_Sheethal gowda,7.5_Sheethal gowda,Year of Incorporation,"""20O0""",temporal,PASS,Fail regex + numeric constraint violated
+7.5_Sheethal gowda,7.5_Sheethal gowda,Recent News,"""2030-01-01 - Company raises funding - https://news.com""",structural,PASS,Fail violates rule (must be within last 2 years)
+7.5_Sheethal gowda,7.5_Sheethal gowda,Recent News,"""1995-05-10 - Company founded story - https://news.com""",structural,PASS,Fail outside allowed date range (last 2 years)
+7.5_Sheethal gowda,7.5_Sheethal gowda,Recent News,"""2025-01-01 - Expansion news - https://news.com""",structural,PASS,Pass within valid timeline
+7.5_Sheethal gowda,7.5_Sheethal gowda,Recent News,"""01-01-2025 - News headline""",structural,PASS,Fail violates expected structured date parsing
+7.5_Sheethal gowda,7.5_Sheethal gowda,Recent Funding Rounds,"""2032-12-01 - $5M""",structural,PASS,Fail funding cannot occur in future
+7.5_Sheethal gowda,7.5_Sheethal gowda,Recent Funding Rounds,"""1800-01-01 - $1M""",structural,PASS,Fail unrealistic / violates business logic
+7.5_Sheethal gowda,7.5_Sheethal gowda,Recent Funding Rounds,"""2000-01-01 - $2M""",structural,PASS,Pass valid format and acceptable historical data
+7.5_Sheethal gowda,7.5_Sheethal gowda,Recent Funding Rounds,"""01/01/2020 - $3M""",structural,PASS,Fail violates regex (YYYY-MM-DD required)
+7.5_Sheethal gowda,7.5_Sheethal gowda,Future Projections,"""2020 - Revenue Growth 20%""",structural,PASS,Fail violates rule (must be future years only)
+7.5_Sheethal gowda,7.5_Sheethal gowda,Future Projections,"""2027 - Revenue Growth 30%""",structural,PASS,Pass satisfies future timeline logic
+7.5_Sheethal gowda,7.5_Sheethal gowda,Future Projections,"""2100 - Market expansion""",structural,PASS,"Pass format valid (no strict upper bound, but flag as warning if needed)"
+7.5_Sheethal gowda,7.5_Sheethal gowda,Innovation Roadmap,"""2022 Q1 - AI feature launch""",structural,PASS,Fail roadmap must contain future timeline
+7.5_Sheethal gowda,7.5_Sheethal gowda,Innovation Roadmap,"""2026 Q3 - New platform release""",structural,PASS,Pass satisfies temporal logic
+7.5_Sheethal gowda,7.5_Sheethal gowda,Layoff History,"""2030 - 20% workforce reduction""",structural,PASS,Fail cannot have future layoffs
+7.5_Sheethal gowda,7.5_Sheethal gowda,Layoff History,"""2023 - 10% reduction""",structural,PASS,Pass valid past event
+7.5_Sheethal gowda,7.5_Sheethal gowda,Event Participation,"""2030 Tech Summit attended""",structural,PASS,Fail logical inconsistency
+7.5_Sheethal gowda,7.5_Sheethal gowda,Event Participation,"""2024 AI Summit participation""",structural,PASS,Pass valid recent timeline
+14.1 Test - The Techsquad,14.1 Test - The Techsquad,ALL FIELDS,"{ ""Company Name"": ""ABC Corp"", ""CEO Name"": null, ""Nature of Company"": ""Public"" }",structural,PASS,FAIL NULL indicates extraction issue; CEO must exist
+14.1 Test - The Techsquad,14.1 Test - The Techsquad,ALL FIELDS,"{ ""Employee Turnover"": ""N/A"", ""Nature of Company"": ""Private"" }",structural,PASS,"WARNING Should specify ""Not Public"""
+14.1 Test - The Techsquad,14.1 Test - The Techsquad,ALL FIELDS,"{ ""Year of Incorporation"": 2025, ""Annual Revenues"": null }",structural,PASS,PASS Data may not yet exist
+14.1 Test - The Techsquad,14.1 Test - The Techsquad,ALL FIELDS,"{ ""Annual Revenues"": null, ""Market Share (%)"": ""15%"" }",structural,PASS,FAIL Market share implies revenue exists
+14.1 Test - The Techsquad,14.1 Test - The Techsquad,ALL FIELDS,"{ ""Social Media Followers Combined"": ""1M"", ""Brand Sentiment Score"": null }",structural,PASS,FAIL Sentiment should be derivable
+14.1 Test - The Techsquad,14.1 Test - The Techsquad,ALL FIELDS,"{ ""Company Name"": ""ABC Corp"", ""CEO Name"": null, ""Website URL"": null, ""Category"": null }",structural,PASS,FAIL Too many NULLs poor data quality
+14.1 Test - The Techsquad,14.1 Test - The Techsquad,ALL FIELDS,"{ ""CEO Name"": null, ""Recent News"": ""CEO resigned in 2024"" }",structural,PASS,FAIL CEO must still exist
+14.1 Test - The Techsquad,14.1 Test - The Techsquad,ALL FIELDS,"{ ""Company Valuation"": ""$5B"", ""Annual Revenues"": null }",structural,PASS,FAIL Revenue expected when valuation exists
+14.1 Test - The Techsquad,14.1 Test - The Techsquad,ALL FIELDS,"{ ""Glassdoor Rating"": null }",structural,PASS,PASS May not be publicly available
+14.1 Test - The Techsquad,14.1 Test - The Techsquad,ALL FIELDS,"{ ""CEO Name"": ""Unknown"" }",structural,PASS,FAIL Must distinguish Unknown vs Not Public vs Vacant
+14.1 Test - The Techsquad,14.1 Test - The Techsquad,ALL FIELDS,"{ ""Company Valuation"": ""$2B"", ""Recent Funding Rounds"": null }",structural,PASS,FAIL Funding implied by valuation
+14.1 Test - The Techsquad,14.1 Test - The Techsquad,ALL FIELDS,"{ ""Total Capital Raised"": ""$50M"", ""Key Investors / Backers"": null }",structural,PASS,FAIL Investors expected
+14.1 Test - The Techsquad,14.1 Test - The Techsquad,ALL FIELDS,"{ ""Customer Lifetime Value (CLV)"": ""$200"", ""Customer Acquisition Cost (CAC)"": null }",structural,PASS,FAIL CAC required if CLV exists
+14.1 Test - The Techsquad,14.1 Test - The Techsquad,ALL FIELDS,"{ ""Employee Turnover"": ""20%"", ""Average Retention Tenure"": null }",structural,PASS,FAIL Dependent metric missing
+14.1 Test - The Techsquad,14.1 Test - The Techsquad,ALL FIELDS,"{ ""Social Media Followers Combined"": ""500K"", ""Brand Sentiment Score"": null }",structural,PASS,FAIL Should be derivable
+14.1 Test - The Techsquad,14.1 Test - The Techsquad,ALL FIELDS,"{ ""Indeed Rating"": null }",structural,PASS,PASS May not be listed
+14.1 Test - The Techsquad,14.1 Test - The Techsquad,ALL FIELDS,"{ ""Work culture"": null }",structural,PASS,WARNING Should be inferred or analyzed
+14.1 Test - The Techsquad,14.1 Test - The Techsquad,ALL FIELDS,"{ ""Industry"": ""SaaS"", ""Cybersecurity Posture"": null }",structural,PASS,WARNING Expected but may not be public
+14.1 Test - The Techsquad,14.1 Test - The Techsquad,ALL FIELDS,"{ ""Employee Size"": ""10000"", ""Diversity Metrics"": null }",structural,PASS,WARNING Expected but may not be disclosed
+14.1 Test - The Techsquad,14.1 Test - The Techsquad,ALL FIELDS,"{ ""Total Capital Raised"": ""$100M"", ""Burn Rate"": null }",structural,PASS,WARNING Expected but may not be public
+14.2 Test - The Techsquad,14.2 Test - The Techsquad,ALL FIELDS,"{ ""Category"": ""VC"", ""Services / Offerings / Products"": ""N/A"" }",structural,PASS,PASS Products not applicable for VC
+14.2 Test - The Techsquad,14.2 Test - The Techsquad,ALL FIELDS,"{ ""Category"": ""VC"", ""Services / Offerings / Products"": ""SaaS Platform"" }",structural,PASS,FAIL Products should not exist for VC
+14.2 Test - The Techsquad,14.2 Test - The Techsquad,ALL FIELDS,"{ ""Funding Status"": ""Bootstrapped"", ""Key Investors / Backers"": ""N/A"" }",structural,PASS,PASS Investors not applicable
+14.2 Test - The Techsquad,14.2 Test - The Techsquad,ALL FIELDS,"{ ""Funding Status"": ""Bootstrapped"", ""Key Investors / Backers"": ""Sequoia"" }",structural,PASS,FAIL Conflict with bootstrapped status
+14.2 Test - The Techsquad,14.2 Test - The Techsquad,ALL FIELDS,"{ ""Remote Work Policy"": ""Remote"", ""Office Locations"": ""N/A"" }",structural,PASS,PASS Offices not applicable
+14.2 Test - The Techsquad,14.2 Test - The Techsquad,ALL FIELDS,"{ ""Remote Work Policy"": ""Remote"", ""Office Locations"": ""New York, USA"" }",structural,PASS,FAIL Contradiction with remote-only model
+14.2 Test - The Techsquad,14.2 Test - The Techsquad,ALL FIELDS,"{ ""Nature of Company"": ""Non-Profit"", ""Annual Profits"": ""N/A"" }",structural,PASS,PASS Profit not applicable
+14.2 Test - The Techsquad,14.2 Test - The Techsquad,ALL FIELDS,"{ ""Nature of Company"": ""Non-Profit"", ""Annual Profits"": ""$5M"" }",structural,PASS,FAIL Profit not applicable
+14.2 Test - The Techsquad,14.2 Test - The Techsquad,ALL FIELDS,"{ ""Year of Incorporation"": 2025, ""Customer Acquisition Cost (CAC)"": ""N/A"" }",structural,PASS,PASS Metrics not yet applicable
+14.2 Test - The Techsquad,14.2 Test - The Techsquad,ALL FIELDS,"{ ""Employee Size"": ""5000"", ""Customer Acquisition Cost (CAC)"": ""N/A"" }",structural,PASS,FAIL CAC expected for mature company
+14.2 Test - The Techsquad,14.2 Test - The Techsquad,ALL FIELDS,"{ ""Social Media Followers Combined"": 0, ""Brand Sentiment Score"": ""N/A"" }",structural,PASS,PASS Sentiment not applicable
+14.2 Test - The Techsquad,14.2 Test - The Techsquad,ALL FIELDS,"{ ""Social Media Followers Combined"": ""1M"", ""Brand Sentiment Score"": ""N/A"" }",structural,PASS,FAIL Sentiment should be derivable
+14.2 Test - The Techsquad,14.2 Test - The Techsquad,ALL FIELDS,"{ ""Nature of Company"": ""Govt"", ""Key Investors / Backers"": ""N/A"" }",structural,PASS,PASS Investors not applicable
+14.2 Test - The Techsquad,14.2 Test - The Techsquad,ALL FIELDS,"{ ""Nature of Company"": ""Govt"", ""Key Investors / Backers"": ""VC Fund"" }",structural,PASS,FAIL Invalid for govt entity
+14.2 Test - The Techsquad,14.2 Test - The Techsquad,ALL FIELDS,"{ ""Industry"": ""SaaS"", ""Supply Chain Dependencies"": ""N/A"" }",structural,PASS,PASS Supply chain not applicable
+14.2 Test - The Techsquad,14.2 Test - The Techsquad,ALL FIELDS,"{ ""Industry"": ""Manufacturing"", ""Supply Chain Dependencies"": ""N/A"" }",structural,PASS,FAIL Supply chain must exist
+14.2 Test - The Techsquad,14.2 Test - The Techsquad,ALL FIELDS,"{ ""Industry"": ""Consulting"", ""Supply Chain Dependencies"": ""N/A"" }",structural,PASS,PASS Physical supply chain not applicable
+14.2 Test - The Techsquad,14.2 Test - The Techsquad,ALL FIELDS,"{ ""Category"": ""Enterprise"", ""Services / Offerings / Products"": ""N/A"" }",structural,PASS,FAIL Products must exist
+14.2 Test - The Techsquad,14.2 Test - The Techsquad,ALL FIELDS,"{ ""Employee Size"": ""5"", ""Diversity Metrics"": ""N/A"" }",structural,PASS,PASS May not be tracked
+14.2 Test - The Techsquad,14.2 Test - The Techsquad,ALL FIELDS,"{ ""Employee Size"": ""10000"", ""Diversity Metrics"": ""N/A"" }",structural,PASS,FAIL Expected for large organizations
+14.3 Test - The Techsquad,14.3 Test - The Techsquad,ALL FIELDS,"{ ""Nature of Company"": ""Public"", ""CEO Name"": null }",structural,PASS,"FAIL CEO is a mandatory leadership field for public companies; NULL indicates extraction failure, not true absence"
+14.3 Test - The Techsquad,14.3 Test - The Techsquad,ALL FIELDS,"{ ""Nature of Company"": ""Private"", ""Employee Turnover"": ""N/A"" }",structural,PASS,"WARNING Field may exist but not disclosed; should be labeled ""Not Public"" instead of generic N/A"
+14.3 Test - The Techsquad,14.3 Test - The Techsquad,ALL FIELDS,"{ ""Year of Incorporation"": 2025, ""Annual Revenues"": null }",structural,PASS,PASS Revenue may not yet be generated; NULL is acceptable due to entity lifecycle
+14.3 Test - The Techsquad,14.3 Test - The Techsquad,ALL FIELDS,"{ ""Market Share (%)"": ""20%"", ""Annual Revenues"": null }",structural,PASS,FAIL Market share implies revenue existence; NULL violates business consistency
+14.3 Test - The Techsquad,14.3 Test - The Techsquad,ALL FIELDS,"{ ""Followers"": ""1M"", ""Brand Sentiment Score"": null }",structural,PASS,FAIL Sentiment can be derived from social signals; absence indicates incomplete enrichment
+14.4 Test - The Techsquad,14.4 Test - The Techsquad,ALL FIELDS,"{ ""Annual Revenues"": ""$0"" }",structural,PASS,FAIL Revenue cannot default to 0; violates financial data integrity rules (should be NULL if unknown)
+14.4 Test - The Techsquad,14.4 Test - The Techsquad,ALL FIELDS,"{ ""Remote Work Policy"": ""Unknown"" }",structural,PASS,"PASS Non-critical descriptive field can use ""Unknown"" as acceptable placeholder"
+14.4 Test - The Techsquad,14.4 Test - The Techsquad,ALL FIELDS,"{ ""Company Name"": ""Unknown"" }",structural,PASS,FAIL Mandatory identity field cannot use placeholder; violates nullability and business rules
+14.4 Test - The Techsquad,14.4 Test - The Techsquad,ALL FIELDS,"{ ""Glassdoor Rating"": ""0"" }",structural,PASS,FAIL Rating scale is 15; 0 is invalid and misleading; should be NULL if unavailable
+14.4 Test - The Techsquad,14.4 Test - The Techsquad,ALL FIELDS,"{ ""Employee Size"": ""0"", ""Hiring Velocity"": ""High"" }",structural,PASS,FAIL Zero employees contradict high hiring activity; indicates invalid default usage
+14.5 Test - The Techsquad,14.5 Test - The Techsquad,Year-over-Year Growth Rate,"{ ""Annual Revenues"": null, ""YoY Growth"": ""10%"" }",structural,PASS,FAIL YoY growth depends on revenue; derived field must be NULL when base metric is NULL
+14.5 Test - The Techsquad,14.5 Test - The Techsquad,CAC:LTV Ratio,"{ ""CAC"": null, ""CLV"": ""$100"", ""CAC:LTV Ratio"": ""1:5"" }",ratio_format,PASS,FAIL Ratio cannot be computed without CAC; violates dependency rule
+14.5 Test - The Techsquad,14.5 Test - The Techsquad,CAC:LTV Ratio,"{ ""CAC"": ""$20"", ""CLV"": null, ""CAC:LTV Ratio"": ""1:5"" }",ratio_format,PASS,FAIL Missing CLV invalidates ratio calculation
+14.5 Test - The Techsquad,14.5 Test - The Techsquad,Burn Multiplier,"{ ""Burn Rate"": null, ""Burn Multiplier"": 2.5 }",positive,PASS,FAIL Multiplier depends on burn rate; must propagate NULL
+14.5 Test - The Techsquad,14.5 Test - The Techsquad,Runway,"{ ""Burn Rate"": null, ""Runway"": ""12"" }",positive,PASS,FAIL Runway calculation depends on burn rate; invalid derived value
+15.1 Test - The Techsquad,15.1 Test - The Techsquad,ALL FIELDS,"{ ""Annual Revenues"": ""$5M"", ""confidence_level"": null }",structural,PASS,FAIL Estimated data must have confidence tagging; missing confidence reduces reliability
+15.1 Test - The Techsquad,15.1 Test - The Techsquad,ALL FIELDS,"{ ""Source"": ""SEC Filing"", ""confidence_level"": ""High"" }",structural,PASS,PASS Tier-1 source justifies high confidence level
+15.1 Test - The Techsquad,15.1 Test - The Techsquad,ALL FIELDS,"{ ""Revenue"": ""$5M"", ""Source"": ""Blog"" }",structural,PASS,WARNING Blog is low-trust source; confidence should be Medium/Low explicitly
+15.1 Test - The Techsquad,15.1 Test - The Techsquad,ALL FIELDS,"{ ""AI Generated"": true, ""confidence_level"": ""High"" }",structural,PASS,FAIL AI/inferred data cannot be marked high confidence without verification
+15.1 Test - The Techsquad,15.1 Test - The Techsquad,ALL FIELDS,"{ ""Source"": ""LinkedIn"", ""confidence_level"": ""Medium"" }",structural,PASS,PASS Tier-2 source aligns with medium confidence
+15.2 Test - The Techsquad,15.2 Test - The Techsquad,ALL FIELDS,"{ ""Source"": ""SEC Filing"" }",structural,PASS,PASS Primary source meets highest reliability standards
+15.2 Test - The Techsquad,15.2 Test - The Techsquad,ALL FIELDS,"{ ""Source"": ""LinkedIn"" }",structural,PASS,PASS Secondary source acceptable with moderate confidence
+15.2 Test - The Techsquad,15.2 Test - The Techsquad,ALL FIELDS,"{ ""Source"": ""Blog Post"" }",structural,PASS,WARNING Low credibility; requires verification from stronger sources
+15.2 Test - The Techsquad,15.2 Test - The Techsquad,ALL FIELDS,"{ ""Source"": null }",structural,PASS,FAIL Missing data provenance; violates traceability requirement
+15.2 Test - The Techsquad,15.2 Test - The Techsquad,ALL FIELDS,"{ ""Source"": [""SEC Filing"", ""Random Blog""] }",structural,PASS,WARNING Conflicting reliability levels; needs reconciliation or prioritization
+15.3 Test - The Techsquad,15.3 Test - The Techsquad,ALL FIELDS,"{ ""date"": ""2026-01-01"" }",structural,PASS,PASS Falls within high-confidence recency window
+15.3 Test - The Techsquad,15.3 Test - The Techsquad,ALL FIELDS,"{ ""date"": ""2025-06-01"" }",structural,PASS,PASS Within acceptable freshness threshold
+15.3 Test - The Techsquad,15.3 Test - The Techsquad,ALL FIELDS,"{ ""date"": ""2023-01-01"" }",structural,PASS,FAIL Data is stale; must be refreshed
+15.3 Test - The Techsquad,15.3 Test - The Techsquad,ALL FIELDS,"{ ""date"": null }",structural,PASS,FAIL Cannot evaluate recency without timestamp
+15.3 Test - The Techsquad,15.3 Test - The Techsquad,ALL FIELDS,"{ ""news_dates"": [""2026-01-01"", ""2023-01-01""] }",structural,PASS,WARNING Dataset contains both fresh and stale data; partial refresh required
+15.5 test-The Nexus,15.5 test-The Nexus,ALL_FIELDS,"Example Record: 163 fields, 120 filled, 20 null (nullable), 23 null (non-nullable fields like Company Name missing)",structural,PASS,"FAIL Completeness < threshold (e.g., <90%) and violation of nullability = Not Null fields"
+15.5 test-The Nexus,15.5 test-The Nexus,ALL_FIELDS,"Example: Website URL = htp:/abc, Year = 2050, Revenue = -$100",structural,PASS,"FAIL Violates regex_pattern, format_constraints, and business_rules"
+15.5 test-The Nexus,15.5 test-The Nexus,ALL_FIELDS,"Example: Recent News only from 2018, Hiring Velocity outdated",structural,PASS,FAIL Violates data_volatility = High and update_frequency expectations
+15.5 test-The Nexus,15.5 test-The Nexus,ALL_FIELDS,"Example: CAC = 100, CLV = 50 (CLV < CAC), TAM < SAM",structural,PASS,"FAIL Violates business_rules: CLV > CAC, TAM SAM SOM"
+15.5 test-The Nexus,15.5 test-The Nexus,ALL_FIELDS,"Example: Accuracy=70%, Completeness=80%, Recency=50%, Critical fields failing",structural,PASS,FAIL Overall grade = D (below acceptable threshold)
+15.5 test-The Nexus,15.5 test-The Nexus,ALL_FIELDS,"Example: Company Name null, Profitability Status invalid enum",structural,PASS,FAIL Critical fields must pass validation regardless of overall score
+15.5 test-The Nexus,15.5 test-The Nexus,ALL_FIELDS,Example: Total Capital Raised < Single Funding Round,structural,PASS,FAIL Violates aggregation logic rule
+15.5 test-The Nexus,15.5 test-The Nexus,ALL_FIELDS,"Example: Mixed currency formats ($100K, 100000 USD, 1Lakh)",structural,PASS,FAIL Violates normalization rules from data_rules
+15.5 test-The Nexus,15.5 test-The Nexus,ALL_FIELDS,Example: Category = VC but Services = SaaS Product,structural,PASS,FAIL Logical inconsistency across fields
+15.5 test-The Nexus,15.5 test-The Nexus,ALL_FIELDS,"Example composite: Accuracy=92, Completeness=88, Recency=90",structural,PASS,PASS Grade = A
+4.3 test -Silent Tech,4.3 test -Silent Tech,ALL_FIELDS,"""Annual Revenues"": ""$873,492,123"", ""Market Share (%)"": ""37.4%"" (no source in data_source)",structural,PASS,FAIL Violates confidence_level + data_source rule; numeric precision requires verifiable source
+4.3 test -Silent Tech,4.3 test -Silent Tech,ALL_FIELDS,"""Employee Turnover"": ""17.348%""",structural,PASS,FAIL Violates format_constraints + business_rules (over-precision unrealistic)
+4.3 test -Silent Tech,4.3 test -Silent Tech,ALL_FIELDS,"""Company Valuation"": ""$2.3B (confirmed)""",structural,PASS,FAIL Violates confidence_level (should not assert certainty)
+4.3 test -Silent Tech,4.3 test -Silent Tech,ALL_FIELDS,"""Profitability Status"": ""Profitable"", ""Annual Profits"": ""-$5M""",structural,PASS,FAIL Violates business_rules (profit must align with status)
+4.3 test -Silent Tech,4.3 test -Silent Tech,ALL_FIELDS,"""Technology Partners"": ""OpenAIX Labs, GoogleBrainz""",structural,PASS,FAIL Violates data_rules (entity validation required)
+4.3 test -Silent Tech,4.3 test -Silent Tech,ALL_FIELDS,"""Employee Size"": ""10-20"", ""Annual Revenues"": ""$5B""",structural,PASS,FAIL Violates derived logic (Company maturity inference)
+4.3 test -Silent Tech,4.3 test -Silent Tech,ALL_FIELDS,"""Annual Revenues"": ""$50M"" (private company, no ""estimated"")",structural,PASS,FAIL Violates business_rules (must indicate estimate if not public)
+4.3 test -Silent Tech,4.3 test -Silent Tech,ALL_FIELDS,"""Recent News"": ""Company acquired Tesla""",structural,PASS,FAIL Violates format_constraints + data_source
+4.3 test -Silent Tech,4.3 test -Silent Tech,ALL_FIELDS,"""Warm Introduction Pathways"": ""Shared board with Apple CEO""",structural,PASS,FAIL Violates relationship validation rules
+4.3 test -Silent Tech,4.3 test -Silent Tech,ALL_FIELDS,"""CAC:LTV Ratio"": ""5:1"", ""CAC"": ""$500"", ""CLV"": ""$1000""",structural,PASS,FAIL Violates data_rules (ratio mismatch)
+4.2 test - Silent Tech,4.2 test - Silent Tech,ALL_FIELDS,,structural,FAIL,Fail Cross-check with LinkedIn/API should detect mismatch with actual company leadership
+4.2 test - Silent Tech,4.2 test - Silent Tech,ALL_FIELDS,,structural,FAIL,Fail Compare against trusted sources (Pitchbook/SEC); flag deviation beyond acceptable threshold
+4.2 test - Silent Tech,4.2 test - Silent Tech,ALL_FIELDS,,structural,FAIL,Fail Cross-check with official website / filings; mismatch indicates hallucination
+4.2 test - Silent Tech,4.2 test - Silent Tech,ALL_FIELDS,,structural,FAIL,Fail Funding round not found in external DB; flag as hallucinated
+4.2 test - Silent Tech,4.2 test - Silent Tech,ALL_FIELDS,,structural,FAIL,Fail No case studies or proof fails validation (PII-safe org verification)
+4.2 test - Silent Tech,4.2 test - Silent Tech,ALL_FIELDS,,structural,FAIL,Fail No mention in partner ecosystem pages/APIs
+4.2 test - Silent Tech,4.2 test - Silent Tech,ALL_FIELDS,,structural,FAIL,Fail Award not found in known registries hallucination detected
+4.2 test - Silent Tech,4.2 test - Silent Tech,ALL_FIELDS,,structural,FAIL,Fail Geo + website validation fails
+4.2 test - Silent Tech,4.2 test - Silent Tech,ALL_FIELDS,,structural,FAIL,Fail Entity mismatch via name + metadata comparison
+4.2 test - Silent Tech,4.2 test - Silent Tech,ALL_FIELDS,,structural,FAIL,Fail Semantic inconsistency across fields
+5.3 test - Silent Tech,5.3 test - Silent Tech,Year of Incorporation + Recent Funding Rounds,"""Year of Incorporation"": 2015, ""Recent Funding Rounds"": ""2010-05-10 - $5M""",structural,PASS,FAIL Violates business rule: funding cannot occur before company exists
+5.3 test - Silent Tech,5.3 test - Silent Tech,Year of Incorporation + Recent News,"""Year of Incorporation"": 2020, ""Recent News"": ""2018-06-01 - Product Launch - https://x.com""",structural,PASS,FAIL Violates timeline logic (event before company existence)
+5.3 test - Silent Tech,5.3 test - Silent Tech,Recent News,"""Recent News"": ""2020-01-01 - Expansion - https://x.com""",structural,PASS,FAIL Violates business_rules: last 1224 months only
+5.3 test - Silent Tech,5.3 test - Silent Tech,Recent Funding Rounds,"""Recent Funding Rounds"": ""2022-01-01 - $5M, 2021-01-01 - $3M""",structural,PASS,FAIL Violates data_rules (sequence ordering)
+5.3 test - Silent Tech,5.3 test - Silent Tech,Future Projections,"""Future Projections"": ""2023 - Revenue $50M"" (Current year = 2026)",structural,PASS,FAIL Violates business_rules (must be future timeline)
+5.3 test - Silent Tech,5.3 test - Silent Tech,Innovation Roadmap,"""Innovation Roadmap"": ""2022 Q1 - Launch AI Product""",structural,PASS,FAIL Violates temporal logic (roadmap is forward-looking)
+5.3 test - Silent Tech,5.3 test - Silent Tech,Layoff history,"""Layoff history"": ""2028-01-01 - 20% workforce reduction""",structural,PASS,FAIL Violates timeline logic (future layoffs invalid)
+5.3 test - Silent Tech,5.3 test - Silent Tech,Exit Strategy/History + Year of Incorporation,"""Year of Incorporation"": 2018, ""Exit Strategy/History"": ""2015 - IPO""",structural,PASS,FAIL Violates chronological order
+5.3 test - Silent Tech,5.3 test - Silent Tech,Recent Funding Rounds + Future Projections,"""Recent Funding Rounds"": ""2025-01-01 - $10M"", ""Future Projections"": ""2024 - Revenue Growth""",structural,PASS,FAIL Violates sequence logic
+5.3 test - Silent Tech,5.3 test - Silent Tech,Company maturity + Year of Incorporation,"""Year of Incorporation"": 2024, ""Company maturity"": ""Enterprise""",structural,PASS,FAIL Violates derived rule (age mismatch)
+11.3 test-Zenith,11.3 test-Zenith,Company Name,Unilever (no region specified),structural,PASS,FAIL Ambiguous entity; region missing
+11.3 test-Zenith,11.3 test-Zenith,Company Name,Unilever UK = Unilever Netherlands,structural,PASS,FAIL Distinct entities merged
+11.3 test-Zenith,11.3 test-Zenith,Short Name,Unilever UK Unilever,structural,PASS,WARN Region lost in alias
+11.3 test-Zenith,11.3 test-Zenith,Logo,Shell Netherlands logo used for UK entity,structural,PASS,FAIL Wrong regional association
+11.3 test-Zenith,11.3 test-Zenith,Category,"UK = Enterprise, NL = Startup",structural,PASS,WARN Cross-region inconsistency
+11.3 test-Zenith,11.3 test-Zenith,Year of Incorporation,"UK = 1929, NL = 1907 stored as one",temporal,PASS,FAIL Historical inconsistency
+11.3 test-Zenith,11.3 test-Zenith,Overview of the Company,UK + NL operations combined,structural,PASS,FAIL Blended entity narrative
+11.3 test-Zenith,11.3 test-Zenith,Nature of Company,"UK = PLC, NL = NV",structural,PASS,FAIL Legal mismatch
+11.3 test-Zenith,11.3 test-Zenith,Company Headquarters,London + Rotterdam combined,structural,PASS,FAIL Dual HQ ambiguity
+11.3 test-Zenith,11.3 test-Zenith,Countries Operating In,Unilever UK global countries,structural,PASS,FAIL Overextended geography
+11.3 test-Zenith,11.3 test-Zenith,Number of Offices,UK + NL combined,structural,PASS,FAIL Incorrect count
+11.3 test-Zenith,11.3 test-Zenith,Office Locations,UK + NL offices in one list,structural,PASS,FAIL Data contamination
+11.3 test-Zenith,11.3 test-Zenith,Employee Size,UK entity uses global headcount,positive,PASS,FAIL Misrepresentation
+11.3 test-Zenith,11.3 test-Zenith,Hiring Velocity,Global hiring shown for UK,structural,PASS,WARN Needs validation
+11.3 test-Zenith,11.3 test-Zenith,Employee Turnover,UK + NL combined turnover,percentage,PASS,FAIL Invalid metric
+11.3 test-Zenith,11.3 test-Zenith,Focus Sectors,UK FMCG vs NL Chemicals,structural,PASS,WARN Sector mismatch
+11.3 test-Zenith,11.3 test-Zenith,Services,UK + NL services merged,structural,PASS,FAIL Incorrect mapping
+11.3 test-Zenith,11.3 test-Zenith,Top Customers,UK clients assigned to NL,structural,PASS,WARN Misalignment
+11.3 test-Zenith,11.3 test-Zenith,Core Value Proposition,Global VP used for regional entity,structural,PASS,WARN Needs validation
+11.3 test-Zenith,11.3 test-Zenith,Vision,UK vs NL strategy combined,structural,PASS,WARN Inconsistency
+11.3 test-Zenith,11.3 test-Zenith,Mission,Global mission applied locally,structural,PASS,FAIL Context mismatch
+11.3 test-Zenith,11.3 test-Zenith,Values,UK vs NL values merged,structural,PASS,WARN Cultural inconsistency
+11.3 test-Zenith,11.3 test-Zenith,Key Competitors,UK competitors used for NL,structural,PASS,WARN Market mismatch
+11.3 test-Zenith,11.3 test-Zenith,Website URL,unilever.nl for UK entity,structural,PASS,FAIL Incorrect domain
+11.3 test-Zenith,11.3 test-Zenith,Social Media,Global LinkedIn for UK entity,structural,PASS,WARN Acceptable but ambiguous
+11.3 test-Zenith,11.3 test-Zenith,CEO Name,Global CEO used for regional entity,structural,PASS,WARN Needs validation
+11.3 test-Zenith,11.3 test-Zenith,Financials,UK entity uses global revenue,structural,PASS,FAIL Financial contamination
+11.3 test-Zenith,11.3 test-Zenith,Market Share,UK entity uses global share,structural,PASS,FAIL Incorrect metric
+11.3 test-Zenith,11.3 test-Zenith,Funding,NL funding used for UK,structural,PASS,FAIL Wrong attribution
+11.3 test-Zenith,11.3 test-Zenith,ALL_FIELDS,Unilever UK vs Unilever Netherlands stored separately,structural,PASS,PASS Distinct regional entities
+10.3 test-Zenith,10.3 test-Zenith,Key Competitors,"Competitors = ""Yahoo, Nokia"" (missing Google, Apple)",structural,PASS,FAIL Outdated competitors; violates market relevance
+10.3 test-Zenith,10.3 test-Zenith,Key Competitors,"Competitors include ""Nokia (leader)""",structural,PASS,FAIL Leadership outdated
+10.3 test-Zenith,10.3 test-Zenith,Market Share (%),Blockbuster = 70% after Netflix rise,percentage,PASS,FAIL Invalid temporal data
+10.3 test-Zenith,10.3 test-Zenith,Market Share (%),Nokia retains high share post smartphone era,percentage,PASS,FAIL Outdated metric
+10.3 test-Zenith,10.3 test-Zenith,Annual Revenues,Revenue increasing despite industry collapse,positive,PASS,WARN Needs validation
+10.3 test-Zenith,10.3 test-Zenith,Year-over-Year Growth Rate,Growth = +30% in declining sector,structural,PASS,FAIL Temporal inconsistency
+10.3 test-Zenith,10.3 test-Zenith,Recent News,"No mention of ""AI disruption""",structural,PASS,FAIL Missing critical updates
+10.3 test-Zenith,10.3 test-Zenith,Recent News,News from 2018 only,structural,PASS,FAIL Violates recency rule
+10.3 test-Zenith,10.3 test-Zenith,Focus Sectors / Industries,"Company still marked ""DVD rental""",structural,PASS,FAIL Industry shift ignored
+10.3 test-Zenith,10.3 test-Zenith,Services / Offerings / Products,"Missing ""Streaming"" for Netflix",structural,PASS,FAIL Outdated product set
+10.3 test-Zenith,10.3 test-Zenith,Strategic Priorities,Focus on legacy product only,structural,PASS,FAIL Strategic misalignment
+10.3 test-Zenith,10.3 test-Zenith,Future Projections,No impact of competitors included,structural,PASS,WARN Incomplete projection
+10.3 test-Zenith,10.3 test-Zenith,Innovation Roadmap,No AI/automation plans,structural,PASS,WARN Missing innovation response
+10.3 test-Zenith,10.3 test-Zenith,Product Pipeline,Still building obsolete products,structural,PASS,FAIL Irrelevant pipeline
+10.3 test-Zenith,10.3 test-Zenith,Competitive Advantages,"""DVD distribution network""",structural,PASS,FAIL Obsolete advantage
+10.3 test-Zenith,10.3 test-Zenith,Weaknesses,"Missing ""AI disruption risk""",structural,PASS,WARN Incomplete analysis
+10.3 test-Zenith,10.3 test-Zenith,Key Challenges,No mention of startups,structural,PASS,FAIL Missing risks
+10.3 test-Zenith,10.3 test-Zenith,Benchmark vs Peers,Compared only with legacy players,structural,PASS,FAIL Invalid comparison set
+10.3 test-Zenith,10.3 test-Zenith,Technology Adoption,No cloud/AI adoption mentioned,structural,PASS,FAIL Lagging indicator
+10.3 test-Zenith,10.3 test-Zenith,Sales Motion,Only offline sales in digital market,structural,PASS,FAIL GTM misalignment
+10.3 test-Zenith,10.3 test-Zenith,Customer Acquisition Cost,CAC unchanged despite competition,structural,PASS,WARN Needs recalculation
+10.3 test-Zenith,10.3 test-Zenith,Customer Lifetime Value,CLV remains high despite churn,structural,PASS,FAIL Invalid assumption
+10.3 test-Zenith,10.3 test-Zenith,Churn Rate,Low churn despite strong competitors,percentage,PASS,FAIL Unrealistic metric
+10.3 test-Zenith,10.3 test-Zenith,Net Promoter Score (NPS),NPS = 90 in disrupted market,range,PASS,WARN Needs validation
+10.3 test-Zenith,10.3 test-Zenith,Brand Sentiment Score,"Still ""Positive"" after controversy",structural,PASS,FAIL Sentiment outdated
+10.3 test-Zenith,10.3 test-Zenith,Company Valuation,High valuation despite decline,positive,PASS,FAIL Financial inconsistency
+10.3 test-Zenith,10.3 test-Zenith,Total Addressable Market (TAM),TAM same despite expansion,positive,PASS,WARN Needs update
+10.3 test-Zenith,10.3 test-Zenith,Serviceable Market (SAM),No new segment inclusion,structural,PASS,FAIL Market scope outdated
+10.3 test-Zenith,10.3 test-Zenith,SOM,High capture despite saturation,structural,PASS,FAIL Overestimation
+10.3 test-Zenith,10.3 test-Zenith,ALL_SELECTED_FIELDS,"Updated competitors, services, metrics",structural,PASS,PASS Temporal validity maintained
+10.4 test-Zenith,10.4 test-Zenith,Regulatory & Compliance Status,"Compliance = ""ISO27001 only""",structural,PASS,FAIL Missing GDPR compliance
+10.4 test-Zenith,10.4 test-Zenith,Regulatory & Compliance Status,SOC1 listed instead of SOC2,structural,PASS,FAIL Obsolete certification
+10.4 test-Zenith,10.4 test-Zenith,Regulatory & Compliance Status,Missing HIPAA for healthcare company,structural,PASS,FAIL Incomplete compliance
+10.4 test-Zenith,10.4 test-Zenith,Legal Issues / Controversies,GDPR fine not recorded,structural,PASS,FAIL Missing legal risk
+10.4 test-Zenith,10.4 test-Zenith,Legal Issues / Controversies,Case resolved but still listed ongoing,structural,PASS,WARN Needs update
+10.4 test-Zenith,10.4 test-Zenith,Data Source,Still using outdated internal source,structural,PASS,WARN Source reliability issue
+10.4 test-Zenith,10.4 test-Zenith,Validation Mode,Manual validation for GDPR-sensitive data,structural,PASS,FAIL Should be automated/compliant
+10.4 test-Zenith,10.4 test-Zenith,Business Rules,No data privacy rule defined,structural,PASS,FAIL Missing rule enforcement
+10.4 test-Zenith,10.4 test-Zenith,Data Rules,No encryption requirement enforced,structural,PASS,FAIL Security gap
+10.4 test-Zenith,10.4 test-Zenith,Company Contact Email,Storing personal emails without consent,structural,PASS,FAIL GDPR violation
+10.4 test-Zenith,10.4 test-Zenith,Primary Contact Email,Gmail used in B2B system,structural,PASS,WARN Needs compliance check
+10.4 test-Zenith,10.4 test-Zenith,Website URL,No privacy policy / cookie consent,structural,PASS,FAIL Regulatory non-compliance
+10.4 test-Zenith,10.4 test-Zenith,Cybersecurity Posture,No SOC2 after mandate,structural,PASS,FAIL Compliance gap
+10.4 test-Zenith,10.4 test-Zenith,Cybersecurity Posture,Old ISO version listed,structural,PASS,WARN Needs upgrade
+10.4 test-Zenith,10.4 test-Zenith,ESG Practices,No GRI/SASB reference,structural,PASS,WARN Incomplete reporting
+10.4 test-Zenith,10.4 test-Zenith,Ethical Sourcing Practices,"Missing ""Conflict-free"" sourcing",structural,PASS,FAIL Regulatory gap
+10.4 test-Zenith,10.4 test-Zenith,Carbon Footprint,No Scope 3 emissions,structural,PASS,FAIL ESG non-compliance
+10.4 test-Zenith,10.4 test-Zenith,Risk Factors,No mention of new laws,structural,PASS,FAIL Missing risk
+10.4 test-Zenith,10.4 test-Zenith,Recent News,No mention of new compliance laws,structural,PASS,FAIL Missing update
+10.4 test-Zenith,10.4 test-Zenith,Strategic Priorities,No compliance initiatives,structural,PASS,WARN Strategic gap
+10.4 test-Zenith,10.4 test-Zenith,Operations,Old processes still active,structural,PASS,FAIL Operational non-compliance
+10.4 test-Zenith,10.4 test-Zenith,Data Handling Fields,Personal data stored without encryption,structural,PASS,FAIL Security violation
+10.4 test-Zenith,10.4 test-Zenith,Customer Data Fields,No opt-in flag,structural,PASS,FAIL GDPR violation
+10.4 test-Zenith,10.4 test-Zenith,Audit Trail Fields,Missing logs,structural,PASS,FAIL Regulatory requirement missing
+10.4 test-Zenith,10.4 test-Zenith,Certification Fields,Expired ISO certificate,structural,PASS,FAIL Invalid certification
+10.4 test-Zenith,10.4 test-Zenith,Industry Classification,FinTech without RBI compliance,structural,PASS,FAIL Sector violation
+10.4 test-Zenith,10.4 test-Zenith,Company Policies,Old privacy policy,structural,PASS,FAIL Outdated governance
+10.4 test-Zenith,10.4 test-Zenith,Validation Mode,No strict validation for PII,structural,PASS,FAIL Compliance failure
+10.4 test-Zenith,10.4 test-Zenith,Data Source,Unverified third-party source,structural,PASS,WARN Data risk
+10.4 test-Zenith,10.4 test-Zenith,ALL_SELECTED_FIELDS,GDPR + SOC2 + updated rules applied,structural,PASS,PASS Full compliance maintained
+10.5 test-zenith,10.5 test-zenith,ALL_FIELDS,"Recent News: ""2025-02-10 - Massive Layoffs"" Layoff History: NULL Brand Sentiment Score: Positive",structural,PASS,FAIL crisis not propagated to Layoff History and sentiment inconsistent
+10.5 test-zenith,10.5 test-zenith,ALL_FIELDS,"Recent News: ""2024-11-01 - Data Breach Incident"" Cybersecurity Posture: ""Strong, No Issues""",structural,PASS,FAIL contradiction between breach and posture
+10.5 test-zenith,10.5 test-zenith,ALL_FIELDS,"Recent News: ""2020-01-01 - Minor Issue""",structural,PASS,WARNING event outside validation window; excluded from crisis checks
+10.5 test-zenith,10.5 test-zenith,ALL_FIELDS,"Recent News: ""2025-01-01 - Major Customer Loss"" Churn Rate: 2%",structural,PASS,WARNING potential mismatch; requires threshold-based validation
+10.5 test-zenith,10.5 test-zenith,ALL_FIELDS,"Recent News: ""2025-03-01 - Legal Case Filed"" Legal Issues: ""N/A""",structural,PASS,FAIL missing legal disclosure for known event
+10.5 test-zenith,10.5 test-zenith,ALL_FIELDS,"Recent News: ""2025-02-01 - Public Controversy"" Brand Sentiment Score: 95",structural,PASS,FAIL sentiment inconsistent with crisis severity
+10.5 test-zenith,10.5 test-zenith,ALL_FIELDS,"Recent News: ""Layoffs announced"" Overview: ""Fastest growing, stable workforce company""",structural,PASS,FAIL narrative contradicts crisis event
+10.5 test-zenith,10.5 test-zenith,ALL_FIELDS,"Recent News: ""Funding failure"" Runway: 36 months",structural,PASS,FAIL financial metrics inconsistent with crisis event
+10.5 test-zenith,10.5 test-zenith,ALL_FIELDS,"Recent News: ""Layoff, breach, controversy events present"" Risk Fields: NULL",structural,PASS,FAIL missing classification mapping across risk fields
+11.1 test-zenith,11.1 test-zenith,ALL_FIELDS,"Company Name: ""Delta"" Website URL: ""https://www.delta.com"" Focus Sectors: ""Airlines"" Company Headquarters: ""Atlanta, USA""",structural,PASS,PASS resolved to Delta Air Lines (high confidence match)
+11.1 test-zenith,11.1 test-zenith,ALL_FIELDS,"Company Name: ""Delta"" Website URL: ""https://www.deltafaucet.com"" Focus Sectors: ""Airlines""",structural,PASS,FAIL conflicting entity signals (faucet vs airline)
+11.1 test-zenith,11.1 test-zenith,ALL_FIELDS,"Company Name: ""Target"" Focus Sectors: """" Website URL: """"",structural,PASS,WARNING insufficient attributes; entity resolution confidence below threshold
+11.1 test-zenith,11.1 test-zenith,ALL_FIELDS,"Company Name: ""Target"" Website URL: ""https://www.target.com"" Focus Sectors: ""Retail""",structural,PASS,PASS domain and industry aligned (Target Corporation)
+11.1 test-zenith,11.1 test-zenith,ALL_FIELDS,"Company Name: ""Target"" Website URL: ""https://www.targetagency.com"" Focus Sectors: ""Retail""",structural,PASS,FAIL domain indicates different entity (agency vs retail)
+11.1 test-zenith,11.1 test-zenith,ALL_FIELDS,"Company Name: ""Apple"" Company Headquarters: ""Cupertino, USA"" Focus Sectors: ""Consumer Electronics"" Key Competitors: ""Samsung, Google""",structural,PASS,PASS resolved to Apple Inc (composite match confidence threshold)
+11.2test-Zenith,11.2test-Zenith,Company Name,Google vs Alphabet,structural,PASS,FAIL Incorrect entity mapping
+11.2test-Zenith,11.2test-Zenith,Short Name,Instagram Meta,structural,PASS,FAIL Alias ambiguity
+11.2test-Zenith,11.2test-Zenith,Logo,YouTube logo Google logo,structural,PASS,FAIL Wrong entity association
+11.2test-Zenith,11.2test-Zenith,Category,YouTube Conglomerate,structural,PASS,FAIL Misclassification
+11.2test-Zenith,11.2test-Zenith,Year of Incorporation,Instagram 2004,temporal,PASS,FAIL Incorrect historical data
+11.2test-Zenith,11.2test-Zenith,Overview of the Company,Instagram described as Meta,structural,PASS,FAIL Entity confusion
+11.2test-Zenith,11.2test-Zenith,Nature of Company,Subsidiary marked Public incorrectly,structural,PASS,FAIL Wrong classification
+11.2test-Zenith,11.2test-Zenith,Company Headquarters,YouTube Mountain View (Google HQ),structural,PASS,WARN Needs validation
+11.2test-Zenith,11.2test-Zenith,Countries Operating In,Instagram All Meta countries,structural,PASS,FAIL Data contamination
+11.2test-Zenith,11.2test-Zenith,Number of Offices,Google offices used for YouTube,structural,PASS,FAIL Incorrect aggregation
+11.2test-Zenith,11.2test-Zenith,Office Locations,Google + YouTube combined,structural,PASS,FAIL Data merge issue
+11.2test-Zenith,11.2test-Zenith,Employee Size,Alphabet size used for Google,positive,PASS,FAIL Misrepresentation
+11.2test-Zenith,11.2test-Zenith,Hiring Velocity,Meta hiring used for Instagram,structural,PASS,WARN Needs validation
+11.2test-Zenith,11.2test-Zenith,Employee Turnover,Instagram uses Meta turnover,percentage,PASS,FAIL Incorrect metric
+11.2test-Zenith,11.2test-Zenith,Average Retention Tenure,Parent tenure applied,structural,PASS,FAIL Logical mismatch
+11.2test-Zenith,11.2test-Zenith,Pain Points,Google Ads issues for YouTube,structural,PASS,FAIL Domain mismatch
+11.2test-Zenith,11.2test-Zenith,Focus Sectors,Meta sectors for Instagram,structural,PASS,FAIL Taxonomy mismatch
+11.2test-Zenith,11.2test-Zenith,Services,Google Cloud for YouTube,structural,PASS,FAIL Incorrect mapping
+11.2test-Zenith,11.2test-Zenith,Top Customers,Meta advertisers listed for Instagram,structural,PASS,WARN Misalignment
+11.2test-Zenith,11.2test-Zenith,Core Value Proposition,Meta-level VP for Instagram,structural,PASS,FAIL Semantic mismatch
+11.2test-Zenith,11.2test-Zenith,Vision,Meta vision used for Instagram,structural,PASS,WARN Needs validation
+11.2test-Zenith,11.2test-Zenith,Mission,Parent mission applied,structural,PASS,FAIL Contradiction
+11.2test-Zenith,11.2test-Zenith,Values,Meta values used for subsidiary,structural,PASS,WARN Misalignment
+11.2test-Zenith,11.2test-Zenith,Unique Differentiators,Google AI listed for YouTube,structural,PASS,FAIL Incorrect attribution
+11.2test-Zenith,11.2test-Zenith,Competitive Advantages,Alphabet moat used,structural,PASS,FAIL Misrepresentation
+11.2test-Zenith,11.2test-Zenith,Weaknesses,Meta issues for Instagram,structural,PASS,WARN Needs separation
+11.2test-Zenith,11.2test-Zenith,Key Challenges,Parent-level risks applied,structural,PASS,FAIL Incorrect context
+11.2test-Zenith,11.2test-Zenith,Key Competitors,Amazon listed for Instagram,structural,PASS,WARN Misaligned competition
+11.2test-Zenith,11.2test-Zenith,Technology Partners,Google partners for YouTube,structural,PASS,FAIL Wrong association
+11.2test-Zenith,11.2test-Zenith,Interesting Facts,Alphabet facts for Google,structural,PASS,FAIL Incorrect attribution
+11.4 test-Zenith,11.4 test-Zenith,Company Name,IBM vs International Business Machines,structural,PASS,FAIL Same entity duplicated
+11.4 test-Zenith,11.4 test-Zenith,Company Name,"Company stored as ""IBM"" only",structural,PASS,WARN Missing canonical name
+11.4 test-Zenith,11.4 test-Zenith,Short Name,Short Name = International Business Machines,structural,PASS,FAIL Alias not optimized
+11.4 test-Zenith,11.4 test-Zenith,Short Name,"3M ""Mining Corp""",structural,PASS,FAIL Incorrect abbreviation mapping
+11.4 test-Zenith,11.4 test-Zenith,Logo,IBM logo linked to another company,structural,PASS,FAIL Entity mismatch
+11.4 test-Zenith,11.4 test-Zenith,Category,"IBM = Tech, Full name = Manufacturing",structural,PASS,FAIL Inconsistent classification
+11.4 test-Zenith,11.4 test-Zenith,Overview of Company,Description mismatch,structural,PASS,WARN Naming inconsistency
+11.4 test-Zenith,11.4 test-Zenith,Website URL,ibm.com linked to wrong record,structural,PASS,FAIL Incorrect association
+11.4 test-Zenith,11.4 test-Zenith,CEO Name,IBM CEO Full name CEO,structural,PASS,FAIL Duplicate entity issue
+11.4 test-Zenith,11.4 test-Zenith,Headquarters,IBM vs full name mismatch,structural,PASS,FAIL Data inconsistency
+11.4 test-Zenith,11.4 test-Zenith,Countries Operating In,IBM global vs full name partial,structural,PASS,FAIL Fragmented data
+11.4 test-Zenith,11.4 test-Zenith,Employee Size,"IBM = 200K, Full name = 50K",positive,PASS,FAIL Duplicate mismatch
+11.4 test-Zenith,11.4 test-Zenith,Services,"Cloud under IBM, AI under full name",structural,PASS,FAIL Data fragmentation
+11.4 test-Zenith,11.4 test-Zenith,Focus Sectors,Tech vs Industrial,structural,PASS,FAIL Misclassification
+11.4 test-Zenith,11.4 test-Zenith,Key Competitors,IBM competitors full name competitors,structural,PASS,WARN Inconsistent mapping
+11.4 test-Zenith,11.4 test-Zenith,Financials,IBM revenue separate from full name,structural,PASS,FAIL Financial duplication
+11.4 test-Zenith,11.4 test-Zenith,Market Share,Split metrics,structural,PASS,FAIL Incorrect aggregation
+11.4 test-Zenith,11.4 test-Zenith,Funding,Full name vs acronym mismatch,structural,PASS,FAIL Attribution error
+11.4 test-Zenith,11.4 test-Zenith,Recent News,IBM news not linked to full name,structural,PASS,WARN Partial coverage
+11.4 test-Zenith,11.4 test-Zenith,Brand Sentiment,"IBM positive, full name neutral",structural,PASS,FAIL Inconsistent sentiment
+11.4 test-Zenith,11.4 test-Zenith,Social Media,@IBM not mapped to full name,structural,PASS,WARN Missing linkage
+11.4 test-Zenith,11.4 test-Zenith,Legal Issues,Case under full name only,structural,PASS,FAIL Incomplete risk data
+11.4 test-Zenith,11.4 test-Zenith,Compliance Status,"IBM compliant, full name missing",structural,PASS,FAIL Duplicate inconsistency
+11.4 test-Zenith,11.4 test-Zenith,Strategic Priorities,Conflicting strategies,structural,PASS,FAIL Entity inconsistency
+11.4 test-Zenith,11.4 test-Zenith,Innovation,"AI under one, R&D under another",structural,PASS,FAIL Fragmentation
+11.4 test-Zenith,11.4 test-Zenith,Customer Data,Missing linkage,structural,PASS,WARN Partial mapping
+11.4 test-Zenith,11.4 test-Zenith,Revenue Mix,Split ratios,ratio_100,PASS,FAIL Incorrect aggregation
+11.4 test-Zenith,11.4 test-Zenith,CAC/LTV,Different ratios,structural,PASS,FAIL Inconsistent metrics
+11.4 test-Zenith,11.4 test-Zenith,Brand Value,IBM full name score,structural,PASS,FAIL Duplicate scoring
+11.4 test-Zenith,11.4 test-Zenith,ALL_FIELDS,IBM = International Business Machines,structural,PASS,PASS Unified entity mapping
+11.5 test-Zenith,11.5 test-Zenith,Company Name,"""Meta"" instead of ""Meta Platforms, Inc.""",structural,PASS,FAIL Must match official registration documents
+11.5 test-Zenith,11.5 test-Zenith,Company Name,"""Meta Platforms, Inc."" and ""Meta"" as two records",structural,PASS,FAIL Duplicate entity; requires canonical mapping
+11.5 test-Zenith,11.5 test-Zenith,Short Name,"Company = ""Meta Platforms, Inc.""; Short Name = same",structural,PASS,FAIL Must be distinct alias (data_rules)
+11.5 test-Zenith,11.5 test-Zenith,Short Name,"Company = ""Meta Platforms, Inc.""; Short Name = ""Meta""",structural,PASS,"PASS Valid alias, distinct from legal name"
+11.5 test-Zenith,11.5 test-Zenith,Company Name,"""Meta Platforms"" (missing "", Inc."")",structural,PASS,FAIL Incomplete legal name
+11.5 test-Zenith,11.5 test-Zenith,Company Name,"""X Corp Ltd"" instead of ""X Corp""",structural,PASS,FAIL Incorrect legal designation
+11.5 test-Zenith,11.5 test-Zenith,Website URL,"twitter.com mapped only to ""Twitter"" not ""X Corp""",structural,PASS,FAIL Missing linkage to legal entity
+11.5 test-Zenith,11.5 test-Zenith,Website URL,"x.com linked to ""X Corp""",structural,PASS,PASS Valid entity-domain mapping
+11.5 test-Zenith,11.5 test-Zenith,Logo,Twitter logo not mapped to X Corp,structural,PASS,WARN Needs entity linkage
+11.5 test-Zenith,11.5 test-Zenith,CEO Name,"CEO under ""Twitter"" but not ""X Corp""",structural,PASS,FAIL Entity inconsistency
+11.5 test-Zenith,11.5 test-Zenith,Company Headquarters,Different HQ for Meta vs Meta Platforms,structural,PASS,FAIL Duplicate entity issue
+11.5 test-Zenith,11.5 test-Zenith,Nature of Company,"Meta = Private, Meta Platforms = Public",structural,PASS,FAIL Legal inconsistency
+11.5 test-Zenith,11.5 test-Zenith,Regulatory & Compliance Status,"GDPR listed for ""Meta"" but not legal entity",structural,PASS,FAIL Compliance gap
+11.5 test-Zenith,11.5 test-Zenith,Legal Issues / Controversies,"Case recorded under ""Twitter"" not ""X Corp""",structural,PASS,FAIL Incorrect attribution
+11.5 test-Zenith,11.5 test-Zenith,Key Competitors,Meta vs Meta Platforms competitors differ,structural,PASS,WARN Inconsistent mapping
+11.5 test-Zenith,11.5 test-Zenith,Financials (Revenue/Profits),Revenue split between Meta and Meta Platforms,structural,PASS,FAIL Financial duplication
+11.5 test-Zenith,11.5 test-Zenith,Market Share (%),Separate metrics for same company,percentage,PASS,FAIL Incorrect aggregation
+11.5 test-Zenith,11.5 test-Zenith,Brand Sentiment Score,Meta sentiment missing under legal entity,structural,PASS,WARN Partial mapping
+11.5 test-Zenith,11.5 test-Zenith,Social Media URLs,@twitter not mapped to X Corp,structural,PASS,WARN Missing linkage
+11.5 test-Zenith,11.5 test-Zenith,Recent News,News under Twitter not X Corp,structural,PASS,FAIL Incomplete entity coverage
+11.5 test-Zenith,11.5 test-Zenith,Strategic Priorities,Conflicting strategies for same entity,structural,PASS,FAIL Entity mismatch
+11.5 test-Zenith,11.5 test-Zenith,Services / Offerings,"Ads under Meta, VR under Meta Platforms",structural,PASS,FAIL Fragmented data
+11.5 test-Zenith,11.5 test-Zenith,Focus Sectors / Industries,Meta vs Meta Platforms mismatch,structural,PASS,FAIL Taxonomy inconsistency
+11.5 test-Zenith,11.5 test-Zenith,Data Source,"Source: ""Twitter"" instead of ""X Corp""",structural,PASS,WARN Source ambiguity
+11.5 test-Zenith,11.5 test-Zenith,Validation Mode,"Manual for one, automated for other",structural,PASS,FAIL Inconsistent validation
+11.5 test-Zenith,11.5 test-Zenith,Business Rules,Rules applied only to common name,structural,PASS,FAIL Rule inconsistency
+11.5 test-Zenith,11.5 test-Zenith,Data Rules,Duplicate records exist,structural,PASS,FAIL Violates uniqueness
+11.5 test-Zenith,11.5 test-Zenith,Company Name,Twitter still stored after rename to X Corp,structural,PASS,FAIL Outdated legal identity
+11.5 test-Zenith,11.5 test-Zenith,Company Name,"Only ""Meta"" stored",structural,PASS,WARN Legal name missing
+11.5 test-Zenith,11.5 test-Zenith,ALL_SELECTED_FIELDS,"Meta Platforms, Inc. Meta; X Corp Twitter",structural,PASS,PASS Unified entity mapping
+5.1 test - Silent Tech,5.1 test - Silent Tech,CAC:LTV Ratio,"CAC = 100, CLV = 300, Ratio = 3:1",ratio_format,PASS,Pass: 300/100 = 3 matches ratio
+5.1 test - Silent Tech,5.1 test - Silent Tech,CAC:LTV Ratio,"CAC = 100, CLV = 300, Ratio = 2:1",ratio_format,PASS,Fail: Expected 3:1
+5.1 test - Silent Tech,5.1 test - Silent Tech,CAC:LTV Ratio,"CAC = 200, CLV = 600, Ratio = 3.0",ratio_format,PASS,Pass: 600/200 = 3.0
+5.1 test - Silent Tech,5.1 test - Silent Tech,CAC:LTV Ratio,"CAC = 200, CLV = 600, Ratio = ""three""",ratio_format,PASS,Fail: Violates regex ^\d+(.\d+)?(:\d+)?$
+5.1 test - Silent Tech,5.1 test - Silent Tech,Customer Lifetime Value (CLV),"CAC = 100, CLV = 300",positive,PASS,Pass: CLV > CAC
+5.1 test - Silent Tech,5.1 test - Silent Tech,Customer Lifetime Value (CLV),"CAC = 200, CLV = 150",positive,PASS,Fail: Violates business rule
+5.1 test - Silent Tech,5.1 test - Silent Tech,Burn Multiplier,"Burn Rate = 50000, ARR = 100000, Multiplier = 0.5",positive,PASS,Pass: 50000/100000 = 0.5
+5.1 test - Silent Tech,5.1 test - Silent Tech,Burn Multiplier,"Burn Rate = 50000, ARR = 100000, Multiplier = 1.5",positive,PASS,Fail: Expected 0.5
+5.1 test - Silent Tech,5.1 test - Silent Tech,Burn Multiplier,Multiplier = 0.8,positive,PASS,Pass: Efficient
+5.1 test - Silent Tech,5.1 test - Silent Tech,Burn Multiplier,Multiplier = 2.5,positive,PASS,Fail: >1 indicates inefficiency
+5.1 test - Silent Tech,5.1 test - Silent Tech,Runway,"Capital = 600000, Burn Rate = 100000, Runway = 6",positive,PASS,Pass: 600000/100000 = 6
+5.1 test - Silent Tech,5.1 test - Silent Tech,Runway,"Capital = 600000, Burn Rate = 100000, Runway = 10",positive,PASS,Fail: Expected 6
+5.1 test - Silent Tech,5.1 test - Silent Tech,Runway,Runway = 4,positive,PASS,Fail: Business rule violation (critical risk)
+5.1 test - Silent Tech,5.1 test - Silent Tech,Total Capital Raised,"Rounds = [100K, 200K], Total = 300K",positive,PASS,Pass
+5.1 test - Silent Tech,5.1 test - Silent Tech,Total Capital Raised,"Rounds = [100K, 200K], Total = 150K",positive,PASS,Fail: Less than max round
+5.1 test - Silent Tech,5.1 test - Silent Tech,Annual Revenues & Burn Rate,"Revenue = 1M, Burn = 500K Multiplier = 0.5",structural,PASS,Pass
+5.1 test - Silent Tech,5.1 test - Silent Tech,Annual Revenues & Burn Rate,"Revenue = 1M, Burn = 2M Multiplier = 2",structural,PASS,Fail: Inefficient burn
+5.4 test -Silent Tech,5.4 test -Silent Tech,Company Name,Infosys Ltd.,structural,PASS,"Pass (matches regex, no emojis, valid chars)"
+5.4 test -Silent Tech,5.4 test -Silent Tech,Company Name,Infosys,structural,PASS,Fail (emoji not allowed per regex/business rule)
+5.4 test -Silent Tech,5.4 test -Silent Tech,Short Name,TCS,structural,PASS,"Pass (<=100 chars, valid regex)"
+5.4 test -Silent Tech,5.4 test -Silent Tech,Logo,https://logo.com/img.png,structural,PASS,Pass (valid URL + image extension)
+5.4 test -Silent Tech,5.4 test -Silent Tech,Logo,https://logo.com/file.pdf,structural,PASS,Fail (invalid extension)
+5.4 test -Silent Tech,5.4 test -Silent Tech,Category,Startup,structural,PASS,Pass (in allowed enum list)
+5.4 test -Silent Tech,5.4 test -Silent Tech,Category,Tech Startup,structural,PASS,Fail (not exact enum match)
+5.4 test -Silent Tech,5.4 test -Silent Tech,Year of Incorporation,2015,temporal,PASS,Pass (4-digit valid year)
+5.4 test -Silent Tech,5.4 test -Silent Tech,Year of Incorporation,15,temporal,PASS,Fail (not 4-digit)
+5.4 test -Silent Tech,5.4 test -Silent Tech,Company Headquarters,"Bangalore, India",structural,PASS,Pass (matches regex)
+5.4 test -Silent Tech,5.4 test -Silent Tech,Countries Operating In,"India, USA, Germany",structural,PASS,Pass
+5.4 test -Silent Tech,5.4 test -Silent Tech,Employee Size,100-500,positive,PASS,Pass
+5.4 test -Silent Tech,5.4 test -Silent Tech,Employee Size,200,positive,PASS,Pass
+5.4 test -Silent Tech,5.4 test -Silent Tech,Employee Turnover,0.155,percentage,PASS,Pass
+5.4 test -Silent Tech,5.4 test -Silent Tech,Employee Turnover,1.5,percentage,PASS,Fail (violates business rule >100%)
+5.4 test -Silent Tech,5.4 test -Silent Tech,Average Retention Tenure,2.5 Years,structural,PASS,Pass
+5.4 test -Silent Tech,5.4 test -Silent Tech,Website URL,https://example.com,structural,PASS,Pass
+5.4 test -Silent Tech,5.4 test -Silent Tech,Website URL,htp://example,structural,PASS,Fail
+5.4 test -Silent Tech,5.4 test -Silent Tech,Website Rating,8.5,rating_10,PASS,Pass
+5.4 test -Silent Tech,5.4 test -Silent Tech,Website Rating,11,rating_10,PASS,Fail (>10)
+5.4 test -Silent Tech,5.4 test -Silent Tech,LinkedIn Profile URL,https://linkedin.com/company/openai,structural,PASS,Pass
+5.4 test -Silent Tech,5.4 test -Silent Tech,Twitter Handle,@openai,structural,PASS,Pass
+5.4 test -Silent Tech,5.4 test -Silent Tech,Twitter Handle,@openai!!!,structural,PASS,Fail
+5.4 test -Silent Tech,5.4 test -Silent Tech,Company Contact Email,info@company.com,structural,PASS,Pass
+5.4 test -Silent Tech,5.4 test -Silent Tech,Company Contact Email,info@company,structural,PASS,Fail
+5.4 test -Silent Tech,5.4 test -Silent Tech,Company Phone Number,919877000000,structural,PASS,Pass
+5.4 test -Silent Tech,5.4 test -Silent Tech,Company Phone Number,9876543210,structural,PASS,Fail (missing country code)
+5.4 test -Silent Tech,5.4 test -Silent Tech,Annual Revenues,1000000,positive,PASS,Pass
+5.4 test -Silent Tech,5.4 test -Silent Tech,Annual Revenues,1000000,positive,PASS,Fail (missing currency format rule)
+5.4 test -Silent Tech,5.4 test -Silent Tech,YoY Growth Rate,0.25,structural,PASS,Pass
+5.4 test -Silent Tech,5.4 test -Silent Tech,Profitability Status,Profitable,structural,PASS,Pass
+5.4 test -Silent Tech,5.4 test -Silent Tech,Profitability Status,Growing,structural,PASS,Fail
+5.2 test -Silent Tech,5.2 test -Silent Tech,Year of Incorporation,2030,temporal,FAIL,"Fail violates ""Cannot be future"" rule"
+5.2 test -Silent Tech,5.2 test -Silent Tech,Year of Incorporation,1500,temporal,PASS,Fail violates lower bound
+5.2 test -Silent Tech,5.2 test -Silent Tech,Year of Incorporation,2015,temporal,PASS,Pass
+5.2 test -Silent Tech,5.2 test -Silent Tech,Employee Size,"""100-50""",positive,PASS,Fail invalid range log5.2
+5.2 test -Silent Tech,5.2 test -Silent Tech,Employee Size,"""11-50""",positive,PASS,Pass
+5.2 test -Silent Tech,5.2 test -Silent Tech,Employee Turnover,1.5,percentage,PASS,Fail exceeds limit
+5.2 test -Silent Tech,5.2 test -Silent Tech,Employee Turnover,0.15,percentage,PASS,Pass
+5.2 test -Silent Tech,5.2 test -Silent Tech,Average Retention Tenure,"""2.5""",structural,PASS,Fail missing unit
+5.2 test -Silent Tech,5.2 test -Silent Tech,Average Retention Tenure,"""2.5 Years""",structural,PASS,Pass
+5.2 test -Silent Tech,5.2 test -Silent Tech,Number of Off5.2es,-5,structural,PASS,Fail
+5.2 test -Silent Tech,5.2 test -Silent Tech,Number of Off5.2es,3,structural,PASS,Pass
+5.2 test -Silent Tech,5.2 test -Silent Tech,Category,"""Startup""",structural,PASS,Pass
+5.2 test -Silent Tech,5.2 test -Silent Tech,Category,"""BigCompany""",structural,PASS,Fail
+5.2 test -Silent Tech,5.2 test -Silent Tech,Nature of Company,"""Private""",structural,PASS,Pass
+5.2 test -Silent Tech,5.2 test -Silent Tech,Nature of Company,"""HybridCorp""",structural,PASS,Fail
+5.2 test -Silent Tech,5.2 test -Silent Tech,Website URL,"""http//abc.com""",structural,PASS,Fail
+5.2 test -Silent Tech,5.2 test -Silent Tech,Website URL,"""https://example.com""",structural,PASS,Pass
+5.2 test -Silent Tech,5.2 test -Silent Tech,Company Name,"""ABC Ltd""",structural,PASS,Fail
+5.2 test -Silent Tech,5.2 test -Silent Tech,Company Name,"""ABC Pvt Ltd""",structural,PASS,Pass
+5.2 test -Silent Tech,5.2 test -Silent Tech,Annual Revenues,-500000,positive,PASS,Fail
+5.2 test -Silent Tech,5.2 test -Silent Tech,Annual Revenues,"""$1,000,000""",positive,PASS,Pass
+5.2 test -Silent Tech,5.2 test -Silent Tech,Profitability Status,"""Profitable""",structural,PASS,Pass
+5.2 test -Silent Tech,5.2 test -Silent Tech,Profitability Status,"""Growing""",structural,PASS,Fail
+5.2 test -Silent Tech,5.2 test -Silent Tech,CAC:LTV Ratio,"""abc""",ratio_format,PASS,Fail
+5.2 test -Silent Tech,5.2 test -Silent Tech,CAC:LTV Ratio,"""3:1""",ratio_format,PASS,Pass
+5.2 test -Silent Tech,5.2 test -Silent Tech,Churn Rate,1.2,percentage,PASS,Fail
+5.2 test -Silent Tech,5.2 test -Silent Tech,Churn Rate,0.05,percentage,PASS,Pass
+5.2 test -Silent Tech,5.2 test -Silent Tech,NPS,150,structural,PASS,Fail
+5.2 test -Silent Tech,5.2 test -Silent Tech,NPS,45,structural,PASS,Pass
+7.6-Team Riffle,7.6-Team Riffle,Customer Acquisition Cost (CAC),0,positive,PASS,"Fail violates business rule ""CAC must be > 0"""
+7.6-Team Riffle,7.6-Team Riffle,Customer Lifetime Value (CLV),1000000000000,positive,PASS,Pass with warning flagged as outlier (sanity validation)
+7.6-Team Riffle,7.6-Team Riffle,CAC:LTV Ratio,"CAC = 0, CLV = 10000 Ratio = 0",ratio_format,PASS,Fail invalid ratio; division logic broken / CAC cannot be zero
+7.6-Team Riffle,7.6-Team Riffle,CAC:LTV Ratio,"CAC = 5000, CLV = 3000 Ratio = 0.6",ratio_format,PASS,Fail violates business rule (CLV should be > CAC)
+7.6-Team Riffle,7.6-Team Riffle,CAC:LTV Ratio,"CAC = 1000, CLV = 4000 Ratio = 4",ratio_format,PASS,Pass satisfies business rule (ideal > 3:1)
+7.6-Team Riffle,7.6-Team Riffle,CAC:LTV Ratio,"CAC = 100, CLV = 10000 Ratio = 100",ratio_format,PASS,Pass with warning extreme efficiency outlier
+7.6-Team Riffle,7.6-Team Riffle,Burn Multiplier,"Burn Rate = 1000000, New ARR = 0",positive,PASS,Fail division by zero infinite value not allowed
+7.6-Team Riffle,7.6-Team Riffle,Burn Multiplier,"Burn = 500000, ARR = 1000000 0.5",positive,PASS,Pass efficient (<1)
+7.6-Team Riffle,7.6-Team Riffle,Burn Multiplier,"Burn = 1000000, ARR = 10000 100",positive,PASS,Pass with warning inefficient burn (>5 threshold)
+7.6-Team Riffle,7.6-Team Riffle,Annual Revenues,0,positive,PASS,Fail causes invalid burn multiplier ()
+8.1-Team Riffle,8.1-Team Riffle,Company Name,12345,structural,PASS,"Fail violates VARCHAR(255), must be string per regex"
+8.1-Team Riffle,8.1-Team Riffle,Short Name,True,structural,PASS,Fail must be VARCHAR
+8.1-Team Riffle,8.1-Team Riffle,Logo,12345,structural,PASS,Fail violates URL regex
+8.1-Team Riffle,8.1-Team Riffle,Category,100,structural,PASS,Fail must match predefined enum
+8.1-Team Riffle,8.1-Team Riffle,Year of Incorporation,"""2020""",temporal,PASS,Fail must be INTEGER
+8.1-Team Riffle,8.1-Team Riffle,Overview of the Company,500,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Nature of Company,False,structural,PASS,Fail must be VARCHAR ENUM
+8.1-Team Riffle,8.1-Team Riffle,Company Headquarters,12345,structural,PASS,Fail must be VARCHAR
+8.1-Team Riffle,8.1-Team Riffle,Countries Operating In,"[""India"",""USA""]",structural,PASS,Fail expected comma-separated TEXT
+8.1-Team Riffle,8.1-Team Riffle,Number of Offices,"""10""",structural,PASS,Fail must be INTEGER
+8.1-Team Riffle,8.1-Team Riffle,Office Locations,12345,structural,PASS,Fail must be TEXT or structured JSON
+8.1-Team Riffle,8.1-Team Riffle,Employee Size,True,positive,PASS,Fail must match numeric or range regex
+8.1-Team Riffle,8.1-Team Riffle,Hiring Velocity,500,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Employee Turnover,25,percentage,PASS,"Fail must be string like ""25%"""
+8.1-Team Riffle,8.1-Team Riffle,Average Retention Tenure,3,structural,PASS,Fail must be string with unit (Years/Months)
+8.1-Team Riffle,8.1-Team Riffle,Pain Points Being Addressed,100,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Focus Sectors / Industries,"[""Tech"",""Finance""]",structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Services / Offerings / Products,123,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Top Customers by Client Segments,12345,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Core Value Proposition,True,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Vision,100,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Mission,False,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Values,123,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Unique Differentiators,True,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Competitive Advantages,123,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Weaknesses / Gaps in Offering,456,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Key Challenges and Unmet Needs,False,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Key Competitors,123,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Technology Partners,True,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Interesting Facts,789,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Recent News,123,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Website URL,12345,structural,PASS,Fail violates URL regex
+8.1-Team Riffle,8.1-Team Riffle,Quality of Website,True,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Website Rating,"""8.5""",rating_10,PASS,Fail must be numeric
+8.1-Team Riffle,8.1-Team Riffle,Website Traffic Rank,"""1000""",positive,PASS,Fail must be integer
+8.1-Team Riffle,8.1-Team Riffle,Social Media Followers Combined,"""5000""",positive,PASS,Fail must be integer
+8.1-Team Riffle,8.1-Team Riffle,Glassdoor Rating,"""4.5""",rating_5,PASS,Fail must be numeric
+8.1-Team Riffle,8.1-Team Riffle,Indeed Rating,"""3.8""",rating_5,PASS,Fail must be numeric
+8.1-Team Riffle,8.1-Team Riffle,Google Reviews Rating,"""4.2""",rating_5,PASS,Fail must be numeric
+8.1-Team Riffle,8.1-Team Riffle,LinkedIn Profile URL,123,structural,PASS,Fail invalid type
+8.1-Team Riffle,8.1-Team Riffle,Twitter (X) Handle,123,structural,PASS,Fail must be string
+8.1-Team Riffle,8.1-Team Riffle,Facebook Page URL,999,structural,PASS,Fail must be string URL
+8.1-Team Riffle,8.1-Team Riffle,Instagram Page URL,False,structural,PASS,Fail must be string
+8.1-Team Riffle,8.1-Team Riffle,CEO Name,12345,structural,PASS,Fail must be VARCHAR
+8.1-Team Riffle,8.1-Team Riffle,CEO LinkedIn URL,123,structural,PASS,Fail must match regex
+8.1-Team Riffle,8.1-Team Riffle,Key Business Leaders,"""CEO: John""",structural,PASS,Fail must be JSON
+8.1-Team Riffle,8.1-Team Riffle,Warm Introduction Pathways,123,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Decision Maker Accessibility,123,structural,PASS,Fail must be string
+8.1-Team Riffle,8.1-Team Riffle,Company Contact Email,123,structural,PASS,Fail invalid type
+8.1-Team Riffle,8.1-Team Riffle,Company Phone Number,True,structural,PASS,Fail must be string
+8.1-Team Riffle,8.1-Team Riffle,Primary Contact Person's Name,12345,structural,PASS,Fail must be VARCHAR
+8.1-Team Riffle,8.1-Team Riffle,Primary Contact Person's Title,True,structural,PASS,Fail must be VARCHAR
+8.1-Team Riffle,8.1-Team Riffle,Primary Contact Person's Email,12345,structural,PASS,Fail violates email regex
+8.1-Team Riffle,8.1-Team Riffle,Primary Contact Person's Phone Number,False,structural,PASS,Fail must be string
+8.1-Team Riffle,8.1-Team Riffle,Awards & Recognitions,100,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Brand Sentiment Score,True,structural,PASS,Fail must be VARCHAR
+8.1-Team Riffle,8.1-Team Riffle,Event Participation,123,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Regulatory & Compliance Status,123,structural,PASS,Fail must be VARCHAR
+8.1-Team Riffle,8.1-Team Riffle,Legal Issues / Controversies,456,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Annual Revenues,"""1M""",positive,PASS,Fail must be numeric
+8.1-Team Riffle,8.1-Team Riffle,Annual Profits,"""500K""",positive,PASS,Fail must be numeric
+8.1-Team Riffle,8.1-Team Riffle,Revenue Mix,80,ratio_100,PASS,Fail must be string ratio
+8.1-Team Riffle,8.1-Team Riffle,Company Valuation,"""10B""",positive,PASS,Fail must be numeric
+8.1-Team Riffle,8.1-Team Riffle,Year-over-Year Growth Rate,25,structural,PASS,Fail must be string %
+8.1-Team Riffle,8.1-Team Riffle,Profitability Status,123,structural,PASS,Fail must match enum
+8.1-Team Riffle,8.1-Team Riffle,Market Share (%),30,percentage,PASS,Fail must be string %
+8.1-Team Riffle,8.1-Team Riffle,Key Investors / Backers,123,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Recent Funding Rounds,123,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Total Capital Raised,"""5M""",positive,PASS,Fail must be numeric
+8.1-Team Riffle,8.1-Team Riffle,ESG Practices or Ratings,123,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Sales Motion,123,structural,PASS,Fail must be VARCHAR
+8.1-Team Riffle,8.1-Team Riffle,Customer Acquisition Cost (CAC),"""1000""",positive,PASS,Fail must be numeric
+8.1-Team Riffle,8.1-Team Riffle,Customer Lifetime Value (CLV),"""5000""",positive,PASS,Fail must be numeric
+8.1-Team Riffle,8.1-Team Riffle,CAC:LTV Ratio,True,ratio_format,PASS,Fail must be string/ratio
+8.1-Team Riffle,8.1-Team Riffle,Churn Rate,25,percentage,PASS,Fail must be string %
+8.1-Team Riffle,8.1-Team Riffle,Net Promoter Score (NPS),"""50""",range,PASS,Fail must be integer
+8.1-Team Riffle,8.1-Team Riffle,Customer Concentration Risk,123,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Burn Rate,"""500K""",positive,PASS,Fail must be numeric
+8.1-Team Riffle,8.1-Team Riffle,Runway,"""12""",positive,PASS,Fail must be numeric
+8.1-Team Riffle,8.1-Team Riffle,Burn Multiplier,"""2.5""",positive,PASS,Fail must be numeric
+8.1-Team Riffle,8.1-Team Riffle,Intellectual Property,123,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,R&D Investment,123,positive,PASS,Fail must be VARCHAR
+8.1-Team Riffle,8.1-Team Riffle,AI/ML Adoption Level,123,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Tech Stack/Tools Used,123,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Cybersecurity Posture,True,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Supply Chain Dependencies,123,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Geopolitical Risks,456,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Macro Risks,False,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Diversity Metrics,123,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Remote Work Policy,123,structural,PASS,Fail must be VARCHAR
+8.1-Team Riffle,8.1-Team Riffle,Training/Development Spend,123,positive,PASS,Fail must be VARCHAR
+8.1-Team Riffle,8.1-Team Riffle,Partnership Ecosystem,123,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Exit Strategy/History,True,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Carbon Footprint/Environmental Impact,123,structural,PASS,Fail must be VARCHAR
+8.1-Team Riffle,8.1-Team Riffle,Ethical Sourcing Practices,123,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Benchmark vs. Peers,False,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Future Projections,123,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Strategic Priorities,True,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Industry Associations / Memberships,123,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Case Studies / Public Success Stories,123,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Go-to-Market Strategy,123,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Innovation Roadmap,True,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Product Pipeline,456,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Board of Directors / Advisors,123,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Company Introduction / Marketing videos,123,structural,PASS,Fail must be TEXT with URLs
+8.1-Team Riffle,8.1-Team Riffle,Customer testimonial,True,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Industry Benchmark Technology Adoption Rating,123,rating_10,FAIL,Fail must be VARCHAR
+8.1-Team Riffle,8.1-Team Riffle,Total Addressable Market (TAM),123,positive,PASS,Fail must be VARCHAR
+8.1-Team Riffle,8.1-Team Riffle,Serviceable Addressable Market (SAM),123,positive,PASS,Fail must be VARCHAR
+8.1-Team Riffle,8.1-Team Riffle,Serviceable Obtainable Market (SOM),123,positive,PASS,Fail must be VARCHAR
+8.1-Team Riffle,8.1-Team Riffle,Work culture,123,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Manager quality,False,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Psychological safety,123,structural,PASS,Fail must be VARCHAR
+8.1-Team Riffle,8.1-Team Riffle,Feedback culture,123,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Diversity & inclusion,True,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Ethical standards,123,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Typical working hours,123,structural,PASS,Fail must be VARCHAR
+8.1-Team Riffle,8.1-Team Riffle,Overtime expectations,123,structural,PASS,Fail must be VARCHAR
+8.1-Team Riffle,8.1-Team Riffle,Weekend work,True,structural,PASS,Fail must be VARCHAR
+8.1-Team Riffle,8.1-Team Riffle,Remote / hybrid / on-site flexibility,123,structural,PASS,Fail must be VARCHAR
+8.1-Team Riffle,8.1-Team Riffle,Leave policy,123,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Burnout risk,123,structural,PASS,Fail must be VARCHAR
+8.1-Team Riffle,8.1-Team Riffle,Central vs peripheral location,123,structural,PASS,Fail must be VARCHAR
+8.1-Team Riffle,8.1-Team Riffle,Public transport access,True,structural,PASS,Fail must be VARCHAR
+8.1-Team Riffle,8.1-Team Riffle,Cab availability and company cab policy,123,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Commute time from airport,"""45""",positive,PASS,Fail must be integer
+8.1-Team Riffle,8.1-Team Riffle,Office zone type,123,structural,PASS,Fail must be VARCHAR
+8.1-Team Riffle,8.1-Team Riffle,Area safety,True,structural,PASS,Fail must be VARCHAR
+8.1-Team Riffle,8.1-Team Riffle,Company safety policies,123,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Office infrastructure safety,123,structural,PASS,Fail must be VARCHAR
+8.1-Team Riffle,8.1-Team Riffle,Emergency response preparedness,True,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Health support,123,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Onboarding and training quality,123,structural,PASS,Fail must be VARCHAR
+8.1-Team Riffle,8.1-Team Riffle,Learning culture,False,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Exposure quality,123,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Mentorship availability,123,structural,PASS,Fail must be VARCHAR
+8.1-Team Riffle,8.1-Team Riffle,Internal mobility,True,structural,PASS,Fail must be VARCHAR
+8.1-Team Riffle,8.1-Team Riffle,Promotion clarity,123,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Tools and technology access,123,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Role clarity,123,structural,PASS,Fail must be VARCHAR
+8.1-Team Riffle,8.1-Team Riffle,Early ownership,123,structural,PASS,Fail must be VARCHAR
+8.1-Team Riffle,8.1-Team Riffle,Work impact,123,structural,PASS,Fail must be VARCHAR
+8.1-Team Riffle,8.1-Team Riffle,Execution vs thinking balance,True,structural,PASS,Fail must be VARCHAR
+8.1-Team Riffle,8.1-Team Riffle,Automation level,123,structural,PASS,Fail must be VARCHAR
+8.1-Team Riffle,8.1-Team Riffle,Cross-functional exposure,123,structural,PASS,Fail must be VARCHAR
+8.1-Team Riffle,8.1-Team Riffle,Company maturity,123,structural,PASS,Fail must be VARCHAR
+8.1-Team Riffle,8.1-Team Riffle,Brand value,True,structural,PASS,Fail must be VARCHAR
+8.1-Team Riffle,8.1-Team Riffle,Client quality,123,structural,PASS,Fail must be VARCHAR
+8.1-Team Riffle,8.1-Team Riffle,Layoff history,123,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Fixed vs variable pay,123,structural,PASS,Fail must be VARCHAR
+8.1-Team Riffle,8.1-Team Riffle,Bonus predictability,123,structural,PASS,Fail must be VARCHAR
+8.1-Team Riffle,8.1-Team Riffle,ESOPs and long-term incentives,True,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Family health insurance,123,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Relocation support,False,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Lifestyle and wellness benefits,123,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Exit opportunities,123,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Skill relevance,123,structural,PASS,Fail must be VARCHAR
+8.1-Team Riffle,8.1-Team Riffle,External recognition,True,structural,PASS,Fail must be VARCHAR
+8.1-Team Riffle,8.1-Team Riffle,Network strength,123,structural,PASS,Fail must be VARCHAR
+8.1-Team Riffle,8.1-Team Riffle,Global exposure,123,structural,PASS,Fail must be VARCHAR
+8.1-Team Riffle,8.1-Team Riffle,Mission clarity,123,structural,PASS,Fail must be VARCHAR
+8.1-Team Riffle,8.1-Team Riffle,Sustainability and CSR,True,structural,PASS,Fail must be TEXT
+8.1-Team Riffle,8.1-Team Riffle,Crisis behavior,123,structural,PASS,Fail must be TEXT
+8.5 Team - Riffle,8.5 Team - Riffle,Countries Operating In,"India, USA, Germany",structural,PASS,"Pass matches regex ^([A-Za-z\s]+)(,\s*[A-Za-z\s]+)*$ and business_rule: valid country list"
+8.5 Team - Riffle,8.5 Team - Riffle,Countries Operating In,India; USA; Germany,structural,PASS,Fail violates format_constraint (must be comma-separated)
+8.5 Team - Riffle,8.5 Team - Riffle,Countries Operating In,"India, USA,",structural,PASS,Fail violates parsing rule (split validation fails)
+8.5 Team - Riffle,8.5 Team - Riffle,Office Locations,"Bangalore, India; Berlin, Germany",structural,PASS,"Pass if consistent delimiter + each entry has City, Country (business_rule)"
+8.5 Team - Riffle,8.5 Team - Riffle,Office Locations,"Bangalore, Berlin",structural,PASS,Fail violates business_rule: must include City AND Country
+8.5 Team - Riffle,8.5 Team - Riffle,Focus Sectors / Industries,"FinTech, SaaS, AI/ML",structural,PASS,Pass matches regex and taxonomy mapping
+8.5 Team - Riffle,8.5 Team - Riffle,Focus Sectors / Industries,"FinTech / SaaS, AI",structural,PASS,Fail violates format consistency
+8.5 Team - Riffle,8.5 Team - Riffle,Services / Offerings / Products,"API Services, Cloud Hosting, Analytics",structural,PASS,Pass consistent delimiter
+8.5 Team - Riffle,8.5 Team - Riffle,Services / Offerings / Products,"API Services\nCloud Hosting, Analytics",structural,PASS,Fail inconsistent delimiter usage
+8.5 Team - Riffle,8.5 Team - Riffle,Key Competitors,"Google, Microsoft, Amazon",structural,PASS,Pass matches regex pattern
+8.5 Team - Riffle,8.5 Team - Riffle,Key Competitors,"Google,, Amazon",structural,PASS,Fail violates regex structure
+8.5 Team - Riffle,8.5 Team - Riffle,Technology Partners,"AWS, Azure, GCP",structural,PASS,Pass comma-separated valid entities
+8.5 Team - Riffle,8.5 Team - Riffle,Technology Partners,AWS | Azure | GCP,structural,PASS,Fail violates format_constraint
+8.5 Team - Riffle,8.5 Team - Riffle,Key Investors / Backers,"Sequoia Capital, Accel, a16z",structural,PASS,Pass matches regex and entity validation
+8.5 Team - Riffle,8.5 Team - Riffle,Key Investors / Backers,"Sequoia Capital,Accel , a16z",structural,PASS,Fail violates normalization rule (trim + consistent spacing)
+8.5 Team - Riffle,8.5 Team - Riffle,Partnership Ecosystem,"SAP, Oracle, Salesforce",structural,PASS,Pass valid list format
+8.5 Team - Riffle,8.5 Team - Riffle,Partnership Ecosystem,"SAP, , Salesforce",structural,PASS,Fail violates list integrity
+8.5 Team - Riffle,8.5 Team - Riffle,Case Studies / Public Success Stories,"Case1 - https://a.com - Result, Case2 - https://b.com - Result",structural,PASS,Pass consistent delimiter + structured pattern
+8.5 Team - Riffle,8.5 Team - Riffle,Case Studies / Public Success Stories,Case1 https://a.com Result,structural,PASS,Fail violates required structured format
+8.5 Team - Riffle,8.5 Team - Riffle,Industry Associations / Memberships,"NASSCOM, IEEE, TiE",structural,PASS,Pass matches regex
+8.5 Team - Riffle,8.5 Team - Riffle,Industry Associations / Memberships,"NASSCOM , IEEE ,TiE",structural,PASS,Fail violates trimming rule
+8.6 Team - Riffle,8.6 Team - Riffle,Short Name,"""OpenAI"" (6 chars)",structural,PASS,Pass satisfies max 100 chars
+8.6 Team - Riffle,8.6 Team - Riffle,Short Name,"""A""*101",structural,PASS,Fail violates format_constraint VARCHAR(100)
+8.6 Team - Riffle,8.6 Team - Riffle,Short Name,"""A""",structural,PASS,Fail violates min length 2
+8.6 Team - Riffle,8.6 Team - Riffle,Company Name,"""OpenAI Technologies Inc.""",structural,PASS,Pass within 2255 chars
+8.6 Team - Riffle,8.6 Team - Riffle,Company Name,"""""",structural,PASS,Fail violates Not Null + min length
+8.6 Team - Riffle,8.6 Team - Riffle,Overview of the Company,250-char paragraph,structural,PASS,Pass within 505000 chars
+8.6 Team - Riffle,8.6 Team - Riffle,Overview of the Company,"""AI company"" (~10 chars)",structural,PASS,Fail violates min length 50
+8.6 Team - Riffle,8.6 Team - Riffle,Overview of the Company,"""A""*5001",structural,PASS,Fail exceeds max length
+8.6 Team - Riffle,8.6 Team - Riffle,Core Value Proposition,300-char text,structural,PASS,Pass within 202000 chars
+8.6 Team - Riffle,8.6 Team - Riffle,Core Value Proposition,"""Fast""",structural,PASS,Fail violates min length 20
+8.6 Team - Riffle,8.6 Team - Riffle,Services / Offerings / Products,200-char list,structural,PASS,Pass within 55000 chars
+8.6 Team - Riffle,8.6 Team - Riffle,Services / Offerings / Products,"""""",structural,PASS,Fail violates Not Null
+8.6 Team - Riffle,8.6 Team - Riffle,Pain Points Being Addressed,150-char text,structural,PASS,Pass meets min words > 5
+8.6 Team - Riffle,8.6 Team - Riffle,Pain Points Being Addressed,"""Improve UX""",structural,PASS,Fail violates min words rule
+8.6 Team - Riffle,8.6 Team - Riffle,Vision,100-char text,structural,PASS,Pass within 10500 chars
+8.6 Team - Riffle,8.6 Team - Riffle,Vision,"""A""*501",structural,PASS,Fail exceeds max
+8.6 Team - Riffle,8.6 Team - Riffle,Mission,120-char text,structural,PASS,Pass within limits
+8.6 Team - Riffle,8.6 Team - Riffle,Mission,"""Grow fast""",structural,PASS,Fail violates min length
+8.6 Team - Riffle,8.6 Team - Riffle,Key Competitors,"""Google, Microsoft, Amazon""",structural,PASS,Pass within 31000 chars
+8.6 Team - Riffle,8.6 Team - Riffle,Key Competitors,"""A""*1001",structural,PASS,Fail exceeds max
+8.6 Team - Riffle,8.6 Team - Riffle,Recent News,300-char structured text,structural,PASS,Pass within 205000 chars
+8.6 Team - Riffle,8.6 Team - Riffle,Recent News,"""""",structural,PASS,Pass (Nullable field)
+8.6 Team - Riffle,8.6 Team - Riffle,Case Studies / Public Success Stories,500-char text,structural,PASS,Pass within 105000 chars
+8.6 Team - Riffle,8.6 Team - Riffle,Case Studies / Public Success Stories,"""Case1""",structural,PASS,Fail violates min length 10
+9.3 Team-Riffle,9.3 Team-Riffle,ALL_FIELDS,"Record1: ""Apple Inc.""; Record2: ""Apple Bank""",structural,PASS,Pass No attribute leakage between records
+9.3 Team-Riffle,9.3 Team-Riffle,ALL_FIELDS,Apple Inc CEO appears in Apple Bank record,structural,PASS,Fail violates entity isolation
+9.3 Team-Riffle,9.3 Team-Riffle,ALL_FIELDS,Apple Inc apple.com; Apple Bank applebank.com,structural,PASS,Pass URLs correctly aligned
+9.3 Team-Riffle,9.3 Team-Riffle,ALL_FIELDS,Apple Bank has apple.com URL,structural,PASS,Fail context confusion
+9.3 Team-Riffle,9.3 Team-Riffle,ALL_FIELDS,Delta Airlines vs Delta Electronics have different competitors,structural,PASS,Pass domain-specific separation
+9.3 Team-Riffle,9.3 Team-Riffle,ALL_FIELDS,Both Delta entities share identical competitor lists,structural,PASS,Fail indicates bleed
+9.3 Team-Riffle,9.3 Team-Riffle,ALL_FIELDS,Investors tied to correct entity,structural,PASS,Pass correct mapping
+9.3 Team-Riffle,9.3 Team-Riffle,ALL_FIELDS,Investor from one entity appears in another unrelated entity,structural,PASS,Fail
+9.3 Team-Riffle,9.3 Team-Riffle,ALL_FIELDS,Apple Inc iPhone; Apple Bank Loans,structural,PASS,Pass domain-specific content
+9.3 Team-Riffle,9.3 Team-Riffle,ALL_FIELDS,"Apple Bank has ""iPhone services""",structural,PASS,Fail cross-domain confusion
+9.3 Team-Riffle,9.3 Team-Riffle,ALL_FIELDS,Batch: Delta Apple Apple Bank,structural,PASS,Pass no carry-over context
+9.3 Team-Riffle,9.3 Team-Riffle,ALL_FIELDS,Attributes from previous record persist,structural,PASS,Fail
+9.3 Team-Riffle,9.3 Team-Riffle,ALL_FIELDS,"""OpenAI"", ""Open AI"", ""OpenAI Inc."" handled distinctly",structural,PASS,Pass canonical mapping maintained
+9.3 Team-Riffle,9.3 Team-Riffle,ALL_FIELDS,"""Meta"" incorrectly merged with ""MetLife""",structural,PASS,Fail semantic confusion
+9.3 Team-Riffle,9.3 Team-Riffle,ALL_FIELDS,5 similar names processed sequentially,structural,PASS,Pass no degradation
+9.3 Team-Riffle,9.3 Team-Riffle,ALL_FIELDS,Later records increasingly resemble earlier ones,structural,PASS,Fail context drift detected
+10.1 - Team Riffle,10.1 - Team Riffle,ALL_FIELDS,"Recent News: ""2025-02-10 - Company raised Series C""",structural,PASS,Pass satisfies business expectation: recent timeline coverage
+10.1 - Team Riffle,10.1 - Team Riffle,ALL_FIELDS,"Recent News: ""2022-05-01 - Funding""",structural,PASS,Fail violates temporal validity (no updates beyond cutoff)
+10.1 - Team Riffle,10.1 - Team Riffle,ALL_FIELDS,"CEO Name: ""New CEO (2025)"", Recent News includes change",structural,PASS,Pass consistency between fields
+10.1 - Team Riffle,10.1 - Team Riffle,ALL_FIELDS,"CEO Name: ""Old CEO"", but 2025 news mentions new CEO",structural,PASS,Fail cross-field inconsistency
+10.1 - Team Riffle,10.1 - Team Riffle,ALL_FIELDS,"Funding: ""2025 Series B"" present",structural,PASS,Pass aligns with real-world timeline
+10.1 - Team Riffle,10.1 - Team Riffle,ALL_FIELDS,"""2028 IPO planned""",structural,PASS,Fail violates temporal logic (future beyond reasonable projection unless in projections field)
+10.1 - Team Riffle,10.1 - Team Riffle,ALL_FIELDS,"""2025 AI product launch""",structural,PASS,Pass recent innovation captured
+10.1 - Team Riffle,10.1 - Team Riffle,ALL_FIELDS,Only products from 20202022,structural,PASS,Fail outdated dataset
+10.1 - Team Riffle,10.1 - Team Riffle,ALL_FIELDS,2025 funding appears after 2023 news,structural,PASS,Pass correct ordering
+10.1 - Team Riffle,10.1 - Team Riffle,ALL_FIELDS,CEO joined in 2025 but news says resigned in 2023,structural,PASS,Fail logical inconsistency
+10.1 - Team Riffle,10.1 - Team Riffle,ALL_FIELDS,"Projection: 2026 growth, no conflict with current data",structural,PASS,Pass valid forward-looking statement
+10.1 - Team Riffle,10.1 - Team Riffle,ALL_FIELDS,"""Company is market leader in 2027"" in current fields",structural,PASS,Fail violates temporal classification
+10.2 - Team Riffle,10.2 - Team Riffle,ALL_FIELDS,"Recent News: ""2025-03-10 - Acquired XYZ Ltd""",structural,PASS,Pass Structural change after cutoff captured (temporal validity satisfied)
+10.2 - Team Riffle,10.2 - Team Riffle,ALL_FIELDS,External context implies 2025 acquisition; record lacks any mention,structural,PASS,Fail violates completeness for post-cutoff structural changes
+10.2 - Team Riffle,10.2 - Team Riffle,ALL_FIELDS,"Recent News: ""2025 - Launched ABC Subsidiary""; Partnership Ecosystem includes ABC",structural,PASS,Pass Cross-field propagation consistent
+10.2 - Team Riffle,10.2 - Team Riffle,ALL_FIELDS,Recent News mentions new subsidiary; no trace in partners/structure fields,structural,PASS,Fail cross-field inconsistency
+10.2 - Team Riffle,10.2 - Team Riffle,ALL_FIELDS,"""2025 - Spun off FinTech division into NewCo"" present",structural,PASS,Pass structural split represented
+10.2 - Team Riffle,10.2 - Team Riffle,ALL_FIELDS,Only pre-2024 org structure present,structural,PASS,Fail violates temporal freshness
+10.2 - Team Riffle,10.2 - Team Riffle,ALL_FIELDS,Post-acquisition competitor list updated (removed/added entities),structural,PASS,Pass market structure aligned
+10.2 - Team Riffle,10.2 - Team Riffle,ALL_FIELDS,Competitor acquired in 2025 still listed as competitor,structural,PASS,Fail logical inconsistency
+10.2 - Team Riffle,10.2 - Team Riffle,ALL_FIELDS,2025 funding used for acquisition (both present),structural,PASS,Pass narrative coherence
+10.2 - Team Riffle,10.2 - Team Riffle,ALL_FIELDS,"""2029 - Acquired GlobalCorp""",structural,PASS,Fail violates temporal plausibility (beyond near-future horizon)
+10.2 - Team Riffle,10.2 - Team Riffle,ALL_FIELDS,2024 funding 2025 acquisition 2025 integration,structural,PASS,Pass ordered timeline
+10.2 - Team Riffle,10.2 - Team Riffle,ALL_FIELDS,"""Subsidiary created in 2025"" but ""divested in 2024""",structural,PASS,Fail temporal contradiction
+10.2 - Team Riffle,10.2 - Team Riffle,ALL_FIELDS,New strategic investor/partner appears after acquisition,structural,PASS,Pass ecosystem updated
+10.2 - Team Riffle,10.2 - Team Riffle,ALL_FIELDS,Acquisition mentioned; no change in partners/investors,structural,PASS,Fail incomplete structural propagation
+12.3-Team Nova,12.3-Team Nova,Nature of Company,SpaceX Private,structural,PASS,Pass: Matches enum `(Private
+12.3-Team Nova,12.3-Team Nova,Nature of Company,Apple Public,structural,PASS,Pass: Valid classification; aligns with legal filings.
+12.3-Team Nova,12.3-Team Nova,Nature of Company,WhatsApp Subsidiary,structural,PASS,Pass: Correct parent-child ownership classification.
+12.3-Team Nova,12.3-Team Nova,Nature of Company,Startup,structural,PASS,Fail: Not in allowed enum list.
+12.3-Team Nova,12.3-Team Nova,Nature of Company,private,structural,PASS,Fail: Should match exact enum (or normalized).
+12.3-Team Nova,12.3-Team Nova,Nature of Company,,structural,PASS,Fail: Field is Not Null (business rule violation).
+12.3-Team Nova,12.3-Team Nova,Nature of Company,Private@123,structural,PASS,Fail: Violates regex constraint.
+12.3-Team Nova,12.3-Team Nova,Nature of Company,Private/Public,structural,PASS,Fail: Violates granularity (One per Entity).
+12.3-Team Nova,12.3-Team Nova,Nature of Company,""" Public """,structural,PASS,"Pass: Trimmed ""Public""; matches enum."
+12.3-Team Nova,12.3-Team Nova,Nature of Company,Govt,structural,PASS,Pass: Valid enum value accepted.
+12.3-Team Nova,12.3-Team Nova,Category,"Category=Startup, Nature=Public",structural,PASS,Fail: Logical inconsistency (Startup typically Private).
+12.3-Team Nova,12.3-Team Nova,Category,"Category=Enterprise, Nature=Public",structural,PASS,Pass: Valid mapping.
+12.3-Team Nova,12.3-Team Nova,GLOBAL RECORD,Tesla Public,structural,PASS,Pass: Matches SEC/registry data.
+12.3-Team Nova,12.3-Team Nova,GLOBAL RECORD,Missing field,structural,PASS,Fail: Mandatory field missing.
+12.1 - Team Nova,12.1 - Team Nova,Category,Startup,structural,PASS,Accepted. Matches regex ^(Startup|MSME|SMB|Enterprise|Investor|VC|Conglomerate)$ and aligns with business rule (taxonomy mapping).
+12.1 - Team Nova,12.1 - Team Nova,Category,MSME,structural,PASS,"Accepted. Valid enum and passes ""Value In List check"" (Automated validation)."
+12.1 - Team Nova,12.1 - Team Nova,Category,SMB,structural,PASS,Accepted. Matches allowed enum list and satisfies classification taxonomy rule.
+12.1 - Team Nova,12.1 - Team Nova,Category,VC,structural,PASS,Accepted. Correct classification for investor-type entity per business rules.
+12.1 - Team Nova,12.1 - Team Nova,Category,Investor,structural,PASS,Accepted. Matches enum and aligns with business taxonomy.
+12.1 - Team Nova,12.1 - Team Nova,Category,SmallBiz,structural,PASS,"Rejected. Fails regex and ""Value In List check""."
+12.1 - Team Nova,12.1 - Team Nova,Category,startup,structural,PASS,Rejected if case-sensitive. Should normalize or enforce exact enum match.
+12.1 - Team Nova,12.1 - Team Nova,Employee Size,50-200 + Category=SMB,positive,PASS,Accepted. Range aligns with SMB classification. Passes regex ^(\d+|\d+-\d+)$ and logical consistency.
+12.1 - Team Nova,12.1 - Team Nova,Employee Size,1000 + Category=Startup,positive,PASS,Rejected. Violates business inference rule (Startup typically small scale).
+12.1 - Team Nova,12.1 - Team Nova,Nature of Company,Private + Category=VC,structural,PASS,Conditional: Accepted if entity is a VC firm structured as private. Requires cross-field validation.
+12.1 - Team Nova,12.1 - Team Nova,Nature of Company,Non-Profit + Category=VC,structural,PASS,Rejected. Violates logical classification consistency.
+12.1 - Team Nova,12.1 - Team Nova,Category,Enterprise,structural,PASS,Accepted. Matches enum and taxonomy rule.
+12.2 - Team Nova,12.2 - Team Nova,ALL_FIELDS,"{ ""Annual Revenues"": ""$0"", ""Employee Size"": ""0"", ""Website Traffic Rank"": ""0"" }",structural,PASS,"Fail As per business_rules, measurable fields must not default to misleading values like 0 unless explicitly valid. Validation should flag incorrect defaults."
+12.2 - Team Nova,12.2 - Team Nova,ALL_FIELDS,"{ ""Remote Work Policy"": ""Unknown"", ""Vision"": null }",structural,PASS,"Pass Nullable fields with no strict business_rules can default to ""Unknown"" or remain null per nullability rules."
+12.2 - Team Nova,12.2 - Team Nova,ALL_FIELDS,"{ ""Company Name"": ""Unknown"", ""Category"": ""N/A"" }",structural,PASS,"Fail Violates Not Null + business_rules requiring valid, real values (e.g., official registry match, enum constraint)."
+12.2 - Team Nova,12.2 - Team Nova,ALL_FIELDS,"{ ""Website URL"": ""Unknown"", ""CEO LinkedIn URL"": ""N/A"" }",structural,PASS,Fail Invalid format; does not match required regex (HTTPS URL patterns).
+12.2 - Team Nova,12.2 - Team Nova,ALL_FIELDS,"{ ""CAC:LTV Ratio"": ""0"", ""Runway"": ""0"" }",structural,PASS,Fail Derived metrics must be computed or null; defaulting to 0 violates data_rules and business logic.
+12.2 - Team Nova,12.2 - Team Nova,ALL_FIELDS,"{ ""Awards & Recognitions"": ""N/A"", ""Case Studies"": ""None"" }",structural,PASS,Fail Should be null instead of forced placeholders per nullability rules.
+12.2 - Team Nova,12.2 - Team Nova,ALL_FIELDS,"{ ""Nature of Company"": ""Unknown"", ""Profitability Status"": ""N/A"" }",structural,PASS,Fail Must match strict enum values defined in regex_pattern.
+12.2 - Team Nova,12.2 - Team Nova,ALL_FIELDS,"{ ""Employee Turnover"": ""150%"", ""Market Share (%)"": ""-10%"" }",structural,PASS,Fail Violates range constraints (0100%) defined in business_rules.
+12.2 - Team Nova,12.2 - Team Nova,ALL_FIELDS,"{ ""Decision Maker Accessibility"": ""Low - Not publicly reachable"" }",structural,PASS,Pass Matches allowed enum prefix + descriptive extension per regex and business_rules.
+12.2 - Team Nova,12.2 - Team Nova,ALL_FIELDS,"{ ""Glassdoor Rating"": null, ""Indeed Rating"": null }",structural,PASS,"Pass Nullable fields should remain null instead of forced defaults, preserving data accuracy."
+12.4-Team Nova,12.4-Team Nova,Brand Sentiment Score,Positive,structural,PASS,Pass: Matches allowed values `(Positive
+12.4-Team Nova,12.4-Team Nova,Brand Sentiment Score,85,structural,PASS,Pass: Valid numeric score (0100 scale)
+12.4-Team Nova,12.4-Team Nova,Brand Sentiment Score,Very Good,structural,PASS,Fail: Not in allowed enum or numeric format
+12.4-Team Nova,12.4-Team Nova,Brand Sentiment Score,,structural,PASS,Pass: Field is Nullable
+12.4-Team Nova,12.4-Team Nova,Glassdoor Rating,4.5,rating_5,PASS,Pass: Interpreted as Positive (range 4.05.0)
+12.4-Team Nova,12.4-Team Nova,Glassdoor Rating,3,rating_5,PASS,Pass: Interpreted as Neutral
+12.4-Team Nova,12.4-Team Nova,Glassdoor Rating,1.8,rating_5,PASS,Pass: Interpreted as Negative
+12.4-Team Nova,12.4-Team Nova,Glassdoor Rating,5.5,rating_5,PASS,Fail: Must be between 1.0 and 5.0
+12.4-Team Nova,12.4-Team Nova,Indeed Rating,4.2,rating_5,PASS,Pass: Interpreted as Positive
+12.4-Team Nova,12.4-Team Nova,Google Reviews Rating,2.5,rating_5,PASS,Pass: Interpreted as Negative/Neutral boundary
+12.4-Team Nova,12.4-Team Nova,Net Promoter Score (NPS),70,range,PASS,Pass: Promoter-heavy Positive sentiment
+12.4-Team Nova,12.4-Team Nova,Net Promoter Score (NPS),10,range,PASS,Pass: Neutral sentiment
+12.4-Team Nova,12.4-Team Nova,Net Promoter Score (NPS),-40,range,PASS,Pass: Detractor-heavy Negative sentiment
+12.4-Team Nova,12.4-Team Nova,Net Promoter Score (NPS),150,range,PASS,Fail: Must be between -100 and 100
+12.4-Team Nova,12.4-Team Nova,Work culture,"""Collaborative and supportive environment""",structural,PASS,Pass: Classified as Positive sentiment
+12.4-Team Nova,12.4-Team Nova,Manager quality,"""Micromanagement and high pressure""",structural,PASS,Pass: Classified as Negative sentiment
+12.4-Team Nova,12.4-Team Nova,Psychological safety,High,structural,PASS,Pass: Interpreted as Positive
+12.4-Team Nova,12.4-Team Nova,Psychological safety,Very High,structural,PASS,Fail: Not in allowed enum `(Low
+12.4-Team Nova,12.4-Team Nova,GLOBAL RECORD,"Glassdoor=4.5, Brand Sentiment=Negative",structural,PASS,Fail: Logical inconsistency
+12.4-Team Nova,12.4-Team Nova,GLOBAL RECORD,"Ratings high, NPS high, Sentiment=Positive",structural,PASS,Pass: Consistent sentiment classification
+12.5-Team Nova,12.5-Team Nova,Customer Concentration Risk,Yes Top client contributes 35% revenue,structural,PASS,Pass: Classified as High Risk (business rule: >20% concentration)
+12.5-Team Nova,12.5-Team Nova,Customer Concentration Risk,No Top client contributes 10%,structural,PASS,Pass: Classified as Low Risk
+12.5-Team Nova,12.5-Team Nova,Customer Concentration Risk,Maybe,structural,PASS,Fail: Must match `(Yes
+12.5-Team Nova,12.5-Team Nova,Geopolitical Risks,"""Operations impacted by trade sanctions in China""",structural,PASS,Pass: Classified as High Risk (keyword: sanctions)
+12.5-Team Nova,12.5-Team Nova,Geopolitical Risks,"""Dependent on imports from multiple regions""",structural,PASS,Pass: Classified as Medium Risk
+12.5-Team Nova,12.5-Team Nova,Geopolitical Risks,"""Domestic-only operations""",structural,PASS,Pass: Classified as Low Risk
+12.5-Team Nova,12.5-Team Nova,Geopolitical Risks,,structural,PASS,Pass: Field is Nullable
+12.5-Team Nova,12.5-Team Nova,Burn Rate,$5M/month with low revenue,positive,PASS,Pass: Classified as High Risk
+12.5-Team Nova,12.5-Team Nova,Burn Rate,$200K/month with strong revenue,positive,PASS,Pass: Classified as Low Risk
+12.5-Team Nova,12.5-Team Nova,Burn Rate,-$500K,positive,PASS,Fail: Burn rate must be > 0
+12.5-Team Nova,12.5-Team Nova,Runway,4 months,positive,PASS,Pass: Classified as High Risk (rule: <6 months critical)
+12.5-Team Nova,12.5-Team Nova,Runway,18 months,positive,PASS,Pass: Classified as Low Risk
+12.5-Team Nova,12.5-Team Nova,Runway,-3 months,positive,PASS,Fail: Must be positive numeric
+12.5-Team Nova,12.5-Team Nova,Macro Risks,"""High inflation and rising interest rates""",structural,PASS,Pass: Classified as High Risk
+12.5-Team Nova,12.5-Team Nova,Macro Risks,"""Stable economic conditions""",structural,PASS,Pass: Classified as Low/Medium Risk
+12.5-Team Nova,12.5-Team Nova,Cybersecurity Posture,"""No SOC2; recent data breach""",structural,PASS,Pass: Classified as High Risk
+12.5-Team Nova,12.5-Team Nova,Cybersecurity Posture,"""SOC2, ISO27001 certified""",structural,PASS,Pass: Classified as Low Risk
+12.5-Team Nova,12.5-Team Nova,Cybersecurity Posture,"""Minor vulnerabilities identified""",structural,PASS,Pass: Classified as Medium Risk
+12.5-Team Nova,12.5-Team Nova,GLOBAL RECORD,"Burn=$5M/month, Runway=3 months",structural,PASS,Pass: Overall classified as High Risk
+12.5-Team Nova,12.5-Team Nova,GLOBAL RECORD,"Burn=$5M, Runway=24 months, Risk=Low",structural,PASS,Fail: Inconsistent risk classification
+12.5-Team Nova,12.5-Team Nova,GLOBAL RECORD,"High burn, low runway, high geo risk",structural,PASS,Pass: Final classification = High Risk
+13.2- Team Nova,13.2- Team Nova,GLOBAL RECORD,"Complete dataset (e.g., Apple-like entity with 150+ fields populated)",structural,PASS,"Pass: Response time defined SLA (e.g., 2 sec). System handles large, complex records efficiently."
+13.2- Team Nova,13.2- Team Nova,GLOBAL RECORD,Partial dataset (1020 fields populated),structural,PASS,Pass: Faster response than enterprise case; 1 sec expected.
+13.2- Team Nova,13.2- Team Nova,GLOBAL RECORD,Public: Full dataset; Private: Medium dataset,structural,PASS,Pass: Public company processing time Private; difference within acceptable threshold (<30%).
+13.2- Team Nova,13.2- Team Nova,GLOBAL RECORD,Dataset sizes: 20 fields 80 fields 150+ fields,structural,PASS,Pass: Response time increases linearly; no exponential degradation.
+13.2- Team Nova,13.2- Team Nova,GLOBAL RECORD,50 parallel company records (mixed types),structural,PASS,Pass: Avg response time within SLA; no timeout or crash.
+13.2- Team Nova,13.2- Team Nova,GLOBAL RECORD,"Text-heavy (Narratives, Risks) vs Numeric-heavy (Financials)",structural,PASS,Pass: Text processing slightly slower but within SLA limits.
+13.2- Team Nova,13.2- Team Nova,GLOBAL RECORD,"Max length fields (e.g., 5000-char descriptions across multiple fields)",structural,PASS,Pass: System processes without latency spike or memory failure.
+13.2- Team Nova,13.2- Team Nova,GLOBAL RECORD,Artificial delay > SLA threshold,structural,PASS,Fail/Pass: System returns timeout error or fallback response.
+13.2- Team Nova,13.2- Team Nova,GLOBAL RECORD,Same company queried multiple times,structural,PASS,Pass: Subsequent responses faster due to caching.
+13.2- Team Nova,13.2- Team Nova,GLOBAL RECORD,Full pipeline execution,structural,PASS,Pass: Total time within SLA; no stage bottlenecks.
+13.3- Team Nova,13.3- Team Nova,GLOBAL RECORD,Overview of the Company = 5000-character narrative text,structural,PASS,Pass: No mid-sentence cutoff; content ends with complete sentence; complies with max length constraint (5000)
+13.3- Team Nova,13.3- Team Nova,GLOBAL RECORD,"Overview, Services / Offerings / Products, Recent News all near max length",structural,PASS,Pass: All fields fully preserved; no truncation or data loss across fields
+13.3- Team Nova,13.3- Team Nova,GLOBAL RECORD,Office Locations = 100+ entries (comma-separated or structured text),structural,PASS,Pass: All entries retained; no broken or incomplete location values
+13.3- Team Nova,13.3- Team Nova,GLOBAL RECORD,Long narrative text near token limit,structural,PASS,Pass: Output ends at full word boundary; no partial words present
+13.3- Team Nova,13.3- Team Nova,GLOBAL RECORD,Key Business Leaders = large JSON array with multiple entries,structural,PASS,Pass: JSON remains valid; no missing brackets or structural corruption
+13.3- Team Nova,13.3- Team Nova,GLOBAL RECORD,Full dataset (150+ fields populated; multiple max-length TEXT fields),structural,PASS,Pass: Entire record processed without truncation; respects individual field constraints and validation_mode
+13.3- Team Nova,13.3- Team Nova,GLOBAL RECORD,Overview = max length; other fields = normal size,structural,PASS,Pass: All fields populated; no starvation or omission of smaller fields
+13.3- Team Nova,13.3- Team Nova,GLOBAL RECORD,"Long text with UTF-8 characters (é, ü, ñ)",structural,PASS,Pass: Characters preserved; no encoding corruption; complies with regex where applicable
+13.3- Team Nova,13.3- Team Nova,GLOBAL RECORD,Overview = 6000 characters,structural,PASS,Pass: Data truncated gracefully to 5000 OR rejected per validation rules; no system crash
+13.3- Team Nova,13.3- Team Nova,GLOBAL RECORD,Full pipeline: ingestion validation output with large record,structural,PASS,Pass: No truncation across pipeline; output matches input within defined constraints
+13.3- Team Nova,13.3- Team Nova,GLOBAL RECORD,Large text + multiple URLs + numeric metrics,structural,PASS,Pass: No truncation across any data type; all formats preserved
+13.3- Team Nova,13.3- Team Nova,GLOBAL RECORD,Full dataset (150+ fields populated),structural,PASS,Pass: No data loss across pipeline stages; aligns with validation_mode (Automated/Manual)
+13.4- Team Nova,13.4- Team Nova,GLOBAL RECORD,"Request 1: Company A (e.g., fintech dataset)Request 2: Company B (e.g., healthcare dataset)",structural,PASS,"Pass: Response for Company B contains only Bs data; no fields, values, or context from Company A present"
+13.4- Team Nova,13.4- Team Nova,GLOBAL RECORD,Request 1: Company A (SaaS CRM)Request 2: Company B (SaaS CRM competitor),structural,PASS,"Pass: No attribute/value mixing (e.g., customers, products, metrics) between A and B"
+13.4- Team Nova,13.4- Team Nova,GLOBAL RECORD,Batch input: 10 companies with similar structure,structural,PASS,Pass: Each output record strictly maps to its input; no shared or duplicated data across records
+13.4- Team Nova,13.4- Team Nova,GLOBAL RECORD,Company A has CEO Name = John DoeCompany B has CEO Name = Alice Smith,structural,PASS,"Pass: Company B output must not contain ""John Doe""; strict field-level correctness maintained"
+13.4- Team Nova,13.4- Team Nova,GLOBAL RECORD,20 parallel requests with different company datasets,structural,PASS,Pass: No cross-request contamination; all outputs correctly mapped to respective inputs
+13.4- Team Nova,13.4- Team Nova,GLOBAL RECORD,Request 1: Invalid/partial datasetRequest 2: Valid dataset,structural,PASS,Pass: Request 2 output unaffected by Request 1 failure; no residual artifacts
+13.4- Team Nova,13.4- Team Nova,GLOBAL RECORD,Company A: text-heavy datasetCompany B: numeric-heavy dataset,structural,PASS,Pass: No mixing of textual/numeric values across records
+13.4- Team Nova,13.4- Team Nova,GLOBAL RECORD,Same Company B requested multiple times with slight variations,structural,PASS,Pass: Each response reflects only current input; no accumulation of prior values
+13.4- Team Nova,13.4- Team Nova,GLOBAL RECORD,"Company A and B with different Annual Revenues, Profitability Status",structural,PASS,Pass: Derived/logically linked fields remain correct per entity; no cross-entity influence
+13.4- Team Nova,13.4- Team Nova,GLOBAL RECORD,Sequential pipeline execution for multiple companies,structural,PASS,"Pass: No contamination across ingestion, validation, and output stages"

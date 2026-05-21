@@ -1,0 +1,34 @@
+column_name,validation_type
+Year of Incorporation,temporal
+Employee Size,positive
+Number of Offices (beyond HQ),positive
+Employee Turnover,percentage
+Average Retention Tenure,structural
+Website Rating,rating_10
+Website Traffic Rank,positive
+Social Media Followers – Combined,positive
+Glassdoor Rating,rating_5
+Indeed Rating,rating_5
+Google Reviews Rating,rating_5
+Annual Revenues,positive
+Annual Profits,positive
+Revenue Mix,ratio_100
+Company Valuation,positive
+Year-over-Year Growth Rate,structural
+Market Share (%),percentage
+Total Capital Raised,positive
+Customer Acquisition Cost (CAC),positive
+Customer Lifetime Value (CLV),positive
+CAC:LTV Ratio,ratio_format
+Churn Rate,percentage
+Net Promoter Score (NPS),range
+Burn Rate,positive
+Runway,positive
+Burn Multiplier,positive
+R&D Investment,positive
+Total Addressable Market (TAM),positive
+Serviceable Addressable Market (SAM),positive
+Serviceable Obtainable Market (SOM),positive
+Training/Development Spend,positive
+Commute time from airport,positive
+Industry Benchmark Technology Adoption Rating,rating_10
