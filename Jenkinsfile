@@ -5,6 +5,7 @@ pipeline {
         // Load the env file credential with ID 'ENV'
         ENV_FILE = credentials('ENV')
         DOCKER = 'C:\\Program Files\\Docker\\Docker\\resources\\bin\\docker.exe'
+        PYTHON = 'C:\\Users\\Likith M V\\AppData\\Local\\Programs\\Python\\Python311\\python.exe'
     }
 
     stages {
@@ -34,12 +35,12 @@ pipeline {
         stage('Back-end Pipeline') {
             steps {
                 echo 'Building and testing backend...'
-                // Recreate and run backend venv, pip install and run tests
+                // Recreate and run backend venv, pip install and run tests using absolute python path
                 powershell '''
                     if (Test-Path "Lang graph\\venv") {
                         Remove-Item -Path "Lang graph\\venv" -Recurse -Force
                     }
-                    python -m venv "Lang graph\\venv"
+                    & "$env:PYTHON" -m venv "Lang graph\\venv"
                     & "Lang graph\\venv\\Scripts\\pip" install -r "Lang graph\\requirements.txt" --default-timeout=100
                     & "Lang graph\\venv\\Scripts\\pytest" "Lang graph\\tests\\test_api.py" -v
                 '''
